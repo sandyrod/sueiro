@@ -17,3 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::view('/home', 'home');
+Route::view('/nosotros', 'nosotros');
+Route::view('/products', 'products');
+Route::view('/request', 'request');
+Route::view('/contact', 'contact');
+Route::view('/orders', 'orders');
+Route::view('/remittances', 'remittances');
+Route::view('/order-history', 'order-history');
+Route::view('/quality', 'quality');
+Route::view('/shopping', 'shopping');

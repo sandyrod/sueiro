@@ -42,25 +42,9 @@
         <div class="cabezera_title4">
             <i class="fas fa-search"></i>
         </div>
-
-    </div>
-
-    <div class="carrusel">
-        <div class="carousel-indicators">
-            <button></button>
-            <button></button>
-            <button></button>
-        </div>
-        <img src="/img/carrusel.png" class="carrusel_img">
-        <div class="carrusel_title">
-            <span>SUEIRO E HIJOS</span>
-        </div>
-        <div class="carrusel_sudtitle">
-            <span>Somos una empresa dedicada a proporcionar las mejores soluciones de filtración con 30 años de experiencia en el rubro.</span>
-        </div>
     </div>
     @yield('content')
-    <div class="footer">
+    <div class="footer--products">
         <div class="footer_container">
             <div class="footer__logo">
                 <img class="flt_img" src="/img/logofooter.png">
