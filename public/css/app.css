@@ -4781,6 +4781,67 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
+.cabezera_titleloge {
+  top: 108px;
+  left: 761px;
+  width: 86px;
+  height: 22px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.cabezera_titleloge1 {
+  top: 108px;
+  left: 867px;
+  width: 96px;
+  height: 22px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.cabezera_titleloge2 {
+  top: 108px;
+  left: 950px;
+  width: 190px;
+  height: 22px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.cabezera_titleloge3 {
+  top: 108px;
+  left: 1030px;
+  width: 300px;
+  height: 22px;
+  background: transparent 0% 0% no-repeat padding-box;
+  position: absolute;
+}
+
+.cabezera_titleloge4 {
+  top: 108px;
+  left: 1220px;
+  width: 14px;
+  height: 13px;
+  border: 0.4px solid var(--unnamed-color-c1282d);
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.cabezera_titleloge5 {
+  top: 112px;
+  left: 1300px;
+  width: 14px;
+  height: 13px;
+  border: 0.4px solid var(--unnamed-color-c1282d);
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
 .carrusel {
   top: 160px;
   left: 0px;

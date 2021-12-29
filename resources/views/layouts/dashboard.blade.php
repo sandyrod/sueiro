@@ -39,10 +39,6 @@
         <div class="cabezera_title3">
             <a class="cabezera__text" href="contact">CONTACTO</a>
         </div>
-        <div class="cabezera_title4">
-            <i class="fas fa-search"></i>
-        </div>
-
     </div>
 
     <div class="carrusel">

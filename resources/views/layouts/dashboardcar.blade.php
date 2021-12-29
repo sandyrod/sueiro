@@ -27,20 +27,23 @@
         <div class="logo">
             <img src="/img/logo.png">
         </div>
-        <div class="cabezera_title">
-            <a class="cabezera__text" href="nosotros">NOSOTROS</a>
-        </div>
-        <div class="cabezera_title1">
+        <div class="cabezera_titleloge">
             <a class="cabezera__text" href="products">PRODUCTOS</a>
         </div>
-        <div class="cabezera_title2">
-            <a class="cabezera__text" href="request">SOLICITAR PRESUPUESTO</a>
+        <div style="" class="cabezera_titleloge1">
+            <a class="cabezera__text" href="request">PEDIDOS</a>
         </div>
-        <div class="cabezera_title3">
-            <a class="cabezera__text" href="contact">CONTACTO</a>
+        <div class="cabezera_titleloge2">
+            <a class="cabezera__text" href="remittances">REMITOS</a>
         </div>
-        <div class="cabezera_title4">
-            <i class="fas fa-search"></i>
+        <div class="cabezera_titleloge3">
+            <a class="cabezera__text" href="order-history">HISTÓRICO DE COMPRAS</a>
+        </div> 
+        <div class="cabezera_titleloge4">
+            <a class="cabezera__text" href="quality">CALIDAD</a>
+        </div> 
+        <div class="cabezera_titleloge5">
+            <a class="cabezera__text" href="shopping"><i class="fas fa-shopping-cart"></i></a>
         </div>
     </div>
     @yield('content')
