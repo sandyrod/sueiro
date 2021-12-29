@@ -31,12 +31,8 @@
     </div>
 
     <div class="contact__capcha">
-    
     </div>
-
-
     <button class="contact__btn">
         <span>ENVIAR</span>
     </button>
 </div>
-<br><br><br><br><br>

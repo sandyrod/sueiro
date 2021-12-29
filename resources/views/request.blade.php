@@ -2,3 +2,4 @@
 @section('content')
     @livewire('request')
 @endsection
+@extends('layouts.footer')

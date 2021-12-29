@@ -4728,6 +4728,19 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
+.cabezera__text {
+  color: #000;
+  text-decoration: none;
+}
+
+.cabezera__text:focus {
+  color: red;
+}
+
+.cabezera__text:hover {
+  color: red;
+}
+
 .cabezera_title1 {
   top: 108px;
   left: 867px;
@@ -4955,7 +4968,6 @@ readers do not read off random characters that represent icons */
 }
 
 .footer {
-  margin-top: 80%;
   width: 100%;
   height: 30%;
   position: absolute;
@@ -5924,6 +5936,321 @@ readers do not read off random characters that represent icons */
   height: 90%;
   top: 3%;
   position: absolute;
+}
+
+.shopping__cuerpo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  top: 0.5%;
+}
+
+.shopping__cuerpomenu {
+  top: 3%;
+  left: 4%;
+  width: 88%;
+  height: 7%;
+  background: #F9F9F9 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000021;
+  opacity: 1;
+  position: absolute;
+}
+
+.shopping__sudcuerpo {
+  top: 10%;
+  left: 0%;
+  width: 100%;
+  height: 95%;
+  background: #fff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000021;
+  opacity: 1;
+  position: absolute;
+}
+
+.shopping__select {
+  top: 5%;
+  left: 52%;
+  width: 86px;
+  height: 28px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #A2A2A2;
+  opacity: 1;
+  text-align: center;
+  position: absolute;
+}
+
+.shp {
+  width: 20%;
+}
+
+.shp__rsmcom {
+  position: absolute;
+  left: 107%;
+  width: 40%;
+  height: 100%;
+  top: 0%;
+}
+
+.shp__fontitle {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 5%;
+  background: var(--unnamed-color-c1282d) 0% 0% no-repeat padding-box;
+  background: #C1282D 0% 0% no-repeat padding-box;
+  color: #fff;
+  opacity: 1;
+}
+
+.shp__title {
+  font: var(--unnamed-font-style-normal) normal normal 20px/20px var(--unnamed-font-family-open-sans);
+  font: normal normal normal 20px/20px Open Sans;
+  top: 1.5%;
+  left: 5%;
+  width: 60%;
+  position: absolute;
+}
+
+.shp__cuerpo {
+  width: 100%;
+  height: 8%;
+}
+
+.shp__cuerporigth {
+  width: 50%;
+  height: 8%;
+  position: absolute;
+}
+
+.shp__cuerporigth__title {
+  top: 13%;
+  left: 5%;
+  width: 72px;
+  height: 19px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.shp__cuerporigth__sudtitle {
+  color: #c1282d;
+  top: 50%;
+  left: 5%;
+  width: 60px;
+  height: 19px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  font-weight: bold;
+  position: absolute;
+}
+
+.shp__cuerpoleft {
+  width: 50%;
+  height: 8%;
+  left: 50%;
+  position: absolute;
+  top: 5.2%;
+}
+
+.shp__cuerpolefttitle {
+  top: 13%;
+  left: 83%;
+  width: 72px;
+  height: 19px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.shp__cuerpoleftsudtitle {
+  color: #c1282d;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 19px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  font-weight: bold;
+  position: absolute;
+}
+
+.shp__cuerpo--env {
+  top: 50%;
+  width: 100%;
+  height: 6%;
+}
+
+.shp__cuerpo--envrigth {
+  width: 50%;
+  height: 100%;
+}
+
+.shp__cuerpo--envrigthttitle {
+  left: 3%;
+  width: 192px;
+  height: 179px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.shp__cuerpo--envrigthtsudtitle {
+  left: 3%;
+  width: 70px;
+  height: 19px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.shp__cuerpo--envleft {
+  width: 50%;
+  margin: -15% 50%;
+  height: 100%;
+}
+
+.shp__cuerpo--envlefttitle {
+  margin-left: 50%;
+  width: 72px;
+  height: 49px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.shp__cuerpoiv {
+  width: 100%;
+  height: 15%;
+  margin-top: 5%;
+}
+
+.shp__di {
+  position: absolute;
+  top: 35%;
+  left: 0%;
+  width: 100%;
+  height: 4%;
+  background: #33333370 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.shp__dicon {
+  top: 25%;
+  left: 5%;
+  font: normal normal normal 20px/20px Open Sans;
+  width: 142px;
+  height: 27px;
+  background: transparent 0% 0% no-repeat padding-box;
+  color: #FFFFFF;
+  position: absolute;
+  opacity: 1;
+}
+
+.shp__dititle {
+  top: 25%;
+  left: 22%;
+  font: normal normal normal 20px/20px Open Sans;
+  width: 142px;
+  height: 27px;
+  background: transparent 0% 0% no-repeat padding-box;
+  color: #FFFFFF;
+  position: absolute;
+  opacity: 1;
+}
+
+.shp__en {
+  left: 0%;
+  width: 100%;
+  height: 10%;
+  background: #33333370 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.shp__encont {
+  border: solid;
+  top: 306px;
+  left: 65px;
+  width: 846px;
+  height: 493px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000012;
+  opacity: 1;
+}
+
+.shp__enicon {
+  top: 1%;
+  position: absolute;
+  left: 1%;
+  width: 30px;
+  height: 30px;
+  font-size: 40px;
+  color: #FFFFFF;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.shp__entitle {
+  top: 2%;
+  font: normal normal normal 20px/20px Open Sans;
+  color: #FFFFFF;
+  left: 143px;
+  width: 172px;
+  height: 27px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: absolute;
+}
+
+.shp__obse {
+  margin: 20% 5%;
+  width: 90%;
+  height: 50%;
+}
+
+.shp__obsetitle {
+  top: 2%;
+  left: 18%;
+  width: 210px;
+  height: 22px;
+  background: transparent 0% 0% no-repeat padding-box;
+  font: normal normal normal 25px/20px Open Sans;
+  opacity: 1;
+  color: #c1282d;
+  position: relative;
+}
+
+.shp__obseimput {
+  position: relative;
+  top: 10%;
+  left: -18%;
+  width: 430px;
+  height: 33px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  opacity: 1;
+}
+
+.shp__obsetext {
+  top: 15%;
+  left: 18%;
+  width: 210px;
+  height: 22px;
+  background: transparent 0% 0% no-repeat padding-box;
+  font: normal normal normal 25px/20px Open Sans;
+  opacity: 1;
+  color: #c1282d;
+  position: relative;
+}
+
+.shp__obsetexttarea {
+  position: absolute;
+  top: 57%;
+  left: 21%;
+  width: 502px;
+  height: 64px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  opacity: 1;
 }
 
 /*!
