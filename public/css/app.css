@@ -6228,7 +6228,6 @@ readers do not read off random characters that represent icons */
 }
 
 .shp__encont {
-  border: solid;
   top: 306px;
   left: 65px;
   width: 846px;
@@ -6311,6 +6310,127 @@ readers do not read off random characters that represent icons */
   height: 64px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   border: 1px solid #707070;
+  opacity: 1;
+}
+
+.shp__conteentr {
+  border: transparent;
+  width: 100%;
+  height: 30%;
+}
+
+.shp__etrtitle {
+  margin-left: 5%;
+  margin-top: -5%;
+  position: absolute;
+  width: 100%;
+  height: 3%;
+  color: #c1282d;
+  font: normal normal normal 20px/20px Open Sans;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.shp__etrcue {
+  margin: 6% 5%;
+  width: 211px;
+  height: 69px;
+  border: 1px solid var(--unnamed-color-c1282d);
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #C1282D;
+  opacity: 1;
+}
+
+.shp__etrcue1 {
+  margin: 0% 5%;
+  width: 211px;
+  height: 69px;
+  border: 1px solid var(--unnamed-color-c1282d);
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #C1282D;
+  opacity: 1;
+}
+
+.shp__etrtitleret {
+  position: absolute;
+  margin: 2.5% 4%;
+  width: 100%;
+  height: 3%;
+  color: #c1282d;
+  font: normal normal normal 20px/20px Open Sans;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.shp__etrmap {
+  width: 62%;
+  height: 100%;
+  margin: -17% 38%;
+}
+
+.shp__etrcon2 {
+  width: 100%;
+  height: 30%;
+}
+
+.shp__etrtext {
+  width: 30%;
+  height: 100%;
+  margin-left: 8%;
+}
+
+.shp__etrcon3 {
+  top: 60%;
+  left: 0%;
+  width: 846px;
+  height: 252px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000012;
+  position: absolute;
+  opacity: 1;
+}
+
+.shp__etrdiv {
+  width: 100%;
+  height: 400%;
+  position: absolute;
+  top: -140%;
+}
+
+.shp__etrobs {
+  top: 20%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shp__etrobsinput {
+  top: 15%;
+  left: 166px;
+  width: 430px;
+  height: 33px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  opacity: 1;
+  position: absolute;
+}
+
+.shp__etrobstext {
+  top: 44%;
+  left: 166px;
+  width: 602px;
+  height: 64px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  opacity: 1;
+  position: absolute;
+}
+
+.shp__pg {
+  margin-left: -3%;
+  width: 106%;
+  height: 15%;
+  background: #33333370 0% 0% no-repeat padding-box;
   opacity: 1;
 }
 
