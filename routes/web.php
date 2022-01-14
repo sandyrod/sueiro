@@ -26,3 +26,4 @@ Route::view('/remittances', 'remittances');
 Route::view('/order-history', 'order-history');
 Route::view('/quality', 'quality');
 Route::view('/shopping', 'shopping');
+Route::get('/category', [App\Http\Livewire\Category::class, 'category'])->name('category');

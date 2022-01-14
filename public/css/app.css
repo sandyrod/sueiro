@@ -4606,12 +4606,6 @@ readers do not read off random characters that represent icons */
   font-weight: 900; }
 
 @charset "UTF-8";
-.body {
-  background: #F2F2F2;
-  width: 100%;
-  position: relative;
-}
-
 .banner {
   top: 0px;
   left: 0px;
@@ -4698,7 +4692,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera {
+.cabecera {
   top: 40px;
   left: -1px;
   width: 100%;
@@ -4718,7 +4712,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_title {
+.cabecera_title {
   top: 108px;
   left: 761px;
   width: 86px;
@@ -4728,20 +4722,20 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera__text {
+.cabecera__text {
   color: #000;
   text-decoration: none;
 }
 
-.cabezera__text:focus {
+.cabecera__text:focus {
   color: red;
 }
 
-.cabezera__text:hover {
+.cabecera__text:hover {
   color: red;
 }
 
-.cabezera_title1 {
+.cabecera_title1 {
   top: 108px;
   left: 867px;
   width: 96px;
@@ -4751,7 +4745,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_title2 {
+.cabecera_title2 {
   top: 108px;
   left: 983px;
   width: 190px;
@@ -4761,7 +4755,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_title3 {
+.cabecera_title3 {
   top: 108px;
   left: 1192px;
   width: 85px;
@@ -4770,7 +4764,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_title4 {
+.cabecera_title4 {
   top: 112px;
   left: 1291px;
   width: 14px;
@@ -4781,7 +4775,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_titleloge {
+.cabecera_titleloge {
   top: 108px;
   left: 761px;
   width: 86px;
@@ -4791,7 +4785,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_titleloge1 {
+.cabecera_titleloge1 {
   top: 108px;
   left: 867px;
   width: 96px;
@@ -4801,7 +4795,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_titleloge2 {
+.cabecera_titleloge2 {
   top: 108px;
   left: 950px;
   width: 190px;
@@ -4811,7 +4805,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_titleloge3 {
+.cabecera_titleloge3 {
   top: 108px;
   left: 1030px;
   width: 300px;
@@ -4820,7 +4814,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_titleloge4 {
+.cabecera_titleloge4 {
   top: 108px;
   left: 1220px;
   width: 14px;
@@ -4831,7 +4825,7 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.cabezera_titleloge5 {
+.cabecera_titleloge5 {
   top: 112px;
   left: 1300px;
   width: 14px;
@@ -5030,8 +5024,9 @@ readers do not read off random characters that represent icons */
 
 .footer {
   width: 100%;
-  height: 30%;
   position: absolute;
+  bottom: 0px;
+  display: flex;
 }
 
 .footer--products {
@@ -5052,7 +5047,7 @@ readers do not read off random characters that represent icons */
 
 .footer_container2 {
   width: 75%;
-  height: 100%;
+  height: 200px;
   background: var(--unnamed-color-333333) 0% 0% no-repeat padding-box;
   background: #333333 0% 0% no-repeat padding-box;
   opacity: 1;
@@ -5334,7 +5329,6 @@ readers do not read off random characters that represent icons */
 }
 
 .products__menu {
-  top: 200px;
   left: 60px;
   width: 15%;
   height: 52px;
@@ -5343,7 +5337,6 @@ readers do not read off random characters that represent icons */
   text-align: left;
   letter-spacing: 0px;
   color: #333333;
-  position: absolute;
 }
 
 .products__card {
@@ -5353,7 +5346,8 @@ readers do not read off random characters that represent icons */
   height: 463px;
   background: var(--unnamed-color-f2f2f2) 0% 0% no-repeat padding-box;
   background: #F2F2F2 0% 0% no-repeat padding-box;
-  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .request {

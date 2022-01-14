@@ -1,8 +1,3 @@
-.body{
-    background: #F2F2F2;
-    width: 100%;
-    position: relative;
-}
 .banner{
     top: 0px;
     left: 0px;
@@ -58,7 +53,6 @@
     opacity: 1;
     position: absolute;
 }
-
 .banner_title4{
     top: 11px;
     left: 1100px;
@@ -85,7 +79,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera{
+.cabecera{
     top: 40px;
     left: -1px;
     width: 100%;
@@ -103,7 +97,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_title{
+.cabecera_title{
     top: 108px;
     left: 761px;
     width: 86px;
@@ -112,17 +106,17 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera__text{
+.cabecera__text{
     color:#000;
     text-decoration: none;
 }
-.cabezera__text:focus{
+.cabecera__text:focus{
     color:red;
 }
-.cabezera__text:hover{
+.cabecera__text:hover{
     color:red;
 }
-.cabezera_title1{
+.cabecera_title1{
     top: 108px;
     left: 867px;
     width: 96px;
@@ -131,7 +125,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_title2{
+.cabecera_title2{
     top: 108px;
     left: 983px;
     width: 190px;
@@ -140,7 +134,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_title3{
+.cabecera_title3{
     top: 108px;
     left: 1192px;
     width: 85px;
@@ -148,7 +142,7 @@
     background: transparent 0% 0% no-repeat padding-box;
     position: absolute;
 }
-.cabezera_title4{
+.cabecera_title4{
     top: 112px;
     left: 1291px;
     width: 14px;
@@ -158,7 +152,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_titleloge{
+.cabecera_titleloge{
     top: 108px;
     left: 761px;
     width: 86px;
@@ -167,7 +161,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_titleloge1{
+.cabecera_titleloge1{
     top: 108px;
     left: 867px;
     width: 96px;
@@ -176,7 +170,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_titleloge2{
+.cabecera_titleloge2{
     top: 108px;
     left: 950px;
     width: 190px;
@@ -185,7 +179,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_titleloge3{
+.cabecera_titleloge3{
     top: 108px;
     left: 1030px;
     width: 300px;
@@ -193,7 +187,7 @@
     background: transparent 0% 0% no-repeat padding-box;
     position: absolute;
 }
-.cabezera_titleloge4{
+.cabecera_titleloge4{
     top: 108px;
     left: 1220px;
     width: 14px;
@@ -203,7 +197,7 @@
     opacity: 1;
     position: absolute;
 }
-.cabezera_titleloge5{
+.cabecera_titleloge5{
     top: 112px;
     left: 1300px;
     width: 14px;
@@ -213,38 +207,6 @@
     opacity: 1;
     position: absolute;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .carrusel{
     top: 160px;
     left: 0px;
@@ -293,8 +255,7 @@
     width: 288px;
     height: 240px;
     background: transparent 0% 0% no-repeat padding-box;
-    opacity: 1;
-    
+    opacity: 1;  
 }
 .card_title{
     top: 245px;
@@ -421,8 +382,9 @@
 
 .footer{
     width: 100%;
-    height:30%;
     position: absolute;
+    bottom:0px;
+    display: flex;
 }
 .footer--products{
     margin-top: 35%;
@@ -434,13 +396,13 @@
     width: 25%;
     height: 100%;
     display: -webkit-flex; /* Safari */
-    display: flex;   
+    display: flex;
     position: absolute;
     top: 10%;
 }
 .footer_container2 {
     width: 75%;
-    height: 100%;
+    height: 200px;
     background: var(--unnamed-color-333333) 0% 0% no-repeat padding-box;
     background: #333333 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -697,7 +659,6 @@
     opacity: 1;
 }
 .products__menu{
-    top: 200px;
     left: 60px;
     width: 15%;
     height: 52px;
@@ -706,7 +667,6 @@
     text-align: left;
     letter-spacing: 0px;
     color: #333333;
-    position:absolute;
 }
 .products__card{
     top: 260px;
@@ -715,7 +675,8 @@
     height: 463px;
     background: var(--unnamed-color-f2f2f2) 0% 0% no-repeat padding-box;
     background: #F2F2F2 0% 0% no-repeat padding-box;
-    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .request{
     top: 160px;
@@ -748,7 +709,8 @@
     background:#FFF;
 }
 .request__icon{
-    position: absolute; top: 3%;
+    position: absolute;
+    top: 3%;
     left: 4%;
     width: 33px;
     height: 34px;

@@ -1,6 +1,12 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body class="body">
+<html>
+    <head>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </head>
+    <body>
     <div class="banner">
         <div class="banner_title">
             <i class="fas fa-map-marker-alt"></i>
@@ -23,28 +29,32 @@
             <i class="fab fa-instagram"></i>            
         </div>
     </div>
-    <div class="cabezera">
+    <div class="cabecera">
         <div class="logo">
             <img src="/img/logo.png">
         </div>
-        <div class="cabezera_titleloge">
-            <a class="cabezera__text" href="products">PRODUCTOS</a>
+        <div class="cabecera_titleloge">
+            <a class="cabecera__text" href="products">PRODUCTOS</a>
         </div>
-        <div style="" class="cabezera_titleloge1">
-            <a class="cabezera__text" href="request">PEDIDOS</a>
+        <div style="" class="cabecera_titleloge1">
+            <a class="cabecera__text" href="request">PEDIDOS</a>
         </div>
-        <div class="cabezera_titleloge2">
-            <a class="cabezera__text" href="remittances">REMITOS</a>
+        <div class="cabecera_titleloge2">
+            <a class="cabecera__text" href="remittances">REMITOS</a>
         </div>
-        <div class="cabezera_titleloge3">
-            <a class="cabezera__text" href="order-history">HISTÓRICO DE COMPRAS</a>
+        <div class="cabecera_titleloge3">
+            <a class="cabecera__text" href="order-history">HISTÓRICO DE COMPRAS</a>
         </div> 
-        <div class="cabezera_titleloge4">
-            <a class="cabezera__text" href="quality">CALIDAD</a>
+        <div class="cabecera_titleloge4">
+            <a class="cabecera__text" href="quality">CALIDAD</a>
         </div> 
-        <div class="cabezera_titleloge5">
-            <a class="cabezera__text" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+        <div class="cabecera_titleloge5">
+            <a class="cabecera__text" href="shopping"><i class="fas fa-shopping-cart"></i></a>
         </div>
     </div>
+    <div>
     @yield('content')
+    </div>
+    
 </body>
+</html>

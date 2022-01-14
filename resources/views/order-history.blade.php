@@ -1,5 +1,4 @@
-@extends('layouts.dashboardcar')
+@extends('layouts.dashboard')
 @section('content')
     @livewire('order-history')
 @endsection
-@extends('layouts.footer')

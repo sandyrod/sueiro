@@ -1,6 +1,4 @@
 @extends('layouts.dashboard')
-@section('content')
-    @livewire('home')
+    @section('content')
 @endsection
-@extends('layouts.footer')
     
