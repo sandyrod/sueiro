@@ -1,4 +1,4 @@
-<div style="top:100%; position: absolute;" class="footer">
+<div class="footer">
     <div class="footer_container">
         <div class="footer__logo">
             <img class="flt_img" src="/img/logofooter.png">
