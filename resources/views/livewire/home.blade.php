@@ -1,5 +1,5 @@
 <div>
-    <div class="cards">
+    <div class="products__card">
         <div class="filtros"> 
             <div class="card" style="width: 18rem;">
                 <img src="/img/filtros.png">
@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        <div class="malla"> 
+        <div class="filtros"> 
             <div class="card" style="width: 18rem;">
                 <img src="/img/mallas.png"">
                 <div class="card-body">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="zarandas"> 
+        <div class="filtros"> 
             <div class="card" style="width: 18rem;">
                 <img src="/img/zarandas.png" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="tamices"> 
+        <div class="filtros"> 
             <div class="card" style="width: 18rem;">
                 <img src="/img/tamices.png" class="card-img-top" alt="...">
                 <div class="card-body">
