@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+body, html {
+  height: 100%;
+}
+
 .banner {
   top: 0px;
   left: 0px;
@@ -87,7 +91,6 @@
 }
 
 .cabecera {
-  top: 40px;
   left: -1px;
   width: 100%;
   height: 120px;
@@ -231,13 +234,12 @@
 }
 
 .carrusel {
-  top: 160px;
   left: 0px;
   width: 100%;
-  height: 60%;
+  height: 445px;
   background: transparent 0% 0% no-repeat padding-box;
   opacity: 1;
-  position: absolute;
+  position: relative;
 }
 
 .carrusel_img {
@@ -260,10 +262,10 @@
   color: #F2F2F2;
   text-transform: uppercase;
   opacity: 1;
-  position: absolute;
+  position: relative;
 }
 
-.carrusel_sudtitle {
+.carrusel_subtitle {
   top: 120px;
   left: 62px;
   width: 350px;
@@ -275,7 +277,7 @@
   letter-spacing: 0px;
   color: #F2F2F2;
   opacity: 1;
-  position: absolute;
+  position: relative;
 }
 
 .filtros {
@@ -328,7 +330,7 @@
 }
 
 .cuerpo {
-  top: 125%;
+  top: 35px;
   left: 37%;
   width: 62%;
   height: 351px;
@@ -355,7 +357,7 @@
   position: absolute;
 }
 
-.cuerpo_sudtitle {
+.cuerpo_subtitle {
   top: 40%;
   margin-left: 12%;
   width: 52%;
@@ -372,7 +374,6 @@
 }
 
 .flt {
-  top: 120%;
   left: 0%;
   width: 40%;
   height: 450px;
@@ -384,9 +385,8 @@
 }
 
 .flt_img {
-  width: 100%;
+  width: 548px;
   height: 100%;
-  position: absolute;
 }
 
 .cards {
@@ -740,6 +740,12 @@
   gap: 20px;
 }
 
+.products__card-home {
+  position: absolute;
+  top: -150px;
+  background: unset;
+}
+
 .request {
   top: 160px;
   left: -1px;
@@ -769,7 +775,7 @@
   top: 27.2%;
   width: 100%;
   height: 68%;
-  position: absolute;
+  position: relative;
   background: #FFF;
 }
 
