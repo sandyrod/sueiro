@@ -64,7 +64,7 @@
         <div class="main">
         @yield('content')
         </div>
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="footer_container">
                 <div class="footer__logo">
                     <img style="vertical-align: middle; height: 105%;" src="/img/logofooter.png">
@@ -98,6 +98,7 @@
                     <span class="footer__contacto--title2" >54-11 4488-4649 / 3825</span>
                 </div>
             </div>
-        </footer>
+        </footer> -->
+        
     </body>
 </html>
