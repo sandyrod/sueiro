@@ -685,60 +685,93 @@ body,html{
     top:-150px;
     background: unset;
 }
+
 .request{
-    top: 160px;
-    left: -1px;
-    width: 1367px;
-    height: 39px;
-    background: var(--unnamed-color-f2f2f2) 0% 0% no-repeat padding-box;
-    background: #F2F2F2 0% 0% no-repeat padding-box;
-    opacity: 0.72;
-    position: absolute;
+    padding-left: 68px !important;
 }
-.request__menu{
-    top: 7px;
-    left: 62px;
-    width: 235px;
-    height: 22px;
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-333333);
+.request_titlenav{
+    background: #f2f2f2;
+    margin-left: -12px;
+}
+.ubication{
     text-align: left;
     letter-spacing: 0px;
     color: #333333;
     opacity: 1;
-    position: absolute;
+    height: 39px;
 }
-.request__cuerpo{
-    top:27.2%;
+
+.request_icon {
+    font-size: 33px;
+    color: #c1282d;
+}
+.request_title{
+    text-align: left;
+    font: bold 18px Open Sans;
+    letter-spacing: 0.27px;
+    color: #333333;
+    text-transform: uppercase;
+}
+
+.request_input{
+    height: 50px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 11px #8282821A;
+    border: 1px solid #BF2A32;
+    border-radius: 8px;
+    opacity: 1;
+    width: 100%;
+}
+
+.mt10{
+    margin-top: 10px !important;
+}
+
+.request__selectproduct{
+    width: 100%;
+    height: 50px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #666666;
+    border-radius: 8px;
+    opacity: 0.5;
+}
+
+.request__datos{
+    width: 100%;
+    border: 1px solid var(--unnamed-color-666666);
+    background: #FFFFFF;
+    border: 1px solid #666666;
+    border-radius: 8px;
+    opacity: 0.5;
+}
+
+.request__btnsend{
+    width: 216px;
+    height: 35px;
+    background: #C1282D 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    opacity: 1;
+}
+.request__textbtn{
+    width: 114px;
+    height: 18px;
+    font: bold 13px Roboto;
+    text-align: center;
+    font: normal normal bold 13px/18px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+///*eliminar de aqui en adelante todos los request*/
+
+.request__body{
     width:100%;
     height:68%;
     position:relative;
     background:#FFF;
 }
-.request__icon{
-    position: absolute;
-    top: 3%;
-    left: 4%;
-    width: 33px;
-    height: 34px;
-    background: transparent 0% 0% no-repeat padding-box;
-    opacity: 1;font-size: 30px; color:red;
-}
-.request__title{
-    top: 4%;
-    left: 7%;
-    width: 15%;
-    height: 14%;
-    font: var(--unnamed-font-style-normal) normal bold var(--unnamed-font-size-18)/22px var(--unnamed-font-family-open-sans);
-    color: var(--unnamed-color-333333);
-    text-align: left;
-    font: normal normal bold 18px/22px Open Sans;
-    letter-spacing: 0.27px;
-    color: #333333;
-    text-transform: uppercase;
-    opacity: 1;
-    position: absolute;
-}
+
+
 .request__cuerpo__datosperso{
     width:92%; 
     height:40%;
@@ -746,30 +779,7 @@ body,html{
     position: absolute;
     left:7%;
 }
-.request__imputnombre{
-    top: 0%;
-    left: 0%;
-    width: 606px;
-    height: 50px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 11px #8282821A;
-    border: 1px solid #BF2A32;
-    border-radius: 8px;
-    position: absolute;
-    opacity: 1;
-}
-.request__imputcorreo{
-    top: 0%;
-    left: 50%;
-    position:absolute;
-    width: 606px;
-    height: 50px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 11px #8282821A;
-    border: 1px solid #BF2A32;
-    border-radius: 8px;
-    opacity: 1;
-}
+
 .request__imputdatosadi{
     top: 40%;
     position:absolute;
@@ -782,61 +792,7 @@ body,html{
     border-radius: 8px;
     opacity: 1;
 }
-.request__imputempresa{
-    top: 40%;
-    position:absolute;
-    left:50%;
-    width: 606px;
-    height: 50px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 11px #8282821A;
-    border: 1px solid #BF2A32;
-    border-radius: 8px;
-    opacity: 1
-}
-.request__iconcosulta{
-    position: absolute; top: 44%;
-    left: 4%;
-    width: 33px;
-    height: 34px;
-    background: transparent 0% 0% no-repeat padding-box;
-    opacity: 1;font-size: 30px; color:red;
-}
-.request__titleconsultas{
-    top: 45%;
-    left: 7%;
-    width: 15%;
-    height: 14%;
-    font: var(--unnamed-font-style-normal) normal bold var(--unnamed-font-size-18)/22px var(--unnamed-font-family-open-sans);
-    color: var(--unnamed-color-333333);
-    text-align: left;
-    font: normal normal bold 18px/22px Open Sans;
-    letter-spacing: 0.27px;
-    color: #333333;
-    text-transform: uppercase;
-    opacity: 1;
-    position: absolute;
 
-}
-.request__cuerpo__consulta{
-    width:92%;
-    height:40%;
-    top:52%; 
-    position:absolute; 
-    left:7%;
-}
-.request__selectproduct{
-    top: 5%;
-    left: 0%;
-    width: 606px;
-    height: 50px;
-    border: 1px solid var(--unnamed-color-666666);
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #666666;
-    border-radius: 8px;
-    opacity: 0.5;
-    position: absolute;
-}
 .request__file{
     top: 4%;
     left:50%;
@@ -849,43 +805,8 @@ body,html{
     position: absolute;
     opacity: 0.5;
 }
-.request__text__datosadi{
-    top: 40%;
-    left:0%;
-    width: 604px;
-    height: 70%;
-    border: 1px solid var(--unnamed-color-666666);
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #666666;
-    border-radius: 8px;
-    position: absolute;
-    opacity: 0.5;
-}
-.request__btnsend{
-    top: 70%;
-    left: 1078px;
-    width: 216px;
-    height: 35px;
-    background: var(--unnamed-color-c1282d) 0% 0% no-repeat padding-box;
-    background: #C1282D 0% 0% no-repeat padding-box;
-    border-radius: 30px;
-    opacity: 1;
-    position: absolute;
-}
-.request__textbtn{
-    top: 716px;
-    left: 1129px;
-    width: 114px;
-    height: 18px;
-    font: var(--unnamed-font-style-normal) normal bold 13px/18px Roboto;
-    letter-spacing: var(--unnamed-character-spacing-0);
-    text-align: center;
-    font: normal normal bold 13px/18px Roboto;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    opacity: 1;
-}
+
+
 .contact__map{
     position:absolute;
     background:#000;

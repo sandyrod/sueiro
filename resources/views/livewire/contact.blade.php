@@ -24,7 +24,6 @@
     <input class="contact__imputmail" placeholder="Email">
     <input class="contact__imputempresa" placeholder="Empresa *">
     <textarea class="contact__texmsj" placeholder="Mensaje"></textarea>
-    
     <div class="contact__terminos">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
         <span> Acepto los términos y condiciones de privacidad</span>
