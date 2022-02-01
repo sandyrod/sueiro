@@ -18,10 +18,10 @@
             </div>
             <div class="col-sm-3">
                 <label>Sub categoria</label>
-                <select class="form-control" name="ciudad" id="ciudad">
-                    <option>Categoria Padre</option>
-                    @foreach ($categorias as $categori)
-                        <option value="{{$categori->categoriy_id}}">{{$categori->name_category}}</option>
+                <select class="form-control" wire:model.defer="category_id">
+                    <option value="0">Categoria Padre</option>
+                    @foreach ($data as $categori)
+                        <option value="{{$categori->id}}">{{$categori->name_category}}</option>
                     @endforeach
                 </select>
             </div>

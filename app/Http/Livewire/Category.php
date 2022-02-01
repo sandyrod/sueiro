@@ -17,7 +17,6 @@ class Category extends Component
     {
         return view('category');
     }
-
     public function render()
     {
         $this->Title = "Categorias";
@@ -57,10 +56,12 @@ class Category extends Component
         $this->validate([
             'name_category'   => 'required',
             'description'   => 'required'
+            
         ]);
         Categorys::create([
             'name_category'     => $this->name_category,
             'description'  => $this->description,
+            'category_id'  => $this->category_id,
         ]);
         $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
         $this->resetInput();
@@ -72,6 +73,7 @@ class Category extends Component
         $this->category_id          = $id;
         $this->name_category        = $record->name_category;
         $this->description          = $record->description;
+        $this->category_id          = $record->category_id;
         $this->emitUpdates();
 
         $this->updateMode = true;
@@ -90,6 +92,7 @@ class Category extends Component
             $record->update([
                 'name_category'      => $this->name_category,
                 'description'        => $this->description,
+                'category_id'        => $this->category_id,
             ]);
             $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro actualizado...']);
             $this->resetInput();
