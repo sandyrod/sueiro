@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Category extends Component
 {
-    public $data, $search, $category_id, $name_category, $description;
+    public $data, $search, $category_id, $name, $description;
 
     public $updateMode  = false;
     public $imputActive = false;
@@ -22,7 +22,7 @@ class Category extends Component
         $this->Title = "Categorias";
         $this->data = ($this->search)
                 ? Categorys::where('id', 'like', '%'.$this->search.'%')
-                        ->orWhere('name_category', 'like', '%'.$this->search.'%')
+                        ->orWhere('name', 'like', '%'.$this->search.'%')
                         ->orWhere('description', 'like', '%'.$this->search.'%')
                         ->orderBy('id', 'DESC')
                         ->get()
@@ -32,13 +32,13 @@ class Category extends Component
     public function mount()
     {
         $this->Title = "Categorias";
-        $this->name_category    = null;
+        $this->name    = null;
         $this->description      = null;
     }
 
     public function resetInput()
     {
-        $this->name_category    = null;
+        $this->name    = null;
         $this->description = null;
         $this->emitUpdates();
     }
@@ -54,12 +54,12 @@ class Category extends Component
     public function store()
     {
         $this->validate([
-            'name_category'   => 'required',
+            'name'   => 'required',
             'description'   => 'required'
-            
+
         ]);
         Categorys::create([
-            'name_category'     => $this->name_category,
+            'name'         => $this->name,
             'description'  => $this->description,
             'category_id'  => $this->category_id,
         ]);
@@ -71,7 +71,7 @@ class Category extends Component
     {
         $record                     = Categorys::findOrFail($id);
         $this->category_id          = $id;
-        $this->name_category        = $record->name_category;
+        $this->name                 = $record->name;
         $this->description          = $record->description;
         $this->category_id          = $record->category_id;
         $this->emitUpdates();
@@ -84,13 +84,13 @@ class Category extends Component
     public function update()
     {
         $this->validate([
-            'name_category'      => 'required',
+            'name'      => 'required',
             'description'        => 'required',
         ]);
         if ($this->category_id) {
             $record = Categorys::find($this->category_id);
             $record->update([
-                'name_category'      => $this->name_category,
+                'name'      => $this->name,
                 'description'        => $this->description,
                 'category_id'        => $this->category_id,
             ]);

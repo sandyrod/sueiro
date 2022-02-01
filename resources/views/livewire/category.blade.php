@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-3">
                 <label>Nombre de category</label>
-                <input type="text" placeholder="Nombre de category" class="form-control" wire:model.defer="name_category" style="margin-right:5px;">
+                <input type="text" placeholder="Nombre de category" class="form-control" wire:model.defer="name" style="margin-right:5px;">
                 <input type="hidden" wire:model.defer="category_id">
             </div>
             <div class="col-md-3">
@@ -17,11 +17,11 @@
                 <input type="text" placeholder="Descripcion" class="form-control" wire:model.defer="description" style="margin-right:5px;">
             </div>
             <div class="col-sm-3">
-                <label>Sub categoria</label>
+                <label>Categoria Padre</label>
                 <select class="form-control" wire:model.defer="category_id">
                     <option value="0">Categoria Padre</option>
-                    @foreach ($data as $categori)
-                        <option value="{{$categori->id}}">{{$categori->name_category}}</option>
+                    @foreach ($data as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -41,8 +41,8 @@
             <thead class="table__header">
                 <tr>
                     <th></th>
-                    <th>category</th>
-                    <th>description</th>
+                    <th>Categoria</th>
+                    <th>Descripcion</th>
                     <th></th>
                 </tr>
             </thead>
@@ -51,7 +51,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <span class="td__title">{{ $categorias->name_category }}</span>
+                        <span class="td__title">{{ $categorias->name }}</span>
                     </td>
                     <td class="align-middle">
                         <span class="align-middle">{{ $categorias->description }}</span>
