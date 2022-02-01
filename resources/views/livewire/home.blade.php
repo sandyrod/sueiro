@@ -1,4 +1,18 @@
-<div style="position:relative">
+<div class="carrusel">
+        <img src="/img/carrusel.png" class="carrusel_img">
+        <div class="carrusel_title">
+            <span>SUEIRO E HIJOS</span>
+        </div>
+        <div class="carrusel_subtitle">
+            <span>Somos una empresa dedicada a proporcionar las mejores soluciones de filtración con 30 años de experiencia en el rubro.</span>
+        </div>
+        <div class="carousel-indicators">
+            <button></button>
+            <button></button>
+            <button></button>
+        </div>
+    </div>
+<div style="position:relative; display:block; border: solid 1px white;">
     <div class="products__card products__card-home">
         <div class="filtros"> 
             <div class="card" style="width: 18rem;">
@@ -33,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div style="position:relative;top: 151px;">
+    <div style="position:relative;top: 50px; display:flex; margin-bottom:100px;">
         <div class="flt">
             <img class="flt_img" src="/img/flt.png">
         </div>
@@ -49,13 +63,13 @@
         </div>
         
     </div>
-    <footer class="footer">
+    <div class="footer">
             <div class="footer_container">
                 <div class="footer__logo">
                     <img style="vertical-align: middle; height: 105%;" src="/img/logofooter.png">
                     <i style="left: 40%; top:125%; position:absolute; " class="fab fa-facebook-f"></i>
                     <i style="left: 55%; top:125%; position:absolute; "class="fab fa-instagram"></i>
-                </div>            
+                </div>
             </div>
             <div class="footer_container2">
                 <div>
@@ -83,6 +97,5 @@
                     <span class="footer__contacto--title2" >54-11 4488-4649 / 3825</span>
                 </div>
             </div>
-        </footer>
+    </div>
 </div>
-

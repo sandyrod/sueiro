@@ -4884,6 +4884,7 @@ body, html {
   color: #F2F2F2;
   opacity: 1;
   position: relative;
+  font-size: 22px;
 }
 
 .filtros {
@@ -4937,14 +4938,13 @@ body, html {
 
 .cuerpo {
   top: 35px;
-  left: 37%;
+  left: -73px;
   width: 62%;
   height: 351px;
-  background: var(--unnamed-color-fff) 0% 0% no-repeat padding-box;
   background: #fff 0% 0% no-repeat padding-box;
   border-radius: 8px;
   opacity: 1;
-  position: absolute;
+  position: relative;
 }
 
 .cuerpo_title {
@@ -4952,10 +4952,7 @@ body, html {
   margin-left: 12%;
   width: 300px;
   height: 60px;
-  font: var(--unnamed-font-style-normal) normal bold 30px/36px var(--unnamed-font-family-open-sans);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-333333);
-  font: normal normal bold 30px/36px Open Sans;
+  font: bold 30px Open Sans;
   letter-spacing: 0px;
   color: #333333;
   text-transform: uppercase;
@@ -4968,10 +4965,8 @@ body, html {
   margin-left: 12%;
   width: 52%;
   height: 100px;
-  font: var(--unnamed-font-style-normal) normal 300 20px/31px var(--unnamed-font-family-open-sans);
-  letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-333333);
-  font: normal normal 300 20px/31px Open Sans;
+  font: normal 20px Open Sans;
   letter-spacing: 0px;
   color: #333333;
   text-transform: lowercase;
@@ -4983,11 +4978,10 @@ body, html {
   left: 0%;
   width: 40%;
   height: 450px;
-  background: var(--unnamed-color-fff) 0% 0% no-repeat padding-box;
   background: #fff 0% 0% no-repeat padding-box;
   border-radius: 8px;
   opacity: 1;
-  position: absolute;
+  position: relative;
 }
 
 .flt_img {
@@ -5009,14 +5003,12 @@ body, html {
   left: 150px;
   width: 187px;
   height: 35px;
-  background: var(--unnamed-color-c1282d) 0% 0% no-repeat padding-box;
   background: #C1282D 0% 0% no-repeat padding-box;
   border-radius: 30px;
   opacity: 1;
-  font: var(--unnamed-font-style-normal) normal bold 13px/18px Roboto;
   letter-spacing: var(--unnamed-character-spacing-0);
   text-align: center;
-  font: normal normal bold 13px/18px Roboto;
+  font: bold 13px Roboto;
   letter-spacing: 0px;
   color: #FFFFFF;
   text-transform: uppercase;
@@ -5024,8 +5016,8 @@ body, html {
 
 .footer {
   width: 100%;
-  margin-top: 100%;
   position: absolute;
+  bottom: 0px;
 }
 
 .footer--products {
@@ -5337,9 +5329,7 @@ body, html {
 .products__card {
   top: 260px;
   left: 60px;
-  width: 1366px;
   height: 463px;
-  background: var(--unnamed-color-f2f2f2) 0% 0% no-repeat padding-box;
   background: #F2F2F2 0% 0% no-repeat padding-box;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -5347,9 +5337,10 @@ body, html {
 }
 
 .products__card-home {
-  position: absolute;
-  top: -150px;
+  position: relative;
+  top: -55px;
   background: unset;
+  height: 225px;
 }
 
 .request {
