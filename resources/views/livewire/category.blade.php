@@ -5,40 +5,25 @@
         </div>
             <button class="btn" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-        Launch demo modal
-      </button>
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
     @if($imputActive or $updateMode)
         <div class="row">
             <div class="col-md-3">
                 <label>Nombre de category</label>
-                <input type="text" placeholder="Nombre de Maquina" class="form-control" wire:model.defer="category" style="margin-right:5px;">
+                <input type="text" placeholder="Nombre de category" class="form-control" wire:model.defer="name_category" style="margin-right:5px;">
                 <input type="hidden" wire:model.defer="category_id">
             </div>
             <div class="col-md-3">
-                <label>sud_category</label>
-                <input type="text" placeholder="Cantidad de Piezas" class="form-control" wire:model.defer="sud_category" style="margin-right:5px;">
+                <label>Descripcion</label>
+                <input type="text" placeholder="Descripcion" class="form-control" wire:model.defer="description" style="margin-right:5px;">
+            </div>
+            <div class="col-sm-3">
+                <label>Sub categoria</label>
+                <select class="form-control" name="ciudad" id="ciudad">
+                    <option>Categoria Padre</option>
+                    @foreach ($categorias as $categori)
+                        <option value="{{$categori->categoriy_id}}">{{$categori->name_category}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <br>
@@ -52,12 +37,12 @@
         </div>
     @endif
     <div class="row">
-        <table class="table">
+        <table class="table table-striped">
             <thead class="table__header">
                 <tr>
                     <th></th>
                     <th>category</th>
-                    <th>sud_category</th>
+                    <th>description</th>
                     <th></th>
                 </tr>
             </thead>
@@ -66,16 +51,16 @@
                 <tr>
                     <td></td>
                     <td>
-                        <span class="td__title">{{ $categorias->category }}</span>
+                        <span class="td__title">{{ $categorias->name_category }}</span>
                     </td>
                     <td class="align-middle">
-                        <span class="align-middle">{{ $categorias->sud_category }}</span>
+                        <span class="align-middle">{{ $categorias->description }}</span>
                     </td>
                     <td>
                         <div >
-                        <a wire:click="edit({{ $categorias->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
-                        <span></span><br><br>
-                        <a wire:click="destroy({{ $categorias->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
+                        <a wire:click="edit({{ $categorias->id }})"><i class="fa fa-pen" style="color:#006400">editar</i></a>
+                        <span></span>
+                        <a wire:click="destroy({{ $categorias->id }})"><i class="fa fa-trash" style="color:#C11D1D">eliminar</i></a>
                         </div>
                     </td>
                 </tr>

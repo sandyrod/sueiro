@@ -7,9 +7,9 @@ use Livewire\Component;
 
 class Category extends Component
 {
-    public $data, $search, $category_id, $category, $sud_category;
+    public $data, $search, $category_id, $name_category, $description;
 
-    public $updateMode = false;
+    public $updateMode  = false;
     public $imputActive = false;
 
 
@@ -23,8 +23,8 @@ class Category extends Component
         $this->Title = "Categorias";
         $this->data = ($this->search)
                 ? Categorys::where('id', 'like', '%'.$this->search.'%')
-                        ->orWhere('category', 'like', '%'.$this->search.'%')
-                        ->orWhere('sud_category', 'like', '%'.$this->search.'%')
+                        ->orWhere('name_category', 'like', '%'.$this->search.'%')
+                        ->orWhere('description', 'like', '%'.$this->search.'%')
                         ->orderBy('id', 'DESC')
                         ->get()
                 : Categorys::orderBy('id', 'DESC')->get();
@@ -33,14 +33,14 @@ class Category extends Component
     public function mount()
     {
         $this->Title = "Categorias";
-        $this->category    = null;
-        $this->sud_category = null;
+        $this->name_category    = null;
+        $this->description      = null;
     }
 
     public function resetInput()
     {
-        $this->category    = null;
-        $this->sud_category = null;
+        $this->name_category    = null;
+        $this->description = null;
         $this->emitUpdates();
     }
 
@@ -55,13 +55,12 @@ class Category extends Component
     public function store()
     {
         $this->validate([
-            'category'   => 'required',
-            'sud_category'   => 'required',
-            'hours'   => 'required'
+            'name_category'   => 'required',
+            'description'   => 'required'
         ]);
         Categorys::create([
-            'category'     => $this->name,
-            'sud_category'  => $this->part,
+            'name_category'     => $this->name_category,
+            'description'  => $this->description,
         ]);
         $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
         $this->resetInput();
@@ -69,10 +68,10 @@ class Category extends Component
 
     public function edit($id)
     {
-        $record             = Categorys::findOrFail($id);
-        $this->category_id   = $id;
-        $this->category         = $record->category;
-        $this->sud_category         = $record->sud_category;
+        $record                     = Categorys::findOrFail($id);
+        $this->category_id          = $id;
+        $this->name_category        = $record->name_category;
+        $this->description          = $record->description;
         $this->emitUpdates();
 
         $this->updateMode = true;
@@ -83,14 +82,14 @@ class Category extends Component
     public function update()
     {
         $this->validate([
-            'category'   => 'required',
-            'sud_category'   => 'required',
+            'name_category'      => 'required',
+            'description'        => 'required',
         ]);
         if ($this->category_id) {
-            $record = Categorys::find($this->machine_id);
+            $record = Categorys::find($this->category_id);
             $record->update([
-                'category'      => $this->category,
-                'sud_category'      => $this->sud_category,
+                'name_category'      => $this->name_category,
+                'description'        => $this->description,
             ]);
             $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro actualizado...']);
             $this->resetInput();
