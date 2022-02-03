@@ -61,7 +61,6 @@
 
             <button class="flt__btn">MÁS INFORMACIÓN</button>
         </div>
-        
     </div>
     <div class="footer">
             <div class="footer_container">
