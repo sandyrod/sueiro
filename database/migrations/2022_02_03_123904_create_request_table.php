@@ -17,9 +17,11 @@ class CreateRequestTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('data')->nullable();
-            $table->string('company')->nullable();
+            $table->string('phone');
+            $table->string('company');
             $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->text('extradata');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateRequestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('budgetrequest');
+        Schema::dropIfExists('budgetrequests');
     }
 }
