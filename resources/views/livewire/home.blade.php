@@ -83,8 +83,8 @@
                 <form action="{{ route('suscribe') }}" method='post'>
                 @csrf
                 <input class="footer__input" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
-                </form>
                 <button class="footer__btn"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
+                </form>
                 <div class="footer__contacto">
                     <div class="footer__logo--location">
                         <i class="fas fa-map-marker-alt"></i>
