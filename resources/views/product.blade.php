@@ -1,5 +1,5 @@
 @extends('layouts.dashboardcar')
 @section('content')
-    @livewire('product')
+    @livewire('products')
 @endsection
 @extends('layouts.footer')

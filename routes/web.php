@@ -25,7 +25,8 @@ Route::view('/orders', 'orders');
 Auth::routes();
 
 Route::get('/category',        [App\Http\Controllers\HomeController::class, 'category'])->name('category');
-Route::get('/product',         [App\Http\Controllers\HomeController::class, 'product'])->name('product');
+
+Route::view('/product', 'product');
 Route::get('/products',        [App\Http\Controllers\HomeController::class, 'products'])->name('products');
 Route::get('/remittances',     [App\Http\Controllers\HomeController::class, 'remittances'])->name('remittances');
 Route::get('/order-history',   [App\Http\Controllers\HomeController::class, 'order-history'])->name('order_history');
