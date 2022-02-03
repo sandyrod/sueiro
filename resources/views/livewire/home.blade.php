@@ -61,7 +61,6 @@
 
             <button class="flt__btn">MÁS INFORMACIÓN</button>
         </div>
-        
     </div>
     <div class="footer">
             <div class="footer_container">
@@ -80,8 +79,11 @@
                 </div>
                 <span class="footer__nosotros">NOSOTROS PRODUCTOS</span>
                 <span class="footer__solicitar">SOLICITAR PRESUPUESTO CONTACTO</span>
-                <input class="footer__input" placeholder="       Ingresa tu email" id="search" name="search" type="text" value="{{old('search')}}">
+                <form action="{{ route('suscribe') }}" method='post'>
+                @csrf
+                <input class="footer__input" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
                 <button class="footer__btn"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
+                </form>
                 <div class="footer__contacto">
                     <div class="footer__logo--location">
                         <i class="fas fa-map-marker-alt"></i>

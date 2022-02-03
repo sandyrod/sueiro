@@ -17,18 +17,18 @@
         </div>
         <div class="row mt10">
             <div class="col-md-6">
-                <input class="request_input" placeholder="ingresar nombre *">
+                <input class="request_input" placeholder="Ingresar su nombre *" wire:model.defer="name">
             </div>
             <div class="col-md-6">
-                <input class="request_input" placeholder="ingrese su correo electronico *">
+                <input class="request_input" placeholder="Ingrese su correo electronico *"  wire:model.defer="email" type="email">
             </div>
         </div>
         <div class="row  mt10">
             <div class="col-md-6">
-                <input class="request_input" placeholder="Datos adicionales *">
+                <input class="request_input" placeholder="Telefono *"  wire:model.defer="phone">
             </div>
             <div class="col-md-6">
-                <input class="request_input" placeholder="Empresa *">
+                <input class="request_input" placeholder="Empresa *"  wire:model.defer="company">
             </div>
         </div>
     </div>
@@ -43,9 +43,8 @@
         </div>
         <div class="row mt10">
             <div class="col-md-6">
-                <select class="request__selectproduct">
-                    <option selected>Producto</option>
-                    <option value="1">1</option>
+                <select class="request__selectproduct"  wire:model.defer="product">
+                    <option value="1" selected>1 primer producto</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
@@ -57,11 +56,11 @@
         </div>
         <div class="row mt10 align-items-end" style="text-align:right;">
             <div class="col-md-6">
-                <textarea class="request__datos"  placeholder="Datos adicionales">
+                <textarea class="request__datos"  placeholder="Datos adicionales" wire:model.defer="extradata">
                 </textarea>
             </div>
             <div class="col-md-6">
-                <button class="request__btnsend">
+                <button class="request__btnsend" wire:click="save">
                     <span class="request__textbtn">ENVIAR CONSULTA</span>
                 </button>
 
