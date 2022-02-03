@@ -22,6 +22,8 @@ Route::view('/request', 'request');
 Route::view('/contact', 'contact');
 Route::view('/orders', 'orders');
 
+Route::post('/suscribe', [App\Http\Controllers\NewsletterController::class, 'store'])->name('suscribe');
+
 Auth::routes();
 
 Route::get('/category',         [App\Http\Controllers\HomeController::class, 'category'])->name('category');
