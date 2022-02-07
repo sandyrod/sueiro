@@ -42,14 +42,14 @@
 </div>
 @endif
 
-<div>
+{{-- <div>
     <div class="row ">
         <div class="form-group" style="float:left;">
             <input type="text" placeholder="Buscar" class="form-control" wire:model="search" style="width:500px; margin-right:5px;">
         </div>
             <button class="btn" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
     </div>
-   {{--  @if($imputActive or $updateMode) --}}
+     @if($imputActive or $updateMode) 
         <div class="row">
             <div class="col-md-3">
                 <label>Nombre de category</label>
@@ -66,7 +66,7 @@
                     <option value="0">Categoria Padre</option>
                    {{--  @foreach ($data as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach --}}
+                    @endforeach 
                 </select>
             </div>
         </div>
@@ -79,7 +79,7 @@
                 <i class="fa fa-trash"></i>Cancelar
             </button>
         </div>
-    {{-- @endif --}}
+    {{-- @endif 
     <div class="row">
         <table class="table table-striped">
             <thead class="table__header">
@@ -108,10 +108,10 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach 
             </tbody>
         </table>
     </div>
-</div>
+</div> --}}
 
 
