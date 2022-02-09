@@ -4,7 +4,7 @@
         <div class="form-group col-md-3">
             <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
         </div>
-        <button class="btn" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
+        <button class="btn btn-outline-primary col-md-1" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
     </div>
     @if($imputActive or $updateMode)
         <div class="row justify-content-center">
@@ -20,13 +20,9 @@
             
         </div>
         <br>
-        <div class="row justify-content-center">
-            <button class="btn " wire:click="save">
-                <i class="fa fa-save"></i>Guardar
-            </button>
-            <button class="btn " wire:click="resetInput">
-                <i class="fa fa-trash"></i>Cancelar
-            </button>
+        <div class="row justify-content-center">  
+            <button type="button" class="btn btn-success col-md-1" wire:click="save"><i class="fa fa-save"></i>Guardar</button>
+            <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"><i class="fa fa-trash"></i>Cancelar</button>
         </div>
     @endif
     <div class="row justify-content-center">
