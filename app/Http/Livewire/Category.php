@@ -40,6 +40,7 @@ class Category extends Component
     {
         $this->name    = null;
         $this->description = null;
+        $this->category_id = null;
         $this->emitUpdates();
     }
 
