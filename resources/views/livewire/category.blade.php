@@ -1,12 +1,14 @@
 <div>
-    <div class="row ">
-        <div class="form-group" style="float:left;">
-            <input type="text" placeholder="Buscar" class="form-control" wire:model="search" style="width:500px; margin-right:5px;">
+    <div class="row justify-content-center">
+        <div class="form-group col-md-3">
+            <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
         </div>
-            <button class="btn" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
+        <button class="btn" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
     </div>
+
+    
     @if($imputActive or $updateMode)
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-3">
                 <label>Nombre de category</label>
                 <input type="text" placeholder="Nombre de category" class="form-control" wire:model.defer="name" style="margin-right:5px;">
@@ -27,7 +29,7 @@
             </div>
         </div>
         <br>
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
             <button class="btn " wire:click="save">
                 <i class="fa fa-save"></i>Guardar
             </button>
@@ -36,37 +38,39 @@
             </button>
         </div>
     @endif
-    <div class="row">
-        <table class="table table-striped">
-            <thead class="table__header">
-                <tr>
-                    <th></th>
-                    <th>Categoria</th>
-                    <th>Descripcion</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $categorias)
-                <tr>
-                    <td></td>
-                    <td>
-                        <span class="td__title">{{ $categorias->name }}</span>
-                    </td>
-                    <td class="align-middle">
-                        <span class="align-middle">{{ $categorias->description }}</span>
-                    </td>
-                    <td>
-                        <div >
-                        <a wire:click="edit({{ $categorias->id }})"><i class="fa fa-pen" style="color:#006400">editar</i></a>
-                        <span></span>
-                        <a wire:click="destroy({{ $categorias->id }})"><i class="fa fa-trash" style="color:#C11D1D">eliminar</i></a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table class="table table-striped">
+                <thead class="table__header">
+                    <tr>
+                        <th></th>
+                        <th>Categoria</th>
+                        <th>Descripcion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $categorias)
+                    <tr>
+                        <td></td>
+                        <td>
+                            <span class="td__title">{{ $categorias->name }}</span>
+                        </td>
+                        <td class="align-middle">
+                            <span class="align-middle">{{ $categorias->description }}</span>
+                        </td>
+                        <td>
+                            <div >
+                            <a wire:click="edit({{ $categorias->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
+                            <span></span>
+                            <a wire:click="destroy({{ $categorias->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
