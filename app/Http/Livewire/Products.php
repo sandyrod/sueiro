@@ -14,7 +14,7 @@ class Products extends Component
 
     public function product()
     {
-        return view('product');
+        return view('product'); 
     }
     public function render()
     {

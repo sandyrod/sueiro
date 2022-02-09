@@ -20,7 +20,7 @@
             
         </div>
         <br>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center">  
             <button type="button" class="btn btn-success col-md-1" wire:click="save"><i class="fa fa-save"></i>Guardar</button>
             <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"><i class="fa fa-trash"></i>Cancelar</button>
         </div>
