@@ -1,11 +1,12 @@
 @if (Auth::check())
 <div>
+    <br>
     <div class="row justify-content-center">
         <div class="form-group col-md-3">
             <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
         </div>
         <button class="btn btn-outline-primary col-md-1" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
-    </div>
+    </div><br><br>
     @if($imputActive or $updateMode)
         <div class="row justify-content-center">
             <div class="col-md-3">
@@ -16,6 +17,24 @@
             <div class="col-md-3">
                 <label>Descripcion</label>
                 <input type="text" placeholder="Descripcion" class="form-control" wire:model.defer="description" style="margin-right:5px;">
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Cargar imagen de Producto</label>
+                    <select required oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Requerido')" class="form-control" id="opcion" name="opcion" onchange="seleccionado()"tabindex="1">
+                        <option value="no">Sin Imagen</option>
+                        <option value="img">Imagen desde mi Equipo</option>
+                        <option value="url">Url</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-4" id="img" style="display:none;">
+                <label for="" class="form-label">Logo</label>
+                <input id="img_product" name="img_product" type="file" value="{{old('img_product')}}" class="form-control" tabindex="1">        
+            </div>
+            <div class="form-group col-md-4" id="url" style="display:none;">
+                <label for="" class="form-label">Logo Url</label>
+                <input id="img_product" name="img_product" type="text" value="{{old('url')}}" class="form-control" tabindex="1">
             </div>
             
         </div>
@@ -104,3 +123,59 @@
     </div>
 </div>
 @endguest
+<script>
+    function seleccionado(){
+        var opt = $('#opcion').val();
+        
+        // alert(opt);
+        if(opt=="img"){
+            $('#img').show();
+            $('#url').hide();
+            
+        }else{
+            if(opt=="url"){
+                $('#img').hide();
+                $('#url').show();
+                
+            }else{
+                $('#img').hide();
+                $('#url').hide();
+                
+            }
+        }
+    }
+</script>
+<script>
+    $(document).on('change','input[type="file"]',function(){
+        // this.files[0].size recupera el tamaño del archivo
+        // alert(this.files[0].size);
+        
+        var fileName = this.files[0].name;
+        var fileSize = this.files[0].size;
+
+        if(fileSize > 2000000){
+            alert('El archivo no debe superar los 2MB');
+            this.value = '';
+            this.files[0].name = '';
+        }else{
+            // recuperamos la extensión del archivo
+            var ext = fileName.split('.').pop();
+            
+            // Convertimos en minúscula porque 
+            // la extensión del archivo puede estar en mayúscula
+            ext = ext.toLowerCase();
+        
+            // console.log(ext);
+            switch (ext) {
+                case 'jpg':
+                case 'jpeg':
+                case 'png':
+                case 'pdf': break;
+                default:
+                    alert('El archivo no tiene la extensión adecuada');
+                    this.value = ''; // reset del valor
+                    this.files[0].name = '';
+            }
+        }
+    });
+</script>
