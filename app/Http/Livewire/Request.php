@@ -14,7 +14,19 @@ class Request extends Component
 
     public function render()
     {
-        return view('livewire.request');
+
+        $this->Title = "Presupuesto";
+        $this->data = ($this->search)
+                ? Requestmodel::where('id', 'like', '%'.$this->search.'%')
+                        ->orWhere('name', 'like', '%'.$this->search.'%')
+                        ->orWhere('email', 'like', '%'.$this->search.'%')
+                        ->orWhere('phone', 'like', '%'.$this->search.'%')
+                        ->orWhere('company', 'like', '%'.$this->search.'%')
+                        ->orderBy('id', 'DESC')
+                        ->get()
+                : Requestmodel::orderBy('id', 'DESC')->get();
+     
+                return view('livewire.request');
     }
 
     public function resetInput()

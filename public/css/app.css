@@ -5230,19 +5230,18 @@ body, html {
   opacity: 1;
 }
 
-.nosotros {
-  top: 800px;
-  left: 66px;
-  width: 602px;
-  height: 440px;
-  letter-spacing: var(--unnamed-character-spacing-0);
-  text-align: left;
-  letter-spacing: 0px;
-  color: #000000;
-  opacity: 1;
-  position: absolute;
-}
-
+/* .nosotros{
+    top: 800px;
+    left: 66px;
+    width: 602px;
+    height: 440px;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    position:absolute;
+} */
 .nosotros__title {
   top: 22px;
   left: 0px;
@@ -5294,9 +5293,6 @@ body, html {
 }
 
 .nosotros__btnrigth {
-  position: absolute;
-  top: 440px;
-  left: 690px;
   width: 53px;
   height: 53px;
   background: #fff;
@@ -5305,9 +5301,6 @@ body, html {
 }
 
 .nosotros__btnleft {
-  position: absolute;
-  top: 440px;
-  left: 640px;
   width: 53px;
   height: 53px;
   background: #fff;
@@ -5406,7 +5399,7 @@ body, html {
 }
 
 .request__btnsend {
-  width: 216px;
+  width: 210px;
   height: 35px;
   background: #C1282D 0% 0% no-repeat padding-box;
   border-radius: 30px;
@@ -5544,7 +5537,7 @@ body, html {
   top: 40%;
   left: 0%;
   width: 40%;
-  height: 35%;
+  height: 25%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   border: 1px solid #707070;
   border-radius: 8px;
@@ -5565,13 +5558,10 @@ body, html {
 }
 
 .contact__terminos {
-  top: 41%;
+  top: 38%;
   left: 50%;
   width: 314px;
   height: 19px;
-  font: var(--unnamed-font-style-normal) normal normal 14px/19px var(--unnamed-font-family-open-sans);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-333333);
   text-align: left;
   font: normal normal normal 14px/19px Open Sans;
   letter-spacing: 0px;
@@ -5585,7 +5575,7 @@ body, html {
   position: absolute;
   width: 30%;
   height: 20%;
-  top: 52%;
+  top: 45%;
   left: 50%;
 }
 

@@ -31,13 +31,13 @@
         </div>
         <div class="cabecera">
             <div class="logo">
-                <img src="/img/logo.png">
+               <a href="home"> <img src="/img/logo.png"></a>
             </div>
             <div class="cabecera_title">
                 <a class="cabecera__text" href="nosotros">NOSOTROS</a>
             </div>
             <div class="cabecera_title1">
-                <a class="cabecera__text" href="products">PRODUCTOS</a>
+                <a class="cabecera__text" href="product">PRODUCTOS</a>
             </div>
             <div class="cabecera_title2">
                 <a class="cabecera__text" href="request">SOLICITAR PRESUPUESTO</a>
