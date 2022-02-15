@@ -1,6 +1,10 @@
 
 <div class="request_titlenav">
-    <label class="title">INICIO|PRESUPUESTO</label>
+    <div class="row request align-items-center" style="height: 39px;">
+        <div class="col-md-12">
+            <span class="ubication"><strong>Inicio</strong> | Solicitud de presupuesto</span>
+        </div>
+    </div>
 </div>
 @if (Auth::check())
 <div>

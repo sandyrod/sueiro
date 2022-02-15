@@ -31,10 +31,10 @@
     </div>
     <div class="cabecera">
         <div class="logo">
-            <img src="/img/logo.png">
+            <a href="home"> <img src="/img/logo.png"></a>
         </div>
         <div class="cabecera_titleloge">
-            <a class="cabecera__text" href="products">PRODUCTOS</a>
+            <a class="cabecera__text" href="product">PRODUCTOS</a>
         </div>
         <div style="" class="cabecera_titleloge1">
             <a class="cabecera__text" href="request">PEDIDOS</a>

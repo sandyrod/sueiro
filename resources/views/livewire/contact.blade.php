@@ -1,5 +1,9 @@
-<div class="request">
-    <span class="request__menu">Inicio | Contacto</span>
+<div class="request_titlenav">
+    <div class="row request align-items-center" style="height: 39px;">
+        <div class="col-md-12">
+            <span class="ubication"><strong>Inicio</strong> | Contacto</span>
+        </div>
+    </div>
 </div>
 <div class="row">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.143550548068!2d-58.53818750000001!3d-34.6258125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7c77ca45177ec70b!2s48Q39FF6%2BMP!5e0!3m2!1ses-419!2sve!4v1643913947570!5m2!1ses-419!2sve" width="1349" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>

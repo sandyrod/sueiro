@@ -1,8 +1,10 @@
 @if (Auth::check())
 <div class="container">
-    <div class="roW">
-        <div class="row products__menu">
-            INICIO|PRESUPUESTO
+    <div class="request_titlenav">
+        <div class="row request align-items-center" style="height: 39px;">
+            <div class="col-md-12">
+                <span class="ubication"><strong>Inicio</strong> | Solicitud de presupuesto</span>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
