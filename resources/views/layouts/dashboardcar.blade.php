@@ -39,15 +39,17 @@
         <div style="" class="cabecera_titleloge1">
             <a class="cabecera__text" href="request">PEDIDOS</a>
         </div>
-        <div class="cabecera_titleloge2">
-            <a class="cabecera__text" href="remittances">REMITOS</a>
-        </div>
-        <div class="cabecera_titleloge3">
-            <a class="cabecera__text" href="order-history">HISTÓRICO DE COMPRAS</a>
-        </div> 
-        <div class="cabecera_titleloge4">
-            <a class="cabecera__text" href="quality">CALIDAD</a>
-        </div> 
+        @if (Auth::check())
+            <div class="cabecera_titleloge2">
+                <a class="cabecera__text" href="remittances">REMITOS</a>
+            </div>
+            <div class="cabecera_titleloge3">
+                <a class="cabecera__text" href="order-history">HISTÓRICO DE COMPRAS</a>
+            </div> 
+            <div class="cabecera_titleloge4">
+                <a class="cabecera__text" href="quality">CALIDAD</a>
+            </div> 
+        @endif
         <div class="cabecera_titleloge5">
             <a class="cabecera__text" href="shopping"><i class="fas fa-shopping-cart"></i></a>
         </div>
