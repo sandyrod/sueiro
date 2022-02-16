@@ -22,6 +22,7 @@ Route::view('/request', 'request');
 Route::view('/contact', 'contact');
 Route::view('/orders', 'orders');
 Route::view('/product', 'product');
+Route::view('/product-list', 'product-list');
 
 
 Route::post('/suscribe', [App\Http\Controllers\NewsletterController::class, 'store'])->name('suscribe');

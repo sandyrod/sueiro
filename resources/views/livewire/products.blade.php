@@ -2,7 +2,7 @@
 <div class="request_titlenav">
     <div class="row request align-items-center" style="height: 39px;">
         <div class="col-md-12">
-            <span class="ubication"><strong>Inicio</strong> | Solicitud de presupuesto</span>
+            <span class="ubication"><strong>Inicio</strong> | Producto</span>
         </div>
     </div>
 </div>
