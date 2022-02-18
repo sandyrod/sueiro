@@ -1,12 +1,12 @@
 @if (Auth::check())
-<div class="container">
-    <div class="request_titlenav">
-        <div class="row request align-items-center" style="height: 39px;">
-            <div class="col-md-12">
-                <span class="ubication"><strong>Inicio</strong> | Solicitud de presupuesto</span>
-            </div>
+<div class="request_titlenav">
+    <div class="row request align-items-center" style="height: 39px;">
+        <div class="col-md-12">
+            <span class="ubication"><strong>Inicio</strong> | Solicitud de presupuesto</span>
         </div>
     </div>
+</div>
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <table class="table table-striped">

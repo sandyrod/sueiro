@@ -33,6 +33,7 @@ Route::get('/category',        [App\Http\Controllers\HomeController::class, 'cat
 
 
 /* Route::get('/products',        [App\Http\Controllers\HomeController::class, 'products'])->name('products'); */
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/remittances',     [App\Http\Controllers\HomeController::class, 'remittances'])->name('remittances');
 Route::get('/order-history',   [App\Http\Controllers\HomeController::class, 'order-history'])->name('order_history');
 Route::get('/quality',         [App\Http\Controllers\HomeController::class, 'quality'])->name('quality');

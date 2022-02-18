@@ -5,6 +5,9 @@
         </div>
     </div>
 </div>
+<div class="form-group col-md-3">
+    <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <table class="table">

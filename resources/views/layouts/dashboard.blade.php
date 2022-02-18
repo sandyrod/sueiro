@@ -26,7 +26,10 @@
             </div>
             <div class="banner_title5">
                 <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-instagram"></i>            
+                <i class="fab fa-instagram"></i>  
+                @if (Auth::check())
+                    <a class="logout" href="{{ url('/logout') }}"> Cerrar cession</a>
+                @endif          
             </div>
         </div>
         <div class="cabecera">

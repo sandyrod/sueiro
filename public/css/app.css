@@ -5462,6 +5462,11 @@ body, html {
   opacity: 0.5;
 }
 
+.logout {
+  color: #fff;
+  text-decoration: none;
+}
+
 .contact__map {
   position: absolute;
   background: #000;
