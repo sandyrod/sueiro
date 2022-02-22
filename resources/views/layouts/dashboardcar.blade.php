@@ -75,7 +75,7 @@
         <div class="logo">
             <a href="home"> <img src="/img/logo.png"></a>
         </div>
-        <div class="cabecera_title">
+        <div class="cabecera_title1">
             <a class="cabecera__text" href="nosotros">NOSOTROS</a>
         </div>
         @guest
