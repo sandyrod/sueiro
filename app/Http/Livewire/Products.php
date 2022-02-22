@@ -37,9 +37,10 @@ class Products extends Component
 
     public function resetInput()
     {
-        $this->name    = null;
-        $this->description = null;
+        $this->name         = null;
+        $this->description  = null;
         $this->emitUpdates();
+        $this->inputActive  = false;
     }
 
     public function save()

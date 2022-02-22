@@ -22,10 +22,15 @@
                     <input type="text" placeholder="Nombre de Producto" class="form-control" wire:model.defer="name" style="margin-right:5px;">
                     <input type="hidden" wire:model.defer="product_id">
                 </div>
-                <div class="col-md-3">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
                     <label>Descripcion</label>
-                    <input type="text" placeholder="Descripcion" class="form-control" wire:model.defer="description" style="margin-right:5px;">
+                    <textarea placeholder="Descripcion" class="form-control" wire:model.defer="description">
+                    </textarea>
                 </div>
+            </div>
+            <div class="row justify-content-center"
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Cargar imagen de Producto</label>
