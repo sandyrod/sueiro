@@ -29,6 +29,6 @@ class CreateProductFeatureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_feature');
+        Schema::dropIfExists('product__featuress');
     }
 }

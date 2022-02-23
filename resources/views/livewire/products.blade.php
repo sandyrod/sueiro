@@ -59,15 +59,15 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <table class="table table-striped">
-                    <thead class="table__header">
+                    <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
                         <tr>
-                            <th></th>
-                            <th>Producto</th>
-                            <th>Descripcion</th>
-                            <th></th>
+                            <th scope="col"></th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Descripcion </th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align:center;">
                        @foreach($data as $producto)
                         <tr>
                             <td></td>
