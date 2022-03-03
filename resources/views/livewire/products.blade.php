@@ -6,91 +6,95 @@
             </div>
         </div>
     </div>
-    @if (Auth::check())
-    <div>
-        <br>
-        <div class="row justify-content-center">
-            <div class="form-group col-md-3">
-                <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
-            </div>
-            <button class="btn btn-outline-primary col-md-1" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
-        </div><br><br>
-        @if($imputActive or $updateMode)
+    @if (Auth::check())        
+        <div>
+            <br>
             <div class="row justify-content-center">
-                <div class="col-md-3">
-                    <label>Nombre de Producto</label>
-                    <input type="text" placeholder="Nombre de Producto" class="form-control" wire:model.defer="name" style="margin-right:5px;">
-                    <input type="hidden" wire:model.defer="product_id">
+                <div class="form-group col-md-3">
+                    <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <label>Descripcion</label>
-                    <textarea placeholder="Descripcion" class="form-control" wire:model.defer="description">
-                    </textarea>
-                </div>
-            </div>
-            <div class="row justify-content-center"
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Cargar imagen de Producto</label>
-                        <select required oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Requerido')" class="form-control" id="opcion" name="opcion" onchange="seleccionado()"tabindex="1">
-                            <option value="no">Sin Imagen</option>
-                            <option value="img">Imagen desde mi Equipo</option>
-                            <option value="url">Url</option>
-                        </select>
+                @if (auth()->user()->rol_user=='admin')
+                    <button class="btn btn-outline-primary col-md-1" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
+                @endif
+            </div><br><br>
+            @if($imputActive or $updateMode)
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <label>Nombre de Producto</label>
+                        <input type="text" placeholder="Nombre de Producto" class="form-control" wire:model.defer="name" style="margin-right:5px;">
+                        <input type="hidden" wire:model.defer="product_id">
                     </div>
                 </div>
-                <div class="form-group col-md-4" id="img" style="display:none;">
-                    <label for="" class="form-label">Logo</label>
-                    <input id="img_product" name="img_product" type="file" value="{{old('img_product')}}" class="form-control" tabindex="1">        
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label>Descripcion</label>
+                        <textarea placeholder="Descripcion" class="form-control" wire:model.defer="description">
+                        </textarea>
+                    </div>
                 </div>
-                <div class="form-group col-md-4" id="url" style="display:none;">
-                    <label for="" class="form-label">Logo Url</label>
-                    <input id="img_product" name="img_product" type="text" value="{{old('url')}}" class="form-control" tabindex="1">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Cargar imagen de Producto</label>
+                            <select required oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Requerido')" class="form-control" id="opcion" name="opcion" onchange="seleccionado()"tabindex="1">
+                                <option value="no">Sin Imagen</option>
+                                <option value="img">Imagen desde mi Equipo</option>
+                                <option value="url">Url</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4" id="img" style="display:none;">
+                        <label for="" class="form-label">Logo</label>
+                        <input id="img_product" name="img_product" type="file" value="{{old('img_product')}}" class="form-control" tabindex="1">        
+                    </div>
+                    <div class="form-group col-md-4" id="url" style="display:none;">
+                        <label for="" class="form-label">Logo Url</label>
+                        <input id="img_product" name="img_product" type="text" value="{{old('url')}}" class="form-control" tabindex="1">
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="row justify-content-center">  
-                <button type="button" class="btn btn-success col-md-1" wire:click="save"><i class="fa fa-save"></i>Guardar</button>
-                <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"><i class="fa fa-trash"></i>Cancelar</button>
-            </div>
-        @endif
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <table class="table table-striped">
-                    <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Descripcion </th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align:center;">
-                       @foreach($data as $producto)
-                        <tr>
-                            <td></td>
-                            <td>
-                                <span class="td__title">{{ $producto->name }}</span>
-                            </td>
-                            <td class="align-middle">
-                                <span class="align-middle">{{ $producto->description }}</span>
-                            </td>
-                            <td>
-                                <div >
-                                <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
-                                <span></span>
-                                <a wire:click="destroy({{ $producto->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <br>
+                <div class="row justify-content-center">  
+                    <button type="button" class="btn btn-success col-md-1" wire:click="save"><i class="fa fa-save"></i>Guardar</button>
+                    <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"><i class="fa fa-trash"></i>Cancelar</button>
+                </div>
+            @endif
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <table class="table table-striped">
+                        <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Descripcion </th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align:center;">
+                        @foreach($data as $producto)
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span class="td__title">{{ $producto->name }}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="align-middle">{{ $producto->description }}</span>
+                                </td>
+                                <td>
+                                    @if (auth()->user()->rol_user=='admin')
+                                        <div>
+                                            <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
+                                            <span></span>
+                                            <a wire:click="destroy({{ $producto->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
+                                        </div>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     @endif
     @guest
     <div class="container">
@@ -127,6 +131,33 @@
                             <p class="card_title">TAMICES</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <table class="table table-striped">
+                        <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Descripcion </th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align:center;">
+                           @foreach($data as $producto)
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span class="td__title">{{ $producto->name }}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="align-middle">{{ $producto->description }}</span>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

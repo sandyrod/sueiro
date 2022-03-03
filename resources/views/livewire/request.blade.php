@@ -108,28 +108,10 @@
                     <button class="request__btnsend" wire:click="save">
                         <span class="request__textbtn">ENVIAR CONSULTA</span>
                     </button>
-
-                    <script type="text/javascript">
-                        $('#example-multiple-selected').multiselect();
-                    </script>
-                    <!-- Note the missing multiple attribute! -->
-                    <select id="example-multiple-selected" multiple="multiple">
-                        <option value="1">Option 1</option>
-                        <option value="2" selected="selected">Option 2</option>
-                        <!-- Option 3 will be selected in advance ... -->
-                        <option value="3" selected="selected">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
-                        <option value="6">Option 6</option>
-                    </select>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<button id="add">Agregar Campos</button>
-<div id="items">
- <div><input type="text" name="input[]"></div>
 </div>
 @endguest
     <footer class="footer">

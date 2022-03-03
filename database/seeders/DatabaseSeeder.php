@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +20,9 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call([
             Product_FeatureSeeder::class,
+        ]);
+        $this->call([
+            UserSeeder::class,
         ]);
 
     }
