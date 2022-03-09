@@ -45,11 +45,11 @@
                     </div>
                     <div class="form-group col-md-4" id="img" style="display:none;">
                         <label for="" class="form-label">Logo</label>
-                        <input id="img_product" name="img_product" type="file" value="{{old('img_product')}}" class="form-control" tabindex="1">        
+                        <input id="logo" name="logo" type="file" value="{{old('img_product')}}" class="form-control" tabindex="1">        
                     </div>
                     <div class="form-group col-md-4" id="url" style="display:none;">
                         <label for="" class="form-label">Logo Url</label>
-                        <input id="img_product" name="img_product" type="text" value="{{old('url')}}" class="form-control" tabindex="1">
+                        <input id="logo" name="logo" type="text" value="{{old('url')}}" class="form-control" tabindex="1">
                     </div>
                 </div>
                 <br>
@@ -66,7 +66,8 @@
                                 <th scope="col"></th>
                                 <th scope="col">Producto</th>
                                 <th scope="col">Descripcion </th>
-                                <th scope="col"></th>
+                                <th scope="col">Precio </th>
+                                <th scope="col">opciones</th>
                             </tr>
                         </thead>
                         <tbody style="text-align:center;">
@@ -79,12 +80,16 @@
                                 <td class="align-middle">
                                     <span class="align-middle">{{ $producto->description }}</span>
                                 </td>
+                                <td class="align-middle">
+                                    <span class="align-middle">{{ $producto->price }}</span>
+                                </td>
                                 <td>
                                     @if (auth()->user()->rol_user=='admin')
                                         <div>
                                             <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
-                                            <span></span>
                                             <a wire:click="destroy({{ $producto->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
+                                            {{-- <a wire:click="shopping({{ $producto->id }})"><i class="fa fa-shopping-cart" style="color:rgb(0, 255, 13)"></i></a> --}}
+                                            <button type="submit" class="btn btn-primary">Agregar al carrito</button>
                                         </div>
                                     @endif
                                 </td>
