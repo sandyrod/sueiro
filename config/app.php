@@ -232,7 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
-        Darryldecode\Cart\Facades\CartFacade::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
 
     ],
 
