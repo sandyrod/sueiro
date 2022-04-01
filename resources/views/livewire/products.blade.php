@@ -1,3 +1,4 @@
+
 <div>
     <div class="request_titlenav">
         <div class="row request align-items-center" style="height: 39px;">
@@ -67,6 +68,7 @@
                                 <th scope="col">Producto</th>
                                 <th scope="col">Descripcion </th>
                                 <th scope="col">Precio </th>
+                                <th scope="col">Cantidad </th>
                                 <th scope="col">opciones</th>
                             </tr>
                         </thead>
@@ -83,13 +85,15 @@
                                 <td class="align-middle">
                                     <span class="align-middle">{{ $producto->price }}</span>
                                 </td>
+                                <td class="align-middle">
+                                    <input  class="form-check-input  w-75" type="number" min="1"  name='order_quantity' oninput="validity.valid||(value='');" wire:model.defer="order_quantity" id='order_quantity'>
+                                </td>
                                 <td>
                                     @if (auth()->user()->rol_user=='admin')
-                                        <div>
+                                        <div><br>
                                             <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
                                             <a wire:click="destroy({{ $producto->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
-                                            {{-- <a wire:click="shopping({{ $producto->id }})"><i class="fa fa-shopping-cart" style="color:rgb(0, 255, 13)"></i></a> --}}
-                                            <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                                            <a wire:click="addToCart({{ $producto->id }})" class="fas fa-shopping-cart"></a>
                                         </div>
                                     @endif
                                 </td>

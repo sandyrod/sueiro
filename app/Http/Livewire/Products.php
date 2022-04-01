@@ -2,15 +2,21 @@
 
 namespace App\Http\Livewire;
 use App\Models\Product;
+use App\Models\Shopping;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+//use App\Helpers\shopping;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 
 
+
 class Products extends Component
 {
-    public $data, $search, $product_id, $name, $description, $price, $logo, $request; 
+    public $data, $search, $user, $product_id, $order_quantity, $name, $description, $price, $logo, $request, $cart; 
 
     public $updateMode  = false;
     public $imputActive = false;
@@ -149,6 +155,30 @@ class Products extends Component
             $this->resetInput();
         }
     }
+
+    public function addToCart(int $product_id): void
+    {
+        
+        $price =  product::find($product_id);
+
+
+         $user_id = Auth::user()->id;
+         $order_quantity  =  $this->order_quantity ;
+
+          //dd($price->price);
+        
+        shopping::create([
+            'product_id'         => $product_id,
+            'user_id'            => $user_id,
+            'order_number'       => '123',
+            'order_quantity'     => $order_quantity,
+            'price'              => $price->price,
+        ]);
+        //dd($product_id);
+        //  shopping::add(Product::where('id', $product_id)->first());
+        //  $this->emit('productAdded');
+    }
+   
     private function emitUpdates()
     {
 

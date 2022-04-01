@@ -20,40 +20,25 @@
                         </tr>
                     </thead>
                     <tbody style="text-align:center;">
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                            <td>
-                                <img class="shp" src="/img/mallas.png"><br>
-                                <span style="margin: 10% 5%">Malla Especial</span>
-                            </td>
-                            <td>
-                                <select class="shopping__select">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </td>
-                            <td>USD 29,3</td>
-                            <td>USD 29,3</td>
-                            <td><i style="color:red;" class="fas fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                            <td>
-                                <img class="shp" src="/img/mallas.png"><br>
-                                <span style="margin: 10% 5%">Malla Especial</span>
-                            </td>
-                            <td>
-                                <select class="shopping__select">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </td>
-                            <td>USD 29,3</td>
-                            <td>USD 29,3</td>
-                            <td><i style="color:red;" class="fas fa-trash-alt"></i></td>
-                        </tr>
+                        @foreach($data as $producto)
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>
+                                    <img class="shp" src="/img/mallas.png"><br>
+                                    <span style="margin: 10% 5%">{{ $producto->name }}</span>
+                                </td>
+                                <td>
+                                    <select class="shopping__select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </td>
+                                <td>{{ $producto->price }}</td>
+                                <td>USD 29,3</td>
+                                <td><i style="color:red;" class="fas fa-trash-alt"></i></td>
+                            </tr>
+                        @endforeach                        
                     </tbody>
                     <tr style="height:5%; top:28%; left:80%; position:absolute;">
                         <TD>Subtotal</TD>
