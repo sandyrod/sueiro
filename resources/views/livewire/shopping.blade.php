@@ -28,11 +28,16 @@
                                     <span style="margin: 10% 5%">{{ $producto->name }}</span>
                                 </td>
                                 <td>
-                                    <select class="shopping__select">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+
+                                    <select class="form-control select2 client_select">
+                                        <option value="">Seleccione...</option>
+                                        
+                                          <option value="{{ $producto->order_quantity }}">
+                                              {{ $producto->order_quantity }}
+                                          </option>
+                                        
+                                        
+                                        </select>
                                 </td>
                                 <td>{{ $producto->price }}</td>
                                 <td>USD 29,3</td>

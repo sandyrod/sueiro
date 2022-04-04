@@ -86,9 +86,14 @@
                                     <span class="align-middle">{{ $producto->price }}</span>
                                 </td>
                                 <td class="align-middle">
-                                    <input  class="form-check-input  w-75" type="number" min="1"  name='order_quantity' oninput="validity.valid||(value='');" wire:model.defer="order_quantity" id='order_quantity'>
+                                    <input type="number" class="form-control" placeholder="0" min="1"  name='order_quantity' oninput="validity.valid||(value='');" wire:model.defer="order_quantity" id='order_quantity'>
                                 </td>
                                 <td>
+                                    @if (auth()->user()->rol_user=='')
+                                        <div><br>
+                                            <a wire:click="addToCart({{ $producto->id }})" class="fas fa-shopping-cart"></a>
+                                        </div>
+                                    @endif
                                     @if (auth()->user()->rol_user=='admin')
                                         <div><br>
                                             <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>

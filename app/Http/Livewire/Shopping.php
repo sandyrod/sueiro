@@ -22,10 +22,6 @@ class Shopping extends Component
     
     }
 
-
-
-
-
     /* public function shoppingadd(Request $request){
         dd($request);
         
