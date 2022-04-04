@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboardcar')
 @section('content')
     @livewire('remittances')
 @endsection

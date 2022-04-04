@@ -69,25 +69,22 @@
                 @endif          
             </div>
         </div>
-        <div class="cabecera">
-            <div class="logo">
-               <a href="home"> <img src="/img/logo.png"></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="home"><img src="/img/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <a class="nav-item nav-link" style="color: black" href="product">PRODUCTOS</a>
+                    <a class="nav-item nav-link" style="color: black" href="nosotros">NOSOTROS </a>
+                    <a class="nav-item nav-link" style="color: black" href="request">SOLICITAR PRESUPUESTO</a>
+                    <a class="nav-item nav-link" style="color: black" href="contact">CONTACTO</a>
+                </div>
             </div>
-            <div class="cabecera_title">
-                <a class="cabecera__text" href="nosotros">NOSOTROS</a>
-            </div>
-            <div class="cabecera_title1">
-                <a class="cabecera__text" href="product">PRODUCTOS</a>
-            </div>
-            <div class="cabecera_title2">
-                <a class="cabecera__text" href="request">SOLICITAR PRESUPUESTO</a>
-            </div>
-            <div class="cabecera_title3">
-                <a class="cabecera__text" href="contact">CONTACTO</a>
-            </div>
-        </div>
+        </nav>
         <div class="main">
-        @yield('content')
+            @yield('content')
         </div>
         @livewireScripts
     </body>

@@ -71,39 +71,27 @@
         </div>
         
     </div>
-    <div class="cabecera">
-        <div class="logo">
-            <a href="home"> <img src="/img/logo.png"></a>
-        </div>
-        <div class="cabecera_title1">
-            <a class="cabecera__text" href="nosotros">NOSOTROS</a>
-        </div>
-        @guest
-        <div style="" class="cabecera_titleloge1">
-            <a class="cabecera__text" href="request">PEDIDOS</a>
-        </div>
-        <div class="cabecera_title2">
-            <a class="cabecera__text" href="request">SOLICITAR PRESUPUESTO</a>
-        </div>
-        <div class="cabecera_title3">
-            <a class="cabecera__text" href="contact">CONTACTO</a>
-        </div>
-        @endguest
-        @if (Auth::check())
-            <div class="cabecera_titleloge2">
-                <a class="cabecera__text" href="remittances">REMITOS</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home"><img src="/img/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <a class="nav-item nav-link" style="color: black" href="product">PRODUCTOS</a>
+                @guest
+                    <a class="nav-item nav-link" style="color: black" href="nosotros">NOSOTROS </a>
+                    <a class="nav-item nav-link" style="color: black" href="request">SOLICITAR PRESUPUESTO</a>
+                    <a class="nav-item nav-link" style="color: black" href="contact">CONTACTO</a>
+                @endguest
+                @if (Auth::check())
+                    <a class="nav-item nav-link" style="color: black" href="remittances">REMITOS</a>
+                    <a class="nav-item nav-link" style="color: black" href="quality">CALIDAD</a>
+                    <a class="nav-item nav-link" style="color: black" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                @endif
             </div>
-            <div class="cabecera_titleloge3">
-                <a class="cabecera__text" href="order-history">HISTÓRICO DE COMPRAS</a>
-            </div> 
-            <div class="cabecera_titleloge4">
-                <a class="cabecera__text" href="quality">CALIDAD</a>
-            </div> 
-        @endif
-        <div class="cabecera_titleloge5">
-            <a class="cabecera__text" href="shopping"><i class="fas fa-shopping-cart"></i></a>
         </div>
-    </div>
+    </nav>
     <div>
     @yield('content')
     </div>
