@@ -27,20 +27,9 @@
                                     <img class="shp" src="/img/mallas.png"><br>
                                     <span style="margin: 10% 5%">{{ $producto->name }}</span>
                                 </td>
-                                <td>
-
-                                    <select class="form-control select2 client_select">
-                                        <option value="">Seleccione...</option>
-                                        
-                                          <option value="{{ $producto->order_quantity }}">
-                                              {{ $producto->order_quantity }}
-                                          </option>
-                                        
-                                        
-                                        </select>
-                                </td>
+                                    <td>{{ $producto->order_quantity }}</td> 
                                 <td>{{ $producto->price }}</td>
-                                <td>USD 29,3</td>
+                                <td> {{($producto->order_quantity)*($producto->price)}} </td>
                                 <td><i style="color:red;" class="fas fa-trash-alt"></i></td>
                             </tr>
                         @endforeach                        

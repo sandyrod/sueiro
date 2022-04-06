@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Shopping as Shoppings;
+use DB;
 
 
 
@@ -12,14 +14,14 @@ class Shopping extends Component
     public $data ,$search; 
     public function render()
     {
-        $this->data = ($this->search)
-                ? Product::select('shopping.id','shopping.product_id','products.price','shopping.order_quantity')
-                ->join('shopping', 'products.id', '=', 'product.id')
-                        ->get()
-                : product::orderBy('id', 'DESC')->get();
-        return view('livewire.shopping');
-    
-    
+        
+        $this->Title = "Shopping";
+        $this->data =  Product::select('shopping.id','shopping.product_id','products.price','products.name',DB::raw('SUM(shopping.order_quantity) As revenue'))
+            ->join('shopping', 'products.id', '=', 'shopping.product_id')
+            ->where('shopping.user_id', '=', '4')
+            ->groupby('shopping.user_id')
+            ->get();
+            return view('livewire.shopping');
     }
 
     /* public function shoppingadd(Request $request){
