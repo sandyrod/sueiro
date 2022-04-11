@@ -1406,7 +1406,6 @@ body,html{
     margin-top:5%
 }
 .shp__di{
-    position: absolute;
     top: 35%;
     left: 0%;
     width: 100%;
@@ -1415,25 +1414,17 @@ body,html{
     opacity: 1;
 }
 .shp__dicon{
-    top: 25%;
-    left: 5%;
-    font: normal normal normal 20px/20px Open Sans;
-    width: 142px;
-    height: 27px;
+    margin-left: 50px;
     background: transparent 0% 0% no-repeat padding-box;
     color:#FFFFFF;
-    position: absolute;
+    font-size: 27px;
     opacity: 1;
 }
 .shp__dititle{
-    top: 25%;
-    left: 22%;
     font: normal normal normal 20px/20px Open Sans;
     width: 142px;
     height: 27px;
-    background: transparent 0% 0% no-repeat padding-box;
     color:#FFFFFF;
-    position: absolute;
     opacity: 1;
 }
 .shp__en{
@@ -1475,12 +1466,12 @@ body,html{
     position: absolute;
 }
 .shp__obse{
-    margin:20% 5%;
+    margin:2% 5%;
     width:90%;
-    height:50%;
+    height:30%;
 }
 .shp__obsetitle{
-    top: 2%;
+    margin-top: -100%;
     left: 18%;
     width: 210px;
     height: 22px;
@@ -1488,10 +1479,9 @@ body,html{
     font: normal normal normal 25px/20px Open Sans;
     opacity: 1;
     color:#c1282d;
-    position:relative;
+    
 }
 .shp__obseimput{
-    position: relative;
     top: 10%;
     left: -18%;
     width: 430px;
@@ -1509,10 +1499,8 @@ body,html{
     font: normal normal normal 25px/20px Open Sans;
     opacity: 1;
     color:#c1282d;
-    position:relative
 }
 .shp__obsetexttarea{
-    position: absolute;
     top: 57%;
     left: 21%;
     width: 502px;

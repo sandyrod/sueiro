@@ -34,22 +34,32 @@
                             </tr>
                         @endforeach                        
                     </tbody>
-                    @foreach($sud_total as $sud)
-                        <tr style="height:5%; top:28%; left:80%; position:absolute;">
-                            <TD>Subtotal</TD>
-                            <TD style="color:#c1282d;">{{$sud->total}}</TD>
-                        </tr>
-                    @endforeach
+                    
                 </table>
-                <div class="shp__di">
+                <div class="container">
+                    <div style="width:140px; margin-left:88%;" class="row align-items-end">
+                        <div class="col">
+                            @foreach($sud_total as $sud)
+                                <tr style="height:5%; top:28%; left:80%; position:absolute;">
+                                    <TD>Subtotal</TD>
+                                    <TD style="color:#c1282d;">{{$sud->total}}</TD>
+                                </tr>
+                            @endforeach          
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="shp__di">
                     <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
                     <span class="shp__dititle">Observaciones</span>
-                </div>
+                </div> 
                 <div class="shp__obse">
                     <span class="shp__obsetitle">Orden de compra / Usuario</span>
+                    <br><br>
                     <input class="shp__obseimput" type="text" value="" id="flexCheckDefault">
-                    <br>
+                    <br><br>
                     <span class="shp__obsetext">Comentarios</span>
+                    <br><br>
                     <textarea class="shp__obsetexttarea" placeholder="Mensaje"></textarea>
                 </div>
                 <div class="shp__rsmcom">
@@ -94,13 +104,15 @@
                             <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
                         </div>
                         <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
-                            <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
+                            <span class="shp__cuerpo--envlefttitle">USD {{$sud->total*0.21}}$</span>
                             <br>
                             <span class="shp__cuerpo--envlefttitle">No aplica.</span>
                             <br>
-                            <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
+                            @foreach($sud_total as $sud)    
+                                <span class="shp__cuerpo--envlefttitle">USD {{($sud->total*0.21)+($sud->total)}}$</span>
+                            @endforeach
                             <br>
-                            <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
+                            <span class="shp__cuerpo--envlefttitle">ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}</span>
                         </div>
                     </div>
                     <div style="width:100%; height:15%;">
