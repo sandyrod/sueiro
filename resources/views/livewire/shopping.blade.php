@@ -30,14 +30,16 @@
                                     <td>{{ $producto->order_quantity }}</td> 
                                 <td>{{ $producto->price }}</td>
                                 <td> {{($producto->order_quantity)*($producto->price)}} </td>
-                                <td><i style="color:red;" class="fas fa-trash-alt"></i></td>
+                                <td><a wire:click="destroy({{ $producto->id }})"><i class="fas fa-trash-alt" style="color:#C11D1D"></i></a>
                             </tr>
                         @endforeach                        
                     </tbody>
-                    <tr style="height:5%; top:28%; left:80%; position:absolute;">
-                        <TD>Subtotal</TD>
-                        <TD style="color:#c1282d;">USD 58,6</TD>
-                    </tr>
+                    @foreach($sud_total as $sud)
+                        <tr style="height:5%; top:28%; left:80%; position:absolute;">
+                            <TD>Subtotal</TD>
+                            <TD style="color:#c1282d;">{{$sud->total}}</TD>
+                        </tr>
+                    @endforeach
                 </table>
                 <div class="shp__di">
                     <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
@@ -60,8 +62,13 @@
                             <span class="shp__cuerporigth__sudtitle">Subtotal</span>
                         </div>
                         <div class="shp__cuerpoleft">
-                            <span class="shp__cuerpolefttitle">2</span>
-                            <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
+                            @foreach($count_item as $item)
+                                <span class="shp__cuerpolefttitle">{{$item->cantidad}}</span>
+                            @endforeach
+                            @foreach($sud_total as $sud)    
+                                <span class="shp__cuerpoleftsudtitle">USD {{$sud->total}}$</span>
+                            @endforeach
+                           
                         </div>
                     </div>
                     <div class="shp__cuerpo--env">

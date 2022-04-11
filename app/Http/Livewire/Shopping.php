@@ -11,44 +11,49 @@ use DB;
 
 class Shopping extends Component
 {
-    public $data ,$search; 
+    public $data ,$search, $count_item, $sud_total; 
     public function render()
     {
         
         $this->Title = "Shopping";
-        $this->data =  Product::select('shopping.id','shopping.product_id','products.price','products.name',DB::raw('SUM(shopping.order_quantity) As revenue'))
+        $this->data =  Product::select('shopping.id','shopping.product_id','products.price','products.name','shopping.order_quantity')
             ->join('shopping', 'products.id', '=', 'shopping.product_id')
             ->where('shopping.user_id', '=', '4')
-            ->groupby('shopping.user_id')
             ->get();
+
+        $this->count_item = Shoppings::select(DB::raw('SUM(shopping.order_quantity) As cantidad'))
+            ->where('shopping.user_id','=',4)
+            ->get();
+            
+        $this->sud_total = Product::select(DB::raw('SUM(shopping.order_quantity * products.price) As total'))
+            ->join('shopping', 'products.id', '=', 'shopping.product_id')
+            ->where('shopping.user_id', '=', '4')
+            ->get();
+
             return view('livewire.shopping');
     }
-
-    /* public function shoppingadd(Request $request){
-        dd($request);
-        
-        $cart  = Product::find($request->id);
-        Shopping::add(
-            $cart->id,
-            $cart->name,
-            $cart->price,
-            1,
-        array("urlfoto"=>$curso->urlfoto,"slug"=>$curso->slug)
-        ); 
-    } */
-    public function shoppingadd($id){
-        dd($id);
-        
-       /*  $cart  = Product::find($request->product_id);
-        Product::add(
-            $cart->product_id,
-            $cart->name,
-            $cart->price,
-            1,
-        array("urlfoto"=>$curso->urlfoto,"slug"=>$curso->slug)
-        );
-        return back()->with('succes',"$producto->nombre !se ha agregado con exito!"); */
+    public function resetInput()
+    {
+        $this->emitUpdates();
     }
+
+    public function destroy($id)
+    {
+        if ($id) {
+            $record = Shoppings::find($id);
+            $record->delete();
+
+            $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro eliminado...']);
+            $this->resetInput();
+        }
+    }
+    private function emitUpdates()
+    {
+        return redirect()->to('/shopping'); 
+
+
+    }
+    
 
 }
 
