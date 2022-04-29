@@ -51,7 +51,6 @@ class Shopping extends Component
     {
         return redirect()->to('/shopping'); 
 
-
     }
     
 

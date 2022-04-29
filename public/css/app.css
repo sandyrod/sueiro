@@ -5925,6 +5925,18 @@ body, html {
   color: #c1282d;
 }
 
+.tablinks1:hover {
+  color: #c1282d;
+}
+
+.tablinks2:hover {
+  color: #c1282d;
+}
+
+.tablinks3:hover {
+  color: #c1282d;
+}
+
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: #ccc;
@@ -6247,8 +6259,8 @@ body, html {
 }
 
 .shp__etrtitle {
-  margin-left: 5%;
-  margin-top: -5%;
+  margin-left: 1%;
+  margin-top: 1.5%;
   position: absolute;
   width: 100%;
   height: 3%;
@@ -6320,8 +6332,7 @@ body, html {
 .shp__etrdiv {
   width: 100%;
   height: 400%;
-  position: absolute;
-  top: -140%;
+  margin-top: -5%;
 }
 
 .shp__etrobs {

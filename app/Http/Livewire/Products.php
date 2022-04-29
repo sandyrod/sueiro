@@ -165,6 +165,9 @@ class Products extends Component
          $user_id = Auth::user()->id;
          $order_quantity  =  $this->order_quantity ;
 
+         $this->validate([
+            'order_quantity' => 'required|min:1'
+        ]);
           //dd($price->price);
         
         shopping::create([

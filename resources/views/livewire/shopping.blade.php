@@ -1,7 +1,7 @@
 <div style="width: 100%; height:160%; position: relative;">
     <div class="shopping__cuerpo">
         <div class="shopping__cuerpomenu">
-            <span class="tablinks" onclick="openCity(event, 'Productos')" id="defaultOpen">Mis Productos</span>
+            <span class="tablinks"  onclick="openCity(event, 'Productos')" id="defaultOpen">Mis Productos</span>
             <span class="tablinks1" onclick="openCity(event, 'Entrega')">Entrega</span>
             <span class="tablinks2" onclick="openCity(event, 'Pago')">Pago</span>
             <span class="tablinks3" onclick="openCity(event, 'Confirmación')">Confirmación</span>
@@ -130,29 +130,45 @@
                         <span class="shp__enicon"><i class="fas fa-shipping-fast"></i></span>
                         <span class="shp__entitle">Forma de Entrega</span>
                     </div>
-                    <div class="shp__conteentr">
-                        <span class="shp__etrtitle">Seleccione la forma de entrega</span>
-                        <div class="shp__etrcue">
-
-                            <span class="shp__etrtitleret">Retiro en sucursal</span>
-                            <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="" id="">
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <span class="shp__etrtitle">Seleccione la forma de entrega</span>
+                                <br>
+                                <div class="shp__etrcue">
+                                    <span class="shp__etrtitleret">Retiro en sucursal</span>
+                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="" id="">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="shp__etrcon2">
-                        <div class="shp__etrtext">
-                            <span>Sucursal Ciudadela</span><br>
-                            <span>Bergamini 1127 - Ciudadela</span><br>
-                            <span>54-11 4488-4649 / 3825</span><br>
-                            <span>Lu a Vie de 8 a 17 hrs</span>
-                        </div>
-                        <div class="shp__etrmap">
-                            MAPA
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div style="max-width:25%; margin-left:6%; " class="col">
+                                <span><b>Sucursal Ciudadela</b></span>                                
+                                <span>Bergamini 1127 - Ciudadela</span>
+                                <span>54-11 4488-4649 / 3825</span>
+                                <span>Lu a Vie de 8 a 17 hrs</span>
+                            </div>
+                            <div style="margin-top: -5%" class="col">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.143550548068!2d-58.53818750000001!3d-34.6258125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7c77ca45177ec70b!2s48Q39FF6%2BMP!5e0!3m2!1ses-419!2sve!4v1643913947570!5m2!1ses-419!2sve" width="520" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
                         </div>
                     </div>
-                    <div style="">
-                        <div class="shp__etrcue1">
-                            <span class="shp__etrtitleret">Envío a domicilio</span>
-                            <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="" id="">
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <div class="shp__etrcue1">
+                                    <span class="shp__etrtitleret">Envío a domicilio</span>
+                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="1" id="check" onchange="javascript:showContent()">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div id="content" style="display: none;">
+                                  Direccion  <input class="form-control" placeholder="Dirección">
+                                  Telefono   <input class="form-control" placeholder="Telefono">
+                                </div>
+                            </div>                          
                         </div>
                     </div>
                 </div>
@@ -508,4 +524,16 @@
     }
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
+</script>
+<script type="text/javascript">
+    function showContent() {
+        element = document.getElementById("content");
+        check = document.getElementById("check");
+        if (check.checked) {
+            element.style.display='block';
+        }
+        else {
+            element.style.display='none';
+        }
+    }
 </script>
