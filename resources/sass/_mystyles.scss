@@ -1309,12 +1309,11 @@ body,html{
     opacity: 1;
 }
 .shp__title{
-    font: var(--unnamed-font-style-normal) normal normal 20px/20px var(--unnamed-font-family-open-sans);
     font: normal normal normal 20px/20px Open Sans;
-    top:1.5%;
+    margin-top:4%;
     left:5%;
     width:60%;
-    position: absolute;
+    position:absolute;
 }
 .shp__cuerpo{
     width:100%;
@@ -1350,7 +1349,7 @@ body,html{
     height:8%;
     left:50%;
     position:absolute;
-    top:5.2%;
+    top:10%;
 }
 .shp__cuerpolefttitle{
     top: 13%;
