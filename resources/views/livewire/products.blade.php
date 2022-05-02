@@ -147,32 +147,32 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <table class="table table-striped">
-                        <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Descripcion </th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody style="text-align:center;">
-                           @foreach($data as $producto)
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <span class="td__title">{{ $producto->name }}</span>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="align-middle">{{ $producto->description }}</span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <table class="table table-striped">
+                    <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Descripcion </th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center;">
+                       @foreach($data as $producto)
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="td__title">{{ $producto->name }}</span>
+                            </td>
+                            <td class="align-middle">
+                                <span class="align-middle">{{ $producto->description }}</span>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
