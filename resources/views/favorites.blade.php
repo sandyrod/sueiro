@@ -1,4 +1,4 @@
 @extends('layouts.dashboardcar')
 @section('content')
-    @livewire('orders')
+    @livewire('favorites')
 @endsection

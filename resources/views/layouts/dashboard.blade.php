@@ -23,7 +23,7 @@
             @guest
                 <div class="banner_title4">
                     <i class="far fa-user"></i>
-                    <span data-bs-toggle="modal"  href="#exampleModalToggle" class="">ZONA PRIVADA</span>
+                    <span data-bs-toggle="modal" href="#exampleModalToggle" class="">ZONA PRIVADA</span>
                     {{-- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a> --}}
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -60,15 +60,41 @@
                     </form>
                 </div>
             @endguest
-            <div class="banner_title5">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-instagram"></i>  
-                @if (Auth::check())
-                    <a class="logout" href="{{ url('/logout') }}"> Cerrar cession</a>
-                @endif          
-            </div>
+            @if (Auth::check())
+                <div style="z-index: 1; margin-left:70%; " >
+                    <button style="background: #333333" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i style="color: #fff" class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
+                    </button>
+                    <ul style="width: 15%" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a style="color: #c1282d; font-size:110%"  class="dropdown-item" href="#"><i class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-cog'></i> Configuración</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="btn_logout" href="{{ url('/logout') }}"> Cerrar cession</a>
+                        </li>   
+                    </ul>
+                    <button style="background: #333333" class="btn btn-secondary" id="dropdownMenuButton1"  aria-expanded="false">
+                        $ USD 1 | ARS 115,87
+                    </button> 
+                </div>
+            @endif 
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav style="z-index:1"  class="sticky-sm-top navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="home"><img src="/img/logo.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -86,5 +112,61 @@
             @yield('content')
         </div>
         @livewireScripts
+        {{-- footer --}}
+        <div class="row">
+            <div class="col-sm-2">
+                <img style=" height: 50%; margin-left:15%;" src="/img/logofooter.png">    
+                    <br><br><div class="row">                
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-2">
+                        <i  class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="col-sm-2">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>    
+            <div class="col">
+                <div class="footer_container2">
+                    <br>
+                    <div class="row footer__cont_red">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-4"><span>SECCIONES</span></div>
+                        <div class="col-sm-4"><span>SUSCRIBITE AL NEWSLETTER</span></div>
+                        <div class="col-sm-2"><span>CONTACTO</span></div>
+                    </div>
+                    <br>
+                    <div class="row footer__cont_whait">
+                        <div class="col-sm-1"></div>
+                            <div class="col-sm-2">
+                                <span>NOSOTROS</span>
+                                <br>
+                                <span>PRODUCTOS</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span>SOLICITAR PRESUPUESTO </span>
+                                <br>
+                                <span>CONTACTO</span>
+                            </div>
+                            <div class="col-sm-4">                            
+                                <form action="{{ route('suscribe') }}" method='post'>
+                                    @csrf
+                                    <input class="footer__input_email" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
+                                    <button class="footer__btn_email"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                                <i class="fas fa-map-marker-alt"> <span> Bergamini 1127 - Ciudadela</span></i>
+                                <br><br>
+                                <i class="far fa-envelope"> <span> Ventas@sueiroehijos.com.ar</span></i>
+                                <br><br>
+                                <i class="fas fa-phone-alt"> <span> 54-11 4488-4649 / 3825</span></i>
+                                <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

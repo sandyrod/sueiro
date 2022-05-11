@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "153cb18a75873dfc77ee616b22f540a0",
+    "content-hash": "ac378656aaa684398bfc686667e4c1f7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -149,24 +149,25 @@
         },
         {
             "name": "biscolab/laravel-recaptcha",
-            "version": "5.2.0",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/biscolab/laravel-recaptcha.git",
-                "reference": "30175f16f77d5439d0e058e4dd3b2071dfe4c269"
+                "reference": "c5af231e59996603bfa8d86b0c5119621f934345"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/biscolab/laravel-recaptcha/zipball/30175f16f77d5439d0e058e4dd3b2071dfe4c269",
-                "reference": "30175f16f77d5439d0e058e4dd3b2071dfe4c269",
+                "url": "https://api.github.com/repos/biscolab/laravel-recaptcha/zipball/c5af231e59996603bfa8d86b0c5119621f934345",
+                "reference": "c5af231e59996603bfa8d86b0c5119621f934345",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^7.0|^8.0",
+                "illuminate/routing": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
                 "php": "^7.3|^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "5.*|6.*",
+                "orchestra/testbench": "5.*|6.*|^7.0",
                 "phpunit/phpunit": "^9.1"
             },
             "suggest": {
@@ -184,12 +185,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Biscolab\\ReCaptcha\\": "src/"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Biscolab\\ReCaptcha\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -213,9 +214,9 @@
             ],
             "support": {
                 "issues": "https://github.com/biscolab/laravel-recaptcha/issues",
-                "source": "https://github.com/biscolab/laravel-recaptcha/tree/v5.2.0"
+                "source": "https://github.com/biscolab/laravel-recaptcha/tree/v5.3.0"
             },
-            "time": "2022-01-15T14:51:25+00:00"
+            "time": "2022-02-09T20:49:15+00:00"
         },
         {
             "name": "brick/math",

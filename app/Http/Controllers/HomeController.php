@@ -60,5 +60,13 @@ class HomeController extends Controller
     {
         return view('shopping');
     }
+    public function purchase_history()
+    {
+        return view('purchase-history');
+    }
+    public function favorites()
+    {
+        return view('favorites');
+    }
 
 }

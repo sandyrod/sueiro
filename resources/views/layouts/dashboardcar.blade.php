@@ -38,7 +38,6 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                            
                                             <input id="password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="Background-color: transparent; color:#fff" class="form-control input-sm" type="password" placeholder="Password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -61,15 +60,43 @@
                     </form>
                 </div>
             @endguest
-            <div class="banner_title5">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-instagram"></i>
-                @if (Auth::check())
-                    <a href="{{ url('/logout') }}"> Cerrar cession</a>
-                @endif
-            </div>
+            @if (Auth::check())
+                <div style="z-index: 1; margin-left:70%;" >
+                    <button style="background: #333333" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i style="color: #fff" class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
+                    </button>
+                    <ul style="width: 15%" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-cog'></i> Configuración</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="btn_logout" href="{{ url('/logout') }}"> Cerrar cession</a>
+                        </li>
+                    </ul>
+                    <button style="background: #333333" class="btn btn-secondary" id="dropdownMenuButton1"  aria-expanded="false">
+                        $ USD 1 | ARS 115,87
+                    </button>
+                    
+                    
+                 </div>
+            @endif   
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav style="z-index:1" class="sticky-sm-top navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="home"><img src="/img/logo.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -83,7 +110,9 @@
                         <a class="nav-item nav-link" style="color: black" href="contact">CONTACTO</a>
                     @endguest
                     @if (Auth::check())
+                        <a class="nav-item nav-link" style="color: black" href="orders">PEDIDOS</a>
                         <a class="nav-item nav-link" style="color: black" href="remittances">REMITOS</a>
+                        <a class="nav-item nav-link" style="color: black" href="purchase-history">HISTÓRICO DE COMPRAS</a>
                         <a class="nav-item nav-link" style="color: black" href="quality">CALIDAD</a>
                         <a class="nav-item nav-link" style="color: black" href="shopping"><i class="fas fa-shopping-cart"></i></a>
                     @endif
@@ -96,38 +125,56 @@
         @livewireScripts
         <!-- FOOTER -->
         <footer class="w-100 py-4 flex-shrink-0">
-            <div class="container py-4">
-                <div class="row gy-4 gx-5">
-                    <div class="col-lg-4 col-md-6">
-                            <img style="vertical-align: middle; height: 70%;" src="/img/logofooter.png">
-                            {{-- <i style="left: 40%; top:125%; position:absolute; " class="fab fa-facebook-f"></i>
-                            <i style="margin-left: -30%; margin-top: 50%;  "class="fab fa-instagram"></i> --}}
+            <div class="row">
+                <div class="col-sm-2">
+                    <img style=" height: 50%; margin-left:15%;" src="/img/logofooter.png">    
+                        <br><br><div class="row">                
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-2">
+                            <i  class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="col-sm-2">
+                            <i class="fab fa-instagram"></i>
+                        </div>
                     </div>
-                    <div class="col-lg-2 col-md-6">
-                        <div class="footer_container2">
-                            <div>
-                                <br><br>
-                                <span class="footer__cont">SECCIONES</span>
-                                <span class="footer__cont1">SUSCRIBITE AL NEWSLETTER</span>
-                                <span class="footer__cont2">CONTACTO</span>
-                            </div>
-                            <span class="footer__nosotros">NOSOTROS PRODUCTOS</span>
-                            <span class="footer__solicitar">SOLICITAR PRESUPUESTO CONTACTO</span>
-                            <input class="footer__input" placeholder="       Ingresa tu email" id="search" name="search" type="text" value="{{old('search')}}">
-                            <button class="footer__btn"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
-                            <div class="footer__contacto">
-                                <div class="footer__logo--location">
-                                    <i class="fas fa-map-marker-alt"></i>
+                </div>    
+                <div class="col">
+                    <div class="footer_container2">
+                        <br>
+                        <div class="row footer__cont_red">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-4"><span>SECCIONES</span></div>
+                            <div class="col-sm-4"><span>SUSCRIBITE AL NEWSLETTER</span></div>
+                            <div class="col-sm-2"><span>CONTACTO</span></div>
+                        </div>
+                        <br>
+                        <div class="row footer__cont_whait">
+                            <div class="col-sm-1"></div>
+                                <div class="col-sm-2">
+                                    <span>NOSOTROS</span>
+                                    <br>
+                                    <span>PRODUCTOS</span>
                                 </div>
-                                <span class="footer__contacto--title" >Bergamini 1127 - Ciudadela</span>
-                                <div class="footer__logo--envelope">
-                                    <i class="far fa-envelope"></i>
+                                <div class="col-sm-2">
+                                    <span>SOLICITAR PRESUPUESTO </span>
+                                    <br>
+                                    <span>CONTACTO</span>
                                 </div>
-                                <span class="footer__contacto--title1" >ventas@sueiroehijos.com.ar</span>
-                                <div class="footer__logo--phone">
-                                    <i class="fas fa-phone-alt"></i>
+                                <div class="col-sm-4">                            
+                                    <form action="{{ route('suscribe') }}" method='post'>
+                                        @csrf
+                                        <input class="footer__input_email" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
+                                        <button class="footer__btn_email"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
+                                    </form>
                                 </div>
-                                <span class="footer__contacto--title2" >54-11 4488-4649 / 3825</span>
+                                <div class="col-sm-3">
+                                    <i class="fas fa-map-marker-alt"> <span> Bergamini 1127 - Ciudadela</span></i>
+                                    <br><br>
+                                    <i class="far fa-envelope"> <span> Ventas@sueiroehijos.com.ar</span></i>
+                                    <br><br>
+                                    <i class="fas fa-phone-alt"> <span> 54-11 4488-4649 / 3825</span></i>
+                                    <br><br>
+                                </div>
                             </div>
                         </div>
                     </div>
