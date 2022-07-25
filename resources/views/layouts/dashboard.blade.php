@@ -7,107 +7,98 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div class="banner">
-            <div class="banner_title">
-                <i class="fas fa-map-marker-alt"></i>
-                <span class="">Bergamini 1127 - Ciudadela</span>
-            </div>
-            <div class="banner_title2">
-                <i class="far fa-envelope"></i>
-                <span class="">ventas@sueiroehijos.com.ar</span>
-            </div>
-            <div class="banner_title3">
-                <i class="fas fa-phone-alt"></i>
-                <span class="">54-11 4488-4649 / 3825</span>
-            </div>
-            @guest
-                <div class="banner_title4">
-                    <i class="far fa-user"></i>
-                    <span data-bs-toggle="modal" href="#exampleModalToggle" class="">ZONA PRIVADA</span>
-                    {{-- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a> --}}
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <div class="modal modal-sm" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" style="margin-left: 40% "  tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content" style="background: #333333">
-                                    <div class="modal-body row justify-content-center align-items-center ">
-                                        <div class=" col-lg-10 ">
-                                            <input id="email" type="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="Background-color: transparent; color:#fff" class="form-control input-sm" type="text" placeholder="User"><br><br>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror 
-                                            <input id="password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="Background-color: transparent; color:#fff" class="form-control input-sm" type="password" placeholder="Password">
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="row col-md-12">
-                                            <button {{ __('Login') }} type="submit" class="btn btn-danger">Ingresar</button>
-                                        </div>
-                                        <div class="row col-md-12">
-                                            <a style="color: #fff" >Crear nueva cuenta</a>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="container-fluid" style="background: #333;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-sm-4 " style="color:#ffffff;margin-top:2%;">
+                                <i class="fas fa-map-marker-alt">
+                                <span>Bergamini 1127 - Ciudadela</span></i>
+                            </div>
+                            <div class="col-sm-4" style="color:#ffffff;margin-top:2%;">
+                                <i class="far fa-envelope">
+                                <span>Ventas@sueiroehijos.com.ar</span></i>
+                            </div>
+                            <div class="col-sm-4" style="color:#ffffff;margin-top:2%;">
+                                <i class="fas fa-phone-alt">
+                                <span>54-11 4488-4649 / 3825</span></i>
+                            </div>
+                            <div class="col-sm-4" style="color:#ffffff;margin-top:2%;">
+                                
                             </div>
                         </div>
-                    </form>
-                </div>
-            @endguest
-            @if (Auth::check())
-                <div style="z-index: 1; margin-left:70%; " >
-                    <button style="background: #333333" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i style="color: #fff" class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
-                    </button>
-                    <ul style="width: 15%" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                            <a style="color: #c1282d; font-size:110%"  class="dropdown-item" href="#"><i class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-cog'></i> Configuración</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="btn_logout" href="{{ url('/logout') }}"> Cerrar cession</a>
-                        </li>   
-                    </ul>
-                    <button style="background: #333333" class="btn btn-secondary" id="dropdownMenuButton1"  aria-expanded="false">
-                        $ USD 1 | ARS 115,87
-                    </button> 
-                </div>
-            @endif 
-        </div>
-        <nav style="z-index:1"  class="sticky-sm-top navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="home"><img src="/img/logo.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <a class="nav-item nav-link" style="color: black" href="product">PRODUCTOS</a>
-                    <a class="nav-item nav-link" style="color: black" href="nosotros">NOSOTROS </a>
-                    <a class="nav-item nav-link" style="color: black" href="request">SOLICITAR PRESUPUESTO</a>
-                    <a class="nav-item nav-link" style="color: black" href="contact">CONTACTO</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-6 " style="color: #ffffff">
+                                @guest
+                                    <i class="far fa-user" style="color:#ffffff;margin-top:8%;">
+                                    <span data-bs-toggle="modal" href="#exampleModalToggle">ZONA PRIVADA</span></i>
+                                    {{-- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a> --}}
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <div class="modal modal-sm" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" style="margin-left: 40% "  tabindex="-1">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content" style="background: #333333">
+                                                    <div class="modal-body row justify-content-center align-items-center ">
+                                                        <div class=" col-lg-10 ">
+                                                            <input id="email" type="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="Background-color: transparent; color:#fff" class="form-control input-sm" type="text" placeholder="User"><br><br>
+                                                            @error('email')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror 
+                                                            <input id="password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="Background-color: transparent; color:#fff" class="form-control input-sm" type="password" placeholder="Password">
+                                                            @error('password')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="row col-md-12">
+                                                            <button {{ __('Login') }} type="submit" class="btn btn-danger">Ingresar</button>
+                                                        </div>
+                                                        <div class="row col-md-12">
+                                                            <a style="color: #fff" >Crear nueva cuenta</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                @endguest
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
+        <div class="container-fluid" style="background: #333">
+            <nav style="z-index:1" style="background: #333"  class="sticky-sm-top navbar navbar-expand-lg ">
+                <a class="navbar-brand" href="home"><img src="/img/logo.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto mb-2 mb-lg-0" style="background: var(--unnamed-color-c1282d) 0% 0% no-repeat padding-box;
+                    background: #C1282D 0% 0% no-repeat padding-box;
+                    border-radius: 24px;
+                    ">
+                    <a class="nav-item nav-link" style="color: black" href=""></a>
+                        <a class="nav-item nav-link" style="color: #fff" href="product">PRODUCTOS</a>
+                        <a class="nav-item nav-link" style="color: #fff"" href="nosotros">NOSOTROS </a>
+                        <a class="nav-item nav-link" style="color: #fff"" href="request">SOLICITAR PRESUPUESTO</a>
+                        <a class="nav-item nav-link" style="color: #fff"" href="contact">CONTACTO</a>
+                        <a class="nav-item nav-link" style="color: #fff"" href=""><i style="margin-top: 30%" class="fas fa-search"></i></a>
+                        <a class="nav-item nav-link" style="color: #fff"" href=""></a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div class="main">
             @yield('content')
         </div>

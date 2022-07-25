@@ -68,5 +68,9 @@ class HomeController extends Controller
     {
         return view('favorites');
     }
+    public function cotizador()
+    {
+        return view('cotizador');
+    }
 
 }

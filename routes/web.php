@@ -41,4 +41,6 @@ Route::get('/purchase-history',[App\Http\Controllers\HomeController::class, 'pur
 Route::get('/favorites',       [App\Http\Controllers\HomeController::class, 'favorites'])->name('favorites');
 Route::get('/shopping',        [App\Http\Controllers\HomeController::class, 'shopping'])->name('shopping');
 
+Route::get('/cotizador',        [App\Http\Controllers\HomeController::class, 'cotizador'])->name('cotizador');
+
 Route::post('contact',[App\Http\Livewire\Contact::class, 'store'])->name('contact.store');

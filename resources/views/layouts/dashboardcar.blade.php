@@ -96,26 +96,33 @@
                  </div>
             @endif   
         </div>
-        <nav style="z-index:1" class="sticky-sm-top navbar navbar-expand-lg navbar-light bg-light">
+
+        <nav style="z-index:1; background: #333" class="sticky-sm-top navbar navbar-expand-lg">
             <a class="navbar-brand" href="home"><img src="/img/logo.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <a class="nav-item nav-link" style="color: black" href="product">PRODUCTOS</a>
+                <div class="navbar-nav ms-auto mb-2 mb-lg-0" style="background: var(--unnamed-color-c1282d) 0% 0% no-repeat padding-box;
+                background: #C1282D 0% 0% no-repeat padding-box;
+                border-radius: 24px;
+                ">
+                    <a class="nav-item nav-link" style="color: #FFF" href=""></a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="product">PRODUCTOS</a>
                     @guest
-                        <a class="nav-item nav-link" style="color: black" href="nosotros">NOSOTROS </a>
-                        <a class="nav-item nav-link" style="color: black" href="request">SOLICITAR PRESUPUESTO</a>
-                        <a class="nav-item nav-link" style="color: black" href="contact">CONTACTO</a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="nosotros">NOSOTROS </a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="request">SOLICITAR PRESUPUESTO</a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
                     @endguest
                     @if (Auth::check())
-                        <a class="nav-item nav-link" style="color: black" href="orders">PEDIDOS</a>
-                        <a class="nav-item nav-link" style="color: black" href="remittances">REMITOS</a>
-                        <a class="nav-item nav-link" style="color: black" href="purchase-history">HISTÓRICO DE COMPRAS</a>
-                        <a class="nav-item nav-link" style="color: black" href="quality">CALIDAD</a>
-                        <a class="nav-item nav-link" style="color: black" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="orders">PEDIDOS</a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="remittances">REMITOS</a>
+                        <a class="nav-item nav-link" style="color: #fff"" href="cotizador">COTIZADOR</a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="purchase-history">HISTÓRICO DE COMPRAS</a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="quality">CALIDAD</a>
+                        <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
                     @endif
+                    <a class="nav-item nav-link" style="color: #FFF" href=""></a>
                 </div>
             </div>
         </nav>

@@ -21,35 +21,31 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <br>
+                <p class="title-card">FILTROS</p>
+                <div class="card" style="width: 28rem;">
                     <img src="/img/filtros.png">
-                    <div class="card-body">
-                        <p class="card_title">FILTROS</p>
-                    </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="/img/mallas.png"">
-                    <div class="card-body">
-                        <p class="card_title">MALLAS</p>
-                    </div>
+                <br>
+                <p class="title-card">MALLAS</p>
+                <div class="card" style="width: 28rem;">
+                    <img src="/img/mallas.png"">                    
                 </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <br>
+                <p class="title-card">ZARANDAS</p>    
+                <div class="card" style="width: 28rem;">
                     <img src="/img/zarandas.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card_title">ZARANDAS</p>
-                    </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <br>
+                <p class="title-card">TAMICES</p>
+                <div class="card" style="width: 28rem;">
                     <img src="/img/tamices.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card_title">TAMICES</p>
-                    </div>
                 </div>
             </div>
         </div>

@@ -4606,7 +4606,8 @@ readers do not read off random characters that represent icons */
   font-weight: 900; }
 
 @charset "UTF-8";
-body, html {
+body,
+html {
   height: 100%;
 }
 
@@ -6385,6 +6386,49 @@ body, html {
   background: #F9F9F9;
   box-shadow: 0px 3px 6px #00000021;
   opacity: 1;
+}
+
+.title-card {
+  text-align: center;
+  font: normal normal bold 30px/20px Ubuntu;
+  letter-spacing: 0px;
+  color: #333333;
+}
+
+.title-nav {
+  color: #ffffff;
+  margin-top: 12%;
+}
+
+body span {
+  overflow-wrap: anywhere;
+}
+
+.cuerpo15 {
+  background: #f3f3f3;
+  height: 50% !important;
+  width: 50% !important;
+}
+
+.input_cotizador {
+  height: 50px;
+  margin-top: 20px !important;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 11px #8282821A;
+  border: 1px solid #BF2A32;
+  border-radius: 8px;
+  opacity: 1;
+  width: 100%;
+}
+
+.title_cotizador {
+  font-size: 25px;
+  color: BF2A32;
+  margin-top: 100px;
+}
+
+.divOculto {
+  display: none;
 }
 
 /*!
