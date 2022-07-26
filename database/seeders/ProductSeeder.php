@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
 
         Product::firstOrCreate(['id' => 3,'name' => 'CTFP','description' => 'Los cartuchos de polipropileno termofundidos son construidos con multiples capas de profundidad y fabricados por proceso de soplado por fusión tienen una construcción de densidad creciente, que captura las particulas a lo largo de toda la sección transversal del cartucho y reduce la superficie de saturación']);
         
-        Product::firstOrCreate(['id' => 3,'name' => 'CHL','description' => 'Este tipo de cartucho están construidos integramente en acero inoxidable. Están destinados a la filtración de sólidos en liquidos con un rango de retención entre 10 a 200 micrones y son sellados mediante una junta tórica de sección circular para lograr una segregación más eficiente. Estos cartuchos pueden ser aplicados en funcionamientos criticos de mediana presión, con capacidad de soportar elevadas presiones diferenciales. Están construidos para el sentido de flujo se out-in   ']);
+        Product::firstOrCreate(['id' => 4,'name' => 'CHL','description' => 'Este tipo de cartucho están construidos integramente en acero inoxidable. Están destinados a la filtración de sólidos en liquidos con un rango de retención entre 10 a 200 micrones y son sellados mediante una junta tórica de sección circular para lograr una segregación más eficiente. Estos cartuchos pueden ser aplicados en funcionamientos criticos de mediana presión, con capacidad de soportar elevadas presiones diferenciales. Están construidos para el sentido de flujo se out-in   ']);
 
 
 

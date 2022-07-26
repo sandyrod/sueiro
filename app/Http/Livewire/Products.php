@@ -2,11 +2,21 @@
 
 namespace App\Http\Livewire;
 use App\Models\Product;
+use App\Models\Shopping;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+//use App\Helpers\shopping;
 use Livewire\Component;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+
+
+
 
 class Products extends Component
 {
-    public $data, $search, $product_id, $name, $description;
+    public $data, $search, $user, $product_id, $order_quantity, $name, $description, $price, $logo, $request, $cart; 
 
     public $updateMode  = false;
     public $imputActive = false;
@@ -23,6 +33,7 @@ class Products extends Component
                 ? product::where('id', 'like', '%'.$this->search.'%')
                         ->orWhere('name', 'like', '%'.$this->search.'%')
                         ->orWhere('description', 'like', '%'.$this->search.'%')
+                        ->orWhere('price', 'like', '%'.$this->search.'%')
                         ->orderBy('id', 'DESC')
                         ->get()
                 : product::orderBy('id', 'DESC')->get();
@@ -37,18 +48,41 @@ class Products extends Component
 
     public function resetInput()
     {
-        $this->name    = null;
-        $this->description = null;
+        $this->name         = null;
+        $this->description  = null;
         $this->emitUpdates();
+        $this->inputActive  = false;
     }
 
-    public function save()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function save(Request $request)
     {
+
         if ($this->updateMode)
             return $this->update();
 
         return $this->store();
+        if($request->hasFile("logo")){
+
+            
+            $imagen = $request->file("logo");
+            $nombreimagen = Str::slug($request->logo).".".$imagen->guessExtension();
+            $ruta = public_path("img/product/");
+
+            //$imagen->move($ruta,$nombreimagen);
+            copy($imagen->getRealPath(),$ruta.$nombreimagen);
+
+            $evt->logo = $nombreimagen;            
+            
+        }
+
     }
+
 
     public function store()
     {
@@ -60,7 +94,22 @@ class Products extends Component
         Product::create([
             'name'         => $this->name,
             'description'  => $this->description,
+            'logo'  => $this->logo,               
+
         ]);
+
+        /* if($this->request->hasFile("logo")){
+            
+            $imagen = $this->request->file("logo");
+            $nombreimagen = Str::slug($this->request->logo).".".$imagen->guessExtension();
+            $ruta = public_path("img/product/");
+
+            //$imagen->move($ruta,$nombreimagen);
+            copy($imagen->getRealPath(),$ruta.$nombreimagen);
+            
+            $this->logo = $nombreimagen;            
+        } */
+
         $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
         $this->resetInput();
     }
@@ -106,6 +155,33 @@ class Products extends Component
             $this->resetInput();
         }
     }
+
+    public function addToCart(int $product_id): void
+    {
+        
+        $price =  product::find($product_id);
+
+
+         $user_id = Auth::user()->id;
+         $order_quantity  =  $this->order_quantity ;
+
+         $this->validate([
+            'order_quantity' => 'required|min:1'
+        ]);
+          //dd($price->price);
+        
+        shopping::create([
+            'product_id'         => $product_id,
+            'user_id'            => $user_id,
+            'order_number'       => '123',
+            'order_quantity'     => $order_quantity,
+            'price'              => $price->price,
+        ]);
+        //dd($product_id);
+        //  shopping::add(Product::where('id', $product_id)->first());
+        //  $this->emit('productAdded');
+    }
+   
     private function emitUpdates()
     {
 

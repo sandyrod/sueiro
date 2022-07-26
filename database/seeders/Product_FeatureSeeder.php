@@ -39,7 +39,7 @@ class Product_FeatureSeeder extends Seeder
         Product_Feature::firstOrCreate(['id' => 18,'name' => 'Junta tórica','description' => 'EPDM, Acrilo Nitrilo, etc.','product_id' => '4']);
         Product_Feature::firstOrCreate(['id' => 19,'name' => 'Caida de presoión recomendada','description' => '2kg/cm2','product_id' => '4']);
         Product_Feature::firstOrCreate(['id' => 20,'name' => 'Presión máxima de trabajo','description' => '20°c - 4kg/cm2','product_id' => '4']);
-        Product_Feature::firstOrCreate(['id' => 20,'name' => 'Rango de temperatura','description' => '-10°C a + 90°C','product_id' => '4']);
+        Product_Feature::firstOrCreate(['id' => 21,'name' => 'Rango de temperatura','description' => '-10°C a + 90°C','product_id' => '4']);
 
 
 

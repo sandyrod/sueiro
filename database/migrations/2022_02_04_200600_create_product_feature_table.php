@@ -13,10 +13,10 @@ class CreateProductFeatureTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_feature', function (Blueprint $table) {
+        Schema::create('product__features', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('product_id');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateProductFeatureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_feature');
+        Schema::dropIfExists('product__featuress');
     }
 }

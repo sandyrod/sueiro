@@ -1,7 +1,7 @@
 <div style="width: 100%; height:160%; position: relative;">
     <div class="shopping__cuerpo">
         <div class="shopping__cuerpomenu">
-            <span class="tablinks" onclick="openCity(event, 'Productos')" id="defaultOpen">Mis Productos</span>
+            <span class="tablinks"  onclick="openCity(event, 'Productos')" id="defaultOpen">Mis Productos</span>
             <span class="tablinks1" onclick="openCity(event, 'Entrega')">Entrega</span>
             <span class="tablinks2" onclick="openCity(event, 'Pago')">Pago</span>
             <span class="tablinks3" onclick="openCity(event, 'Confirmación')">Confirmación</span>
@@ -20,108 +20,107 @@
                         </tr>
                     </thead>
                     <tbody style="text-align:center;">
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                            <td>
-                                <img class="shp" src="/img/mallas.png"><br>
-                                <span style="margin: 10% 5%">Malla Especial</span>
-                            </td>
-                            <td>
-                                <select class="shopping__select">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </td>
-                            <td>USD 29,3</td>
-                            <td>USD 29,3</td>
-                            <td><i style="color:red;" class="fas fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                            <td>
-                                <img class="shp" src="/img/mallas.png"><br>
-                                <span style="margin: 10% 5%">Malla Especial</span>
-                            </td>
-                            <td>
-                                <select class="shopping__select">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </td>
-                            <td>USD 29,3</td>
-                            <td>USD 29,3</td>
-                            <td><i style="color:red;" class="fas fa-trash-alt"></i></td>
-                        </tr>
+                        @foreach($data as $producto)
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                                <td>
+                                    <img class="shp" src="/img/mallas.png"><br>
+                                    <span style="margin: 10% 5%">{{ $producto->name }}</span>
+                                </td>
+                                    <td>{{ $producto->order_quantity }}</td> 
+                                <td>{{ $producto->price }}</td>
+                                <td> {{($producto->order_quantity)*($producto->price)}} </td>
+                                <td><a wire:click="destroy({{ $producto->id }})"><i class="fas fa-trash-alt" style="color:#C11D1D"></i></a>
+                            </tr>
+                        @endforeach                        
                     </tbody>
-                    <tr style="height:5%; top:28%; left:80%; position:absolute;">
-                        <TD>Subtotal</TD>
-                        <TD style="color:#c1282d;">USD 58,6</TD>
-                    </tr>
+                    
                 </table>
-                <div class="shp__di">
+                <div class="container">
+                    <div style="width:140px; margin-left:88%;" class="row align-items-end">
+                        <div class="col">
+                            @foreach($sud_total as $sud)
+                                <tr style="height:5%; top:28%; left:80%; position:absolute;">
+                                    <TD>Subtotal</TD>
+                                    <TD style="color:#c1282d;">{{$sud->total}}</TD>
+                                </tr>
+                            @endforeach          
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="shp__di">
                     <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
                     <span class="shp__dititle">Observaciones</span>
-                </div>
+                </div> 
                 <div class="shp__obse">
                     <span class="shp__obsetitle">Orden de compra / Usuario</span>
+                    <br><br>
                     <input class="shp__obseimput" type="text" value="" id="flexCheckDefault">
-                    <br>
+                    <br><br>
                     <span class="shp__obsetext">Comentarios</span>
+                    <br><br>
                     <textarea class="shp__obsetexttarea" placeholder="Mensaje"></textarea>
                 </div>
                 <div class="shp__rsmcom">
-                    <div class="shp__fontitle">
-                        <span class="shp__title"> Resumen Compra</span>
-                    </div>
-                    <div class="shp__cuerpo">
-                        <div class="shp__cuerporigth">
-                            <span class="shp__cuerporigth__title">Total Items</span>
-                            <span class="shp__cuerporigth__sudtitle">Subtotal</span>
+                    <div class="sticky-sm-top">
+                        <div class="shp__fontitle">
+                            <span class="shp__title"> Resumen Compra</span>
                         </div>
-                        <div class="shp__cuerpoleft">
-                            <span class="shp__cuerpolefttitle">2</span>
-                            <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
+                        <div class="shp__cuerpo">
+                            <div class="shp__cuerporigth">
+                                <span class="shp__cuerporigth__title">Total Items</span>
+                                <span class="shp__cuerporigth__sudtitle">Subtotal</span>
+                            </div>
+                            <div  class="shp__cuerpoleft">
+                                @foreach($count_item as $item)
+                                    <span class="shp__cuerpolefttitle">{{$item->cantidad}}</span>
+                                @endforeach
+                                @foreach($sud_total as $sud)    
+                                    <span class="shp__cuerpoleftsudtitle">USD {{$sud->total}}$</span>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                    <div class="shp__cuerpo--env">
-                        <div class="shp__cuerpo--envrigth">
-                            <span class="shp__cuerpo--envrigthttitle">Envio</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                        <div class="shp__cuerpo--env">
+                            <div class="shp__cuerpo--envrigth">
+                                <span class="shp__cuerpo--envrigthttitle">Envio</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                            </div>
+                            <div class="shp__cuerpo--envleft">
+                                <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                                <br>
+                                <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                            </div>
                         </div>
-                        <div class="shp__cuerpo--envleft">
-                            <span class="shp__cuerpo--envlefttitle">A definir.</span>
-                            <br>
-                            <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                        <div class="shp__cuerpoiv">
+                            <div class="shp__cuerpo--envrigth">
+                                <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthttitle">Total</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
+                            </div>
+                            <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
+                                <span class="shp__cuerpo--envlefttitle">USD {{$sud->total*0.21}}$</span>
+                                <br>
+                                <span class="shp__cuerpo--envlefttitle">No aplica.</span>
+                                <br>
+                                @foreach($sud_total as $sud)    
+                                    <span class="shp__cuerpo--envlefttitle">USD {{($sud->total*0.21)+($sud->total)}}$</span>
+                                @endforeach
+                                <br>
+                                <span class="shp__cuerpo--envlefttitle">ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="shp__cuerpoiv">
-                        <div class="shp__cuerpo--envrigth">
-                            <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthttitle">Total</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
-                        </div>
-                        <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
-                            <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
-                            <br>
-                            <span class="shp__cuerpo--envlefttitle">No aplica.</span>
-                            <br>
-                            <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
-                            <br>
-                            <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
-                        </div>
-                    </div>
-                    <div style="width:100%; height:15%;">
-                        <div style="width:50%; height:25%;left:40%; position: absolute;">
-                            <button type="button" class="btn btn-danger">Iniciar Compra</button>
-                            <br><br>
-                            <button type="button" class="btn btn-outline-danger">Vaciar Carrito</button>
+                        <div style="width:100%; height:15%;">
+                            <div style="width:50%; height:25%;left:40%; position: absolute;">
+                                <button type="button" class="btn btn-danger">Iniciar Compra</button>
+                                <br><br>
+                                <button type="button" class="btn btn-outline-danger">Vaciar Carrito</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,29 +131,45 @@
                         <span class="shp__enicon"><i class="fas fa-shipping-fast"></i></span>
                         <span class="shp__entitle">Forma de Entrega</span>
                     </div>
-                    <div class="shp__conteentr">
-                        <span class="shp__etrtitle">Seleccione la forma de entrega</span>
-                        <div class="shp__etrcue">
-
-                            <span class="shp__etrtitleret">Retiro en sucursal</span>
-                            <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="" id="">
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <span class="shp__etrtitle">Seleccione la forma de entrega</span>
+                                <br>
+                                <div class="shp__etrcue">
+                                    <span class="shp__etrtitleret">Retiro en sucursal</span>
+                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="" id="">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="shp__etrcon2">
-                        <div class="shp__etrtext">
-                            <span>Sucursal Ciudadela</span><br>
-                            <span>Bergamini 1127 - Ciudadela</span><br>
-                            <span>54-11 4488-4649 / 3825</span><br>
-                            <span>Lu a Vie de 8 a 17 hrs</span>
-                        </div>
-                        <div class="shp__etrmap">
-                            MAPA
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div style="max-width:25%; margin-left:6%; " class="col">
+                                <span><b>Sucursal Ciudadela</b></span>                                
+                                <span>Bergamini 1127 - Ciudadela</span>
+                                <span>54-11 4488-4649 / 3825</span>
+                                <span>Lu a Vie de 8 a 17 hrs</span>
+                            </div>
+                            <div style="margin-top: -5%" class="col">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.143550548068!2d-58.53818750000001!3d-34.6258125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7c77ca45177ec70b!2s48Q39FF6%2BMP!5e0!3m2!1ses-419!2sve!4v1643913947570!5m2!1ses-419!2sve" width="520" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
                         </div>
                     </div>
-                    <div style="">
-                        <div class="shp__etrcue1">
-                            <span class="shp__etrtitleret">Envío a domicilio</span>
-                            <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="" id="">
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <div class="shp__etrcue1">
+                                    <span class="shp__etrtitleret">Envío a domicilio</span>
+                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="1" id="check" onchange="javascript:showContent()">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div id="content" style="display: none;">
+                                  Direccion  <input class="form-control" placeholder="Dirección">
+                                  Telefono   <input class="form-control" placeholder="Telefono">
+                                </div>
+                            </div>                          
                         </div>
                     </div>
                 </div>
@@ -174,60 +189,62 @@
                     </div>
                 </div>
                 <div class="shp__rsmcom">
-                    <div class="shp__fontitle">
-                        <span class="shp__title"> Resumen Compra</span>
-                    </div>
-                    <div class="shp__cuerpo">
-                        <div class="shp__cuerporigth">
-                            <span class="shp__cuerporigth__title">Total Items</span>
-                            <span class="shp__cuerporigth__sudtitle">Subtotal</span>
+                    <div class="sticky-sm-top">
+                        <div class="shp__fontitle">
+                            <span class="shp__title"> Resumen Compra</span>
                         </div>
-                        <div class="shp__cuerpoleft">
-                            <span class="shp__cuerpolefttitle">2</span>
-                            <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
+                        <div class="shp__cuerpo">
+                            <div class="shp__cuerporigth">
+                                <span class="shp__cuerporigth__title">Total Items</span>
+                                <span class="shp__cuerporigth__sudtitle">Subtotal</span>
+                            </div>
+                            <div class="shp__cuerpoleft">
+                                <span class="shp__cuerpolefttitle">2</span>
+                                <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="shp__cuerpo--env">
-                        <div class="shp__cuerpo--envrigth">
-                            <span class="shp__cuerpo--envrigthttitle">Envio</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                        <div class="shp__cuerpo--env">
+                            <div class="shp__cuerpo--envrigth">
+                                <span class="shp__cuerpo--envrigthttitle">Envio</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                            </div>
+                            <div class="shp__cuerpo--envleft">
+                                <span class="shp__cuerpo--envlefttitle">Sin costo.</span>
+                                <br>
+                                <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                            </div>
                         </div>
-                        <div class="shp__cuerpo--envleft">
-                            <span class="shp__cuerpo--envlefttitle">Sin costo.</span>
-                            <br>
-                            <span class="shp__cuerpo--envlefttitle">A definir.</span>
-                        </div>
-                    </div>
-                    <div class="shp__cuerpoiv">
-                        <div class="shp__cuerpo--envrigth">
-                            <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthttitle">Total</span>
-                            <br>
-                            <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
-                        </div>
-                        <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
-                            <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
-                            <br>
+                        <div class="shp__cuerpoiv">
+                            <div class="shp__cuerpo--envrigth">
+                                <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthttitle">Total</span>
+                                <br>
+                                <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
+                            </div>
+                            <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
+                                <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
+                                <br>
 
-                            <span class="shp__cuerpo--envlefttitle">No aplica.</span>
-                            <br>
+                                <span class="shp__cuerpo--envlefttitle">No aplica.</span>
+                                <br>
 
-                            <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
-                            <br>
+                                <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
+                                <br>
 
-                            <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
+                                <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
+                            </div>
                         </div>
-                    </div>
-                    <div style="width:100%; height:15%;">
-                        <div style="width:50%; height:25%;left:40%; position: absolute;">
-                            <button type="button" class="btn btn-danger">Iniciar Compra</button>
-                            <br><br>
-                            <button type="button" class="btn btn-outline-danger"><i class="far fa-star"></i>
-                                Guardar Carrito</button>
+                        <div style="width:100%; height:15%;">
+                            <div style="width:50%; height:25%;left:40%; position: absolute;">
+                                <button type="button" class="btn btn-danger">Iniciar Compra</button>
+                                <br><br>
+                                <button type="button" class="btn btn-outline-danger"><i class="far fa-star"></i>
+                                    Guardar Carrito</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -305,80 +322,77 @@
                 </div>
 
             </div>
-                <div class="shp__etrcon3">
-                  <div class="shp__etrdiv">
-                      <div class="shp__di">
-                          <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
-                          <span class="shp__dititle">Observaciones</span>
-                      </div>
-                  </div>
-                  <div class="shp__etrobs">
-                      <span class="shp__obsetitle">Orden de compra / Usuario</span>
-                      <input class="shp__etrobsinput" type="text" placeholder="N de orden o Usuario registrado">
-                      <br><br>
-                      <span class="shp__obsetext">Comentarios</span>
-                      <textarea class="shp__etrobstext" placeholder="Observaciones/Sugerencias"></textarea>
-                  </div>
-        
-
+            <div class="shp__etrcon3">
+                <div class="shp__etrdiv">
+                    <div class="shp__di">
+                        <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
+                        <span class="shp__dititle">Observaciones</span>
+                    </div>
+                </div>
+                <div class="shp__etrobs">
+                    <span class="shp__obsetitle">Orden de compra / Usuario</span>
+                    <input class="shp__etrobsinput" type="text" placeholder="N de orden o Usuario registrado">
+                    <br><br>
+                    <span class="shp__obsetext">Comentarios</span>
+                    <textarea class="shp__etrobstext" placeholder="Observaciones/Sugerencias"></textarea>
+                </div>
             </div>
             <div class="shp__rsmcom">
-              <div class="shp__fontitle">
-                  <span class="shp__title"> Resumen Compra</span>
-              </div>
-              <div class="shp__cuerpo">
-                  <div class="shp__cuerporigth">
-                      <span class="shp__cuerporigth__title">Total Items</span>
-                      <span class="shp__cuerporigth__sudtitle">Subtotal</span>
-                  </div>
-                  <div class="shp__cuerpoleft">
-                      <span class="shp__cuerpolefttitle">2</span>
-                      <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
-                  </div>
-              </div>
-              <div class="shp__cuerpo--env">
-                  <div class="shp__cuerpo--envrigth">
-                      <span class="shp__cuerpo--envrigthttitle">Envio</span>
-                      <br>
-                      <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
-                  </div>
-                  <div class="shp__cuerpo--envleft">
-                      <span class="shp__cuerpo--envlefttitle">Sin costo.</span>
-                      <br>
-                      <span class="shp__cuerpo--envlefttitle">A definir.</span>
-                  </div>
-              </div>
-              <div class="shp__cuerpoiv">
-                  <div class="shp__cuerpo--envrigth">
-                      <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
-                      <br>
-                      <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
-                      <br>
-                      <span class="shp__cuerpo--envrigthttitle">Total</span>
-                      <br>
-                      <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
-                  </div>
-                  <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
-                      <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
-                      <br>
-
-                      <span class="shp__cuerpo--envlefttitle">No aplica.</span>
-                      <br>
-
-                      <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
-                      <br>
-
-                      <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
-                  </div>
-              </div>
-              <div style="width:100%; height:15%;">
-                  <div style="width:50%; height:25%;left:40%; position: absolute;">
-                      <button type="button" class="btn btn-danger">Continuar</button>
-                      <br><br>
-                      <button type="button" class="btn btn-outline-danger"><i class="far fa-star"></i>Guardar Carrito</button>
-                  </div>
-              </div>
-          </div>
+                <div class="sticky-sm-top">
+                    <div class="shp__fontitle">
+                        <span class="shp__title"> Resumen Compra</span>
+                    </div>
+                    <div class="shp__cuerpo">
+                        <div class="shp__cuerporigth">
+                            <span class="shp__cuerporigth__title">Total Items</span>
+                            <span class="shp__cuerporigth__sudtitle">Subtotal</span>
+                        </div>
+                        <div class="shp__cuerpoleft">
+                            <span class="shp__cuerpolefttitle">2</span>
+                            <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
+                        </div>
+                    </div>
+                    <div class="shp__cuerpo--env">
+                        <div class="shp__cuerpo--envrigth">
+                            <span class="shp__cuerpo--envrigthttitle">Envio</span>
+                            <br>
+                            <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                        </div>
+                        <div class="shp__cuerpo--envleft">
+                            <span class="shp__cuerpo--envlefttitle">Sin costo.</span>
+                            <br>
+                            <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                        </div>
+                    </div>
+                    <div class="shp__cuerpoiv">
+                        <div class="shp__cuerpo--envrigth">
+                            <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
+                            <br>
+                            <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
+                            <br>
+                            <span class="shp__cuerpo--envrigthttitle">Total</span>
+                            <br>
+                            <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
+                        </div>
+                        <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
+                            <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
+                            <br>
+                            <span class="shp__cuerpo--envlefttitle">No aplica.</span>
+                            <br>
+                            <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
+                            <br>
+                            <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
+                        </div>
+                    </div>
+                    <div style="width:100%; height:15%;">
+                        <div style="width:50%; height:25%;left:40%; position: absolute;">
+                            <button type="button" class="btn btn-danger">Continuar</button>
+                            <br><br>
+                            <button type="button" class="btn btn-outline-danger"><i class="far fa-star"></i>Guardar Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="Confirmación" class="tabcontent">
             <div class="row">
@@ -510,4 +524,16 @@
     }
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
+</script>
+<script type="text/javascript">
+    function showContent() {
+        element = document.getElementById("content");
+        check = document.getElementById("check");
+        if (check.checked) {
+            element.style.display='block';
+        }
+        else {
+            element.style.display='none';
+        }
+    }
 </script>

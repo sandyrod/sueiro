@@ -16,5 +16,6 @@ Options All -Indexes
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ server.php
+    AddHandler php7.4-script .php
 
 </IfModule>
