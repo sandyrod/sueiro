@@ -36,7 +36,7 @@ class Products extends Component
                         ->orWhere('price', 'like', '%'.$this->search.'%')
                         ->orderBy('id', 'DESC')
                         ->get()
-                : product::orderBy('id', 'DESC')->get();
+                : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
             return view('livewire.products');
     }
     public function mount()
@@ -176,7 +176,10 @@ class Products extends Component
             'order_number'       => '123',
             'order_quantity'     => $order_quantity,
             'price'              => $price->price,
+        
         ]);
+        session()->flash('message', 'Post successfully updated.');
+        
         //dd($product_id);
         //  shopping::add(Product::where('id', $product_id)->first());
         //  $this->emit('productAdded');
