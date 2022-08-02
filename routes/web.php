@@ -46,3 +46,4 @@ Route::get('/shopping',        [App\Http\Controllers\HomeController::class, 'sho
 Route::get('/cotizador',        [App\Http\Controllers\HomeController::class, 'cotizador'])->name('cotizador');
 
 Route::post('contact',[App\Http\Livewire\Contact::class, 'store'])->name('contact.store');
+
