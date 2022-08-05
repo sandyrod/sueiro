@@ -59,6 +59,14 @@
                     <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"><i class="fa fa-trash"></i>Cancelar</button>
                 </div>
             @endif
+            @if(session()->has('message'))
+                <div class="alert" id="alert">
+                    <div class="alert alert-success" style="width: 23%; margin-left:77%">
+                        {{ session()->get('message') }}
+                    </div>
+                </div>
+            
+            @endif
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <table class="table table-striped">
@@ -179,18 +187,17 @@
     @endguest
 </div>
 <div>
-
-    @if (session()->has('message'))
-
-        <div class="alert alert-success">
-
-            {{ session('message') }}
-
-        </div>
-
-    @endif
-
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(".alert").delay(5000).slideUp(200, function () {
+        $(this).alert('close');
+        alert('hola');
+    });
+</script>
+
+
 <script>
     function seleccionado(){
         var opt = $('#opcion').val();

@@ -110,7 +110,8 @@ class Products extends Component
             $this->logo = $nombreimagen;            
         } */
 
-        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
+//        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
+return redirect()->back()->with('message', 'Registro Guardado con Exito...');
         $this->resetInput();
     }
 
@@ -123,8 +124,8 @@ class Products extends Component
         $this->emitUpdates();
 
         $this->updateMode = true;
-
         $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro cargado...']);
+        
     }
 
     public function update()
@@ -139,7 +140,8 @@ class Products extends Component
                 'name'      => $this->name,
                 'description'        => $this->description,
             ]);
-            $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro actualizado...']);
+            
+            return redirect()->back()->with('message', 'Registro actualizado...');
             $this->resetInput();
             $this->updateMode = false;
         }
@@ -151,7 +153,8 @@ class Products extends Component
             $record = Product::find($id);
             $record->delete();
 
-            $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro eliminado...']);
+            ///$this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro eliminado...']);
+            return redirect()->back()->with('message', 'Registro eliminado...');
             $this->resetInput();
         }
     }
@@ -165,8 +168,10 @@ class Products extends Component
          $user_id = Auth::user()->id;
          $order_quantity  =  $this->order_quantity ;
 
+        
          $this->validate([
             'order_quantity' => 'required|min:1'
+            
         ]);
           //dd($price->price);
         
@@ -178,7 +183,9 @@ class Products extends Component
             'price'              => $price->price,
         
         ]);
-        session()->flash('message', 'Post successfully updated.');
+        
+        
+        
         
         //dd($product_id);
         //  shopping::add(Product::where('id', $product_id)->first());
