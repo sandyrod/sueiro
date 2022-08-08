@@ -111,7 +111,7 @@ class Products extends Component
         } */
 
 //        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
-return redirect()->back()->with('message', 'Registro Guardado con Exito...');
+        return redirect()->back()->with('message', 'Registro Guardado con Exito...');
         $this->resetInput();
     }
 

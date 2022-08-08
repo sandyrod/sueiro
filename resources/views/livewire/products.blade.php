@@ -65,7 +65,6 @@
                         {{ session()->get('message') }}
                     </div>
                 </div>
-            
             @endif
             <div class="row justify-content-center">
                 <div class="col-md-10">
@@ -186,15 +185,15 @@
     </div>
     @endguest
 </div>
-<div>
-</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script type="text/javascript">
-    $(".alert").delay(5000).slideUp(200, function () {
-        $(this).alert('close');
-        alert('hola');
-    });
+    $(document).ready(function() {        
+        setTimeout(function() {
+          $("#alerts").hide(6000);
+          }, 3000);
+        });
 </script>
 
 
