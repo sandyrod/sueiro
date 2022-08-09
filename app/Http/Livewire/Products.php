@@ -173,6 +173,7 @@ class Products extends Component
             'order_quantity' => 'required|min:1'
             
         ]);
+        
           //dd($price->price);
         
         shopping::create([
@@ -184,8 +185,8 @@ class Products extends Component
         
         ]);
         
-        
-        
+        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Producto cargado...']);
+
         
         //dd($product_id);
         //  shopping::add(Product::where('id', $product_id)->first());
