@@ -11,4 +11,9 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'price', 'category_id','logo','skufield'];
     
     use HasFactory;
+
+    public function orderdetails()
+    {
+        return $this->hasMany(OrderDetails::class);
+    }
 }

@@ -28,16 +28,41 @@
               <td class="orders__stadpedido">{{ $order->status }}</td>
               <td>${{ $order->total }}</td>
               <td>
-                <button wire:click="details({{ $order->id }})" class="orders__btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">VER DETALLE <i class="far fa-eye"></i></button></td>
+                <button wire:click.prevent="details({{ $order->id }})" class="orders__btn" type="button" class="btn btn-primary">VER DETALLE <i class="far fa-eye"></i></button></td>
             </tr>
           @endforeach
           </tbody>
         </table>
       </div>
+      <div class="row">
+      <table class="table">
+            <thead>
+              <tr class="orders__stadpedido">
+                <th scope="col-6 col-md-4">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Total </th>
+                <!--<th scope="col">Pendiente</th>-->
+              </tr>
+            </thead>
+            <tbody>
+              @forelse($orderDetails as $detail)
+              <tr>
+                <th scope="row">{{ $detail->product->name }}</th>
+                <td>{{ $detail->quantity }}</td>
+                <td>${{ $detail->price }}</td>
+                <td>${{ $detail->quantity * $detail->price }}</td>
+              </tr>
+              @empty
+              <tr><td colspan="4">Sin datos</td></tr>
+              @endforelse
+            </tbody>
+          </table>
+      </div>
     </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade bd-example-modal-lg" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade bd-example-modal-lg show" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header"style="background: #C1282D; color:#FFFFFF ">
@@ -51,19 +76,21 @@
                 <th scope="col-6 col-md-4">Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
-                <th scope="col">Total</th>
+                <th scope="col">Total </th>
                 <!--<th scope="col">Pendiente</th>-->
               </tr>
             </thead>
             <tbody>
-              @foreach($orderDetails as $detail)
+              @forelse($orderDetails as $detail)
               <tr>
                 <th scope="row">{{ $detail->producto_id }}</th>
                 <td>{{ $detail->quantity }}</td>
                 <td>${{ $detail->price }}</td>
                 <td>${{ $detail->quantity * $detail->price }}</td>
               </tr>
-              @endforeach
+              @empty
+              <tr><td colspan="4">Sin datos</td></tr>
+              @endforelse
             </tbody>
           </table>
         </div>
