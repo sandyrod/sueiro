@@ -44,12 +44,16 @@ class Products extends Component
         $this->Title = "Productos";
         $this->name    = null;
         $this->description      = null;
+        $this->price      = null;
+        $this->order_quantity = null;
     }
 
     public function resetInput()
     {
         $this->name         = null;
         $this->description  = null;
+        $this->order_quantity = null;
+        $this->price = null;
         $this->emitUpdates();
         $this->inputActive  = false;
     }
@@ -88,12 +92,14 @@ class Products extends Component
     {
         $this->validate([
             'name'   => 'required',
-            'description'   => 'required'
+            'description'   => 'required',
+            'price'   => 'required'
 
         ]);
         Product::create([
             'name'         => $this->name,
             'description'  => $this->description,
+            'price'  => $this->price,
             'logo'  => $this->logo,               
 
         ]);
@@ -121,11 +127,11 @@ class Products extends Component
         $this->product_id          = $id;
         $this->name                 = $record->name;
         $this->description          = $record->description;
+        $this->price          = $record->price;
         $this->emitUpdates();
 
         $this->updateMode = true;
-        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro cargado...']);
-        
+                
     }
 
     public function update()
@@ -133,12 +139,14 @@ class Products extends Component
         $this->validate([
             'name'      => 'required',
             'description'        => 'required',
+            'price'        => 'required',
         ]);
         if ($this->product_id) {
             $record = Product::find($this->product_id);
             $record->update([
                 'name'      => $this->name,
                 'description'        => $this->description,
+                'price'        => $this->price,
             ]);
             
             return redirect()->back()->with('message', 'Registro actualizado...');
@@ -173,8 +181,9 @@ class Products extends Component
             'order_quantity' => 'required|min:1'
             
         ]);
-        
+        $this->resetInput();
           //dd($price->price);
+          $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro cargado...']);
         
         shopping::create([
             'product_id'         => $product_id,
@@ -185,8 +194,8 @@ class Products extends Component
         
         ]);
         
-        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Producto cargado...']);
-
+        
+        
         
         //dd($product_id);
         //  shopping::add(Product::where('id', $product_id)->first());
