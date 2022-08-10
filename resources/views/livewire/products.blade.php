@@ -25,6 +25,10 @@
                         <input type="text" placeholder="Nombre de Producto" class="form-control" wire:model.defer="name" style="margin-right:5px;">
                         <input type="hidden" wire:model.defer="product_id">
                     </div>
+                    <div class="col-md-3">
+                        <label>Precio de Producto</label>
+                        <input type="text" placeholder="Precio de Producto" class="form-control" wire:model.defer="price" style="margin-right:5px;">
+                    </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-6">
@@ -56,7 +60,7 @@
                 <br>
                 <div class="row justify-content-center">  
                     <button type="button" class="btn btn-success col-md-1" wire:click="save"><i class="fa fa-save"></i>Guardar</button>
-                    <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"><i class="fa fa-trash"></i>Cancelar</button>
+                    <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"> <i class="fa fa-trash"></i>Cancelar</button>
                 </div>
             @endif
             @if(session()->has('message'))
