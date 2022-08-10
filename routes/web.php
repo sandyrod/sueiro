@@ -28,6 +28,7 @@ Route::view('/product-list', 'product-list');
 Route::post('/suscribe', [App\Http\Controllers\NewsletterController::class, 'store'])->name('suscribe');
 Route::get('/tango', [App\Http\Controllers\HomeController::class, 'api'])->name('tango');
 Route::get('/tangoprice', [App\Http\Controllers\HomeController::class, 'price'])->name('tangoprice');
+Route::get('/tangopedido', [App\Http\Controllers\HomeController::class, 'pedido'])->name('tangopedido');
 
 Auth::routes();
 
