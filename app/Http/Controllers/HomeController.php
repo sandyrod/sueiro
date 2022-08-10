@@ -114,6 +114,9 @@ class HomeController extends Controller
     }
 
     public function pedido(){
+        $orderObject[
+
+        ];
         $response = Http::withHeaders([
             'accesstoken' => '03844717-5220-40e7-adba-e1c830091425_13003'
         ])->post('https://tiendas.axoft.com/api/Aperture/order',
@@ -155,6 +158,77 @@ class HomeController extends Controller
         print_r($data);
         
         
+    }
+    public function state($id, $state) {
+        $order = Order::find($id);
+        if ($state == 'approve') {
+            $order->status = 'approved';
+            $orderID = 'WEB-' . Str::padLeft($order->id, 5, '0');
+            $itemObject = [];
+            $total = 0;
+            foreach ($order->combos as $key => $combo) {
+                $p = TangoProducts::where('s_k_u_code', $combo->product_code)->first();
+                $itemObject[] = [
+                    'ProductCode' => $p->id,
+                    'SKUCode'     => $p->s_k_u_code,
+                    'Description' => $p->description,
+                    'Quantity'    => $combo->quantity,
+                    'UnitPrice'   => $combo->price,
+                ];
+                $total += $combo->price * $combo->quantity;
+            }
+            foreach ($order->accessories as $key => $item) {
+                $p = TangoProducts::where('id', $item->product_code)->first();
+                $itemObject[] = [
+                    'ProductCode' => $p->id,
+                    'SKUCode'     => $p->s_k_u_code,
+                    'Description' => $p->description,
+                    'Quantity'    => $item->quantity,
+                    'UnitPrice'   => $item->price,
+                ];
+                $total += $item->price * $item->quantity;
+            }
+            $orderObject = [
+                'OrderID' => $orderID,
+                'OrderNumber' => $orderID,
+                'Date' => /* '2022-08-09T09:31:00' */$order->created_at->format('Y-m-d\TH:i:s'),
+                'Total' => $total,
+                'TotalDiscount' => 0.0,
+                'Comment' => 'PEDIDO WEB COD: ' . $orderID . ' - ' . $order->notes,
+                'Customer' => [
+                    "CustomerID" => 1,
+                    "Code" => $order->customer->code,                      
+                    'DocumentType' => '80',
+                    'DocumentNumber' => $order->customer->document_number,
+                    'IVACategoryCode' => 'RI',
+                    'User' => 'web-seller',
+                    'Email' => 'test@test.com',
+                    'FirstName' => $order->customer->business_name,
+                    'LastName' => '',
+                    'ProvinceCode' => $order->customer->province_code,
+                    'MobilePhoneNumber' => '',
+                    'WebPage' => null,
+                    'BusinessAddress' => '',
+                    'Comments' => 'Cliente Web'
+                ],
+                'OrderItems' => $itemObject,
+                'Payments' => [],
+            ];
+            // dd($orderObject);
+            //$json = json_encode($json,JSON_PRETTY_PRINT);
+            $response = Http::withHeaders([
+                'accesstoken' => '9b00281d-7a11-454e-b6b0-98c6d99452e8_13197'
+            ])->post('https://tiendas.axoft.com/api/Aperture/order',
+            $orderObject);
+            $data = $response->json();
+            $order->synced_at = now();
+            // dd($data);        
+        }
+        if ($state == 'reject') {
+            $order->status = 'rejected';
+        }
+        $order->save();
+        return redirect()->back();
     }
 
 }
