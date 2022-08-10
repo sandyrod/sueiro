@@ -85,41 +85,40 @@
                             <div class="shp__cuerpo--envrigth">
                                 <span class="shp__cuerpo--envrigthttitle">Envio</span>
                                 <br>
-                                <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                                {{-- <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span> --}}
                             </div>
                             <div class="shp__cuerpo--envleft">
                                 <span class="shp__cuerpo--envlefttitle">A definir.</span>
                                 <br>
-                                <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                                {{-- <span class="shp__cuerpo--envlefttitle">A definir.</span> --}}
                             </div>
                         </div>
-                        <div class="shp__cuerpoiv">
+                        <div class="shp__cuerpoiv" >
                             <div class="shp__cuerpo--envrigth">
-                                <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
+                                <span class="shp__cuerpo--envrigthttitle" style="margin-top: -10%;">IVA(21%)</span>
                                 <br>
-                                <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
+                                <span class="shp__cuerpo--envrigthttitle" style="margin-top: -10%;">Otros impuestos</span>
                                 <br>
                                 <span class="shp__cuerpo--envrigthttitle">Total</span>
                                 <br>
                                 <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
                             </div>
                             <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
-                                <span class="shp__cuerpo--envlefttitle">USD {{$sud->total*0.21}}$</span>
+                                <span class="shp__cuerpo--envlefttitle">{{$sud->total*0.21}}$</span>
                                 <br>
                                 <span class="shp__cuerpo--envlefttitle">No aplica.</span>
                                 <br>
                                 @foreach($sud_total as $sud)    
-                                    <span class="shp__cuerpo--envlefttitle">USD {{($sud->total*0.21)+($sud->total)}}$</span>
+                                    <br><span class="" style="width:85%; margin-left:40%;" >USD {{($sud->total*0.21)+($sud->total)}}$</span>
                                 @endforeach
                                 <br>
-                                <span class="shp__cuerpo--envlefttitle">ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}</span>
+                                <span class="" style="width:95%; margin-left:30%; ">ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}$</span>
                             </div>
                         </div>
                         <div style="width:100%; height:15%;">
                             <div style="width:50%; height:25%;left:40%; position: absolute;">
-                                <button type="button" class="btn btn-danger">Iniciar Compra</button>
                                 <br><br>
-                                <button type="button" class="btn btn-outline-danger">Vaciar Carrito</button>
+                                <button type="button" wire:click="reset_cart" class="btn btn-outline-danger"><i class="far fa-star"></i> Vaciar Carrito</button>
                             </div>
                         </div>
                     </div>
@@ -138,7 +137,7 @@
                                 <br>
                                 <div class="shp__etrcue">
                                     <span class="shp__etrtitleret">Retiro en sucursal</span>
-                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="" id="">
+                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="1" id="retiro_sucursal">
                                 </div>
                             </div>
                         </div>
@@ -161,19 +160,19 @@
                             <div class="col">
                                 <div class="shp__etrcue1">
                                     <span class="shp__etrtitleret">Envío a domicilio</span>
-                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="1" id="check" onchange="javascript:showContent()">
+                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="2" id="envio_domicilio" onchange="javascript:showContent()">
                                 </div>
                             </div>
                             <div class="col">
-                                <div id="content" style="display: none;">
-                                  Direccion  <input class="form-control" placeholder="Dirección">
-                                  Telefono   <input class="form-control" placeholder="Telefono">
+                                <div id="content" style="">
+                                  Direccion  <input class="form-control" placeholder="Dirección" wire:model.defer="direccion">
+                                  Telefono   <input class="form-control" placeholder="Telefono" wire:model.defer="telefono">
                                 </div>
                             </div>                          
                         </div>
                     </div>
                 </div>
-                <div class="shp__etrcon3">
+                <div class="shp__etrcon3" style="margin-top:7%">
                     <div class="shp__etrdiv">
                         <div class="shp__di">
                             <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
@@ -198,52 +197,53 @@
                                 <span class="shp__cuerporigth__title">Total Items</span>
                                 <span class="shp__cuerporigth__sudtitle">Subtotal</span>
                             </div>
-                            <div class="shp__cuerpoleft">
-                                <span class="shp__cuerpolefttitle">2</span>
-                                <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
+                            <div  class="shp__cuerpoleft">
+                                @foreach($count_item as $item)
+                                    <span class="shp__cuerpolefttitle">{{$item->cantidad}}</span>
+                                @endforeach
+                                @foreach($sud_total as $sud)    
+                                    <span class="shp__cuerpoleftsudtitle">USD {{$sud->total}}$</span>
+                                @endforeach
                             </div>
                         </div>
                         <div class="shp__cuerpo--env">
                             <div class="shp__cuerpo--envrigth">
                                 <span class="shp__cuerpo--envrigthttitle">Envio</span>
                                 <br>
-                                <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                                {{-- <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span> --}}
                             </div>
                             <div class="shp__cuerpo--envleft">
-                                <span class="shp__cuerpo--envlefttitle">Sin costo.</span>
-                                <br>
                                 <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                                <br>
+                                {{-- <span class="shp__cuerpo--envlefttitle">A definir.</span> --}}
                             </div>
                         </div>
-                        <div class="shp__cuerpoiv">
+                        <div class="shp__cuerpoiv" >
                             <div class="shp__cuerpo--envrigth">
-                                <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
+                                <span class="shp__cuerpo--envrigthttitle" style="margin-top: -10%;">IVA(21%)</span>
                                 <br>
-                                <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
+                                <span class="shp__cuerpo--envrigthttitle" style="margin-top: -10%;">Otros impuestos</span>
                                 <br>
                                 <span class="shp__cuerpo--envrigthttitle">Total</span>
                                 <br>
                                 <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
                             </div>
                             <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
-                                <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
+                                <span class="shp__cuerpo--envlefttitle">{{$sud->total*0.21}}$</span>
                                 <br>
-
                                 <span class="shp__cuerpo--envlefttitle">No aplica.</span>
                                 <br>
-
-                                <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
+                                @foreach($sud_total as $sud)    
+                                    <br><span class="" style="width:85%; margin-left:40%;" >USD {{($sud->total*0.21)+($sud->total)}}$</span>
+                                @endforeach
                                 <br>
-
-                                <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
+                                <span class="" style="width:95%; margin-left:30%; ">ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}$</span>
                             </div>
                         </div>
                         <div style="width:100%; height:15%;">
                             <div style="width:50%; height:25%;left:40%; position: absolute;">
-                                <button type="button" class="btn btn-danger">Iniciar Compra</button>
                                 <br><br>
-                                <button type="button" class="btn btn-outline-danger"><i class="far fa-star"></i>
-                                    Guardar Carrito</button>
+                                <button type="button" wire:click="reset_cart" class="btn btn-outline-danger"><i class="far fa-star"></i> Vaciar Carrito</button>
                             </div>
                         </div>
                     </div>
@@ -272,6 +272,17 @@
                   opacity: 1;">
                     <input style="margin:10% 7%;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
                     <span style="margin:1.5% 2%; position: absolute;"> Contado</span>
+                    
+                </div>
+                <div style="
+                margin: -10% 60%;                  
+                width: 171px;
+                height: 55px;
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                ">
+                    Monto<input class="form-control" placeholder="Monto" wire:model.defer="monto">
+                    Referencia<input class="form-control" placeholder="Referencia" wire:model.defer="ref">
+                    Fecha<input class="form-control" placeholder="Fecha" wire:model.defer="fecha">
                 </div>
                 <div style="
                 margin:30px 35px;
@@ -347,48 +358,53 @@
                             <span class="shp__cuerporigth__title">Total Items</span>
                             <span class="shp__cuerporigth__sudtitle">Subtotal</span>
                         </div>
-                        <div class="shp__cuerpoleft">
-                            <span class="shp__cuerpolefttitle">2</span>
-                            <span class="shp__cuerpoleftsudtitle">USD 58,6</span>
+                        <div  class="shp__cuerpoleft">
+                            @foreach($count_item as $item)
+                                <span class="shp__cuerpolefttitle">{{$item->cantidad}}</span>
+                            @endforeach
+                            @foreach($sud_total as $sud)    
+                                <span class="shp__cuerpoleftsudtitle">USD {{$sud->total}}$</span>
+                            @endforeach
                         </div>
                     </div>
                     <div class="shp__cuerpo--env">
                         <div class="shp__cuerpo--envrigth">
                             <span class="shp__cuerpo--envrigthttitle">Envio</span>
                             <br>
-                            <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span>
+                            {{-- <span class="shp__cuerpo--envrigthtsudtitle">Bonificaciones</span> --}}
                         </div>
                         <div class="shp__cuerpo--envleft">
-                            <span class="shp__cuerpo--envlefttitle">Sin costo.</span>
-                            <br>
                             <span class="shp__cuerpo--envlefttitle">A definir.</span>
+                            <br>
+                            {{-- <span class="shp__cuerpo--envlefttitle">A definir.</span> --}}
                         </div>
                     </div>
-                    <div class="shp__cuerpoiv">
+                    <div class="shp__cuerpoiv" >
                         <div class="shp__cuerpo--envrigth">
-                            <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
+                            <span class="shp__cuerpo--envrigthttitle" style="margin-top: -10%;">IVA(21%)</span>
                             <br>
-                            <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
+                            <span class="shp__cuerpo--envrigthttitle" style="margin-top: -10%;">Otros impuestos</span>
                             <br>
                             <span class="shp__cuerpo--envrigthttitle">Total</span>
                             <br>
                             <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
                         </div>
                         <div style="margin-top:-42%;" class="shp__cuerpo--envleft">
-                            <span class="shp__cuerpo--envlefttitle">USD 12,2</span>
+                            <span class="shp__cuerpo--envlefttitle">{{$sud->total*0.21}}$</span>
                             <br>
                             <span class="shp__cuerpo--envlefttitle">No aplica.</span>
                             <br>
-                            <span class="shp__cuerpo--envlefttitle">USD 70,5</span>
+                            @foreach($sud_total as $sud)    
+                                <br><span class="" style="width:85%; margin-left:40%;" >USD {{($sud->total*0.21)+($sud->total)}}$</span>
+                            @endforeach
                             <br>
-                            <span class="shp__cuerpo--envlefttitle">ARS 7490,6</span>
+                            <span class="" style="width:95%; margin-left:30%; ">ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}$</span>
                         </div>
                     </div>
                     <div style="width:100%; height:15%;">
                         <div style="width:50%; height:25%;left:40%; position: absolute;">
-                            <button type="button" class="btn btn-danger">Continuar</button>
                             <br><br>
-                            <button type="button" class="btn btn-outline-danger"><i class="far fa-star"></i>Guardar Carrito</button>
+                            <button type="button" wire:click="reset_cart" class="btn btn-outline-danger"><i class="far fa-star"></i> Vaciar Carrito</button>
                         </div>
                     </div>
                 </div>
@@ -426,29 +442,33 @@
                             <table>
                                 <br>
                                 <tr>
-                                  <td style="width: 90%;">Total Items</td>
-                                  <td>2</td>
+                                    <td style="width: 86%;">Total Items</td>
+                                    @foreach($count_item as $item)
+                                        <td>{{$item->cantidad}}</td>
+                                    @endforeach
                                 </tr>
                                 <tr>
-                                  <td>Subtotal</td>
-                                  <td>USD 58,6</td>
+                                    <td>Subtotal</td>
+                                    @foreach($sud_total as $sud)
+                                        <td>USD {{$sud->total}}$</td>
+                                    @endforeach
                                 </tr>
-                              </table>
+                            </table>
                         </div>
                         <div style="margin-left:2%;">
                             <table>
                                 <br>
                                 <tr>
-                                  <td style="width: 90%;">Envio</td>
-                                  <td>Sin costo.</td>
+                                  <td style="width: 89%; ">Envio</td>
+                                  <td>A Definir.</td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td>Bonificaciones</td>
                                     <td>No aplica.</td>
-                                  </tr>
+                                  </tr> --}}
                                   <tr>
-                                    <td>IVA ( 21% )</td>
-                                    <td>USD 12,2</td>
+                                    <td >IVA ( 21% )</td>
+                                    <td>{{$sud->total*0.21}}$</td>
                                   </tr>
                                 <tr>
                                   <td>Otros impuestos</td>
@@ -460,12 +480,15 @@
                             <table>
                                 <br>
                                 <tr>
-                                  <td style="width: 87.8%;">Total</td>
-                                  <td>USD 70,5</td>
+                                    <td style="width: 82%; ">Total</td>
+                                    @foreach($sud_total as $sud)      
+                                        <td>USD {{($sud->total*0.21)+($sud->total)}}$</td>
+                                    @endforeach
                                 </tr>
                                 <tr>
                                     <td>Total en ARS</td>
-                                    <td>ARS 7490,6</td>
+                                    <br>
+                                    <td>ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}$</td>
                                 </tr>
                             </table>
                         </div>
@@ -473,8 +496,8 @@
                             <table>
                                 <br>
                                 <tr>
-                                  <td style="width: 70%; "><button type="button" class="btn btn-outline-danger"><i class="far fa-star"></i>Vaciar Carrito</button></td>
-                                  <td><button type="button" class="btn btn-danger">Confirmar Compra</button></td>                
+                                  <td style="width: 70%; "><button type="button" wire:click="reset_cart" class="btn btn-outline-danger"><i class="far fa-star"></i>Vaciar Carrito</button></td>
+                                  <td><button type="button"  wire:click="save" class="btn btn-danger">Confirmar Compra</button></td>                
                                 </tr>
                             </table>
                         </div>
