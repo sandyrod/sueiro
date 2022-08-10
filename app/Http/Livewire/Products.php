@@ -36,7 +36,7 @@ class Products extends Component
                         ->orWhere('price', 'like', '%'.$this->search.'%')
                         ->orderBy('id', 'DESC')
                         ->get()
-                : product::orderBy('id', 'DESC')->get();
+                : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
             return view('livewire.products');
     }
     public function mount()
@@ -44,12 +44,16 @@ class Products extends Component
         $this->Title = "Productos";
         $this->name    = null;
         $this->description      = null;
+        $this->price      = null;
+        $this->order_quantity = null;
     }
 
     public function resetInput()
     {
         $this->name         = null;
         $this->description  = null;
+        $this->order_quantity = null;
+        $this->price = null;
         $this->emitUpdates();
         $this->inputActive  = false;
     }
@@ -88,12 +92,14 @@ class Products extends Component
     {
         $this->validate([
             'name'   => 'required',
-            'description'   => 'required'
+            'description'   => 'required',
+            'price'   => 'required'
 
         ]);
         Product::create([
             'name'         => $this->name,
             'description'  => $this->description,
+            'price'  => $this->price,
             'logo'  => $this->logo,               
 
         ]);
@@ -110,7 +116,8 @@ class Products extends Component
             $this->logo = $nombreimagen;            
         } */
 
-        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
+//        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
+        return redirect()->back()->with('message', 'Registro Guardado con Exito...');
         $this->resetInput();
     }
 
@@ -120,11 +127,11 @@ class Products extends Component
         $this->product_id          = $id;
         $this->name                 = $record->name;
         $this->description          = $record->description;
+        $this->price          = $record->price;
         $this->emitUpdates();
 
         $this->updateMode = true;
-
-        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro cargado...']);
+                
     }
 
     public function update()
@@ -132,14 +139,17 @@ class Products extends Component
         $this->validate([
             'name'      => 'required',
             'description'        => 'required',
+            'price'        => 'required',
         ]);
         if ($this->product_id) {
             $record = Product::find($this->product_id);
             $record->update([
                 'name'      => $this->name,
                 'description'        => $this->description,
+                'price'        => $this->price,
             ]);
-            $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro actualizado...']);
+            
+            return redirect()->back()->with('message', 'Registro actualizado...');
             $this->resetInput();
             $this->updateMode = false;
         }
@@ -151,7 +161,8 @@ class Products extends Component
             $record = Product::find($id);
             $record->delete();
 
-            $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro eliminado...']);
+            ///$this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro eliminado...']);
+            return redirect()->back()->with('message', 'Registro eliminado...');
             $this->resetInput();
         }
     }
@@ -165,10 +176,14 @@ class Products extends Component
          $user_id = Auth::user()->id;
          $order_quantity  =  $this->order_quantity ;
 
+        
          $this->validate([
             'order_quantity' => 'required|min:1'
+            
         ]);
+        $this->resetInput();
           //dd($price->price);
+          $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro cargado...']);
         
         shopping::create([
             'product_id'         => $product_id,
@@ -176,7 +191,12 @@ class Products extends Component
             'order_number'       => '123',
             'order_quantity'     => $order_quantity,
             'price'              => $price->price,
+        
         ]);
+        
+        
+        
+        
         //dd($product_id);
         //  shopping::add(Product::where('id', $product_id)->first());
         //  $this->emit('productAdded');

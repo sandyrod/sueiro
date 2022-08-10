@@ -5,6 +5,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     </head>
     <body>
         <div class="container-fluid" style="background: #333;">
@@ -29,8 +30,51 @@
                             </div>
                         </div>
                     </div>
+                    @error('email')
+                        <div class="alert alert-danger" style="width: 30%; margin-left:65%; position:absolute; margin-top:10%; z-index:1;"  role="alert">
+                            <strong>{{ $message }}</strong> .
+                        </div>                  
+                    @enderror
+                    @error('password')
+                        <div class="alert alert-danger" style="width: 30%; margin-left:65%; position:absolute; margin-top:10%; z-index:1;"  role="alert">
+                            <strong>{{ $message }}</strong> .
+                        </div>           
+                    @enderror
                     <div class="col-sm-4">
                         <div class="row">
+                            @if (Auth::check())
+                <div style="z-index: 999;" >
+                    <button style="background: #333333" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i style="color: #fff" class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
+                    </button>
+                    <ul style="width: 15%" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-cog'></i> Configuración</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="btn_logout" href="{{ url('/logout') }}"> Cerrar cession</a>
+                        </li>
+                    </ul>
+                    <button style="background: #333333" class="btn btn-secondary" id="dropdownMenuButton1"  aria-expanded="false">
+                        $ USD 1 | ARS 115,87
+                    </button>
+                 </div>
+            @endif   
                             <div class="col-sm-6 " style="color: #ffffff">
                                 @guest
                                     <i class="far fa-user" style="color:#ffffff;margin-top:8%;">
@@ -44,11 +88,7 @@
                                                     <div class="modal-body row justify-content-center align-items-center ">
                                                         <div class=" col-lg-10 ">
                                                             <input id="email" type="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="Background-color: transparent; color:#fff" class="form-control input-sm" type="text" placeholder="User"><br><br>
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror 
+                                                           
                                                             <input id="password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="Background-color: transparent; color:#fff" class="form-control input-sm" type="password" placeholder="Password">
                                                             @error('password')
                                                                 <span class="invalid-feedback" role="alert">
@@ -61,8 +101,8 @@
                                                         <div class="row col-md-12">
                                                             <button {{ __('Login') }} type="submit" class="btn btn-danger">Ingresar</button>
                                                         </div>
-                                                        <div class="row col-md-12">
-                                                            <a style="color: #fff" >Crear nueva cuenta</a>
+                                                        <div class="row col-md-9">
+                                                            <a style="color: #fff" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Crear nueva cuenta</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -73,6 +113,81 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Modal Register-->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="background: #333333; color: #fff;">
+                                <div class="modal-header" style="background:#c1282d; color: #fff;">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            <div class="modal-body" >
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
+            
+                                        <div class="col-md-6">
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mb-3">
+                                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Correo Electronico') }}</label>
+            
+                                        <div class="col-md-6">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+            
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mb-3">
+                                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
+            
+                                        <div class="col-md-6">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+            
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mb-3">
+                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña') }}</label>
+            
+                                        <div class="col-md-6">
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        </div>
+                                    </div>
+            
+                                    <div class="row mb-0">
+                                        <div class="col-md-8 offset-md-6">
+                                            <button type="submit" class="btn btn-danger">
+                                                {{ __('Registrar') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+  
                 </div>
             </div>
         </div>
@@ -161,3 +276,15 @@
         </div>
     </body>
 </html>
+<script type="text/javascript">
+                    
+    $(document).ready(function () {
+     
+    window.setTimeout(function() {
+        $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+            $(this).remove(); 
+        });
+    }, 5000);
+     
+    });
+</script>

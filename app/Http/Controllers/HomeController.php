@@ -113,4 +113,48 @@ class HomeController extends Controller
         }
     }
 
+    public function pedido(){
+        $response = Http::withHeaders([
+            'accesstoken' => '03844717-5220-40e7-adba-e1c830091425_13003'
+        ])->post('https://tiendas.axoft.com/api/Aperture/order',
+            ["{
+                'OrderID': 'web02',
+                'OrderNumber': 'web02',
+                'Date': '2022-08-09T09:31:00',
+                'Total': 253.0,
+                'TotalDiscount': 0.0,
+                'Comment': 'Compra de pruebas',
+                'Customer': {
+                  'CustomerID': 0011,
+                  'DocumentType': '80',
+                  'DocumentNumber': '',
+                  'IVACategoryCode': 'RI',
+                  'User': 'web',
+                  'Email': 'test@test.com',
+                  'FirstName': '',
+                  'LastName': '',
+                  'ProvinceCode': '6',
+                  'MobilePhoneNumber': '',
+                  'WebPage': null,
+                  'BusinessAddress': '',
+                  'Comments': 'Cliente Web'
+                },
+                'OrderItems': [
+                  {
+                    'ProductCode': 75,
+                    'SKUCode': null,
+                    'Description': 'MALLA AI 002 ALAMBRE 1.65MM',
+                    'Quantity': 1,
+                    'UnitPrice': 253.0000000,
+                  }
+                ],
+                'Payments': [
+                ],
+              }"]);
+        $data = $response->json();
+        print_r($data);
+        
+        
+    }
+
 }
