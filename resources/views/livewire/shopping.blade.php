@@ -6,6 +6,13 @@
             <span class="tablinks2" onclick="openCity(event, 'Pago')">Pago</span>
             <span class="tablinks3" onclick="openCity(event, 'Confirmación')">Confirmación</span>
         </div>
+        @if(session()->has('message'))
+                <div class="alert" id="alert">
+                    <div class="alert alert-success" style="width: 23%; margin-left:77%">
+                        {{ session()->get('message') }}
+                    </div>
+                </div>
+            @endif
         <div class="shopping__sudcuerpo">
             <div id="Productos" class="tabcontent">
                 <table class="table">
@@ -530,6 +537,15 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {        
+        setTimeout(function() {
+          $("#alerts").hide(6000);
+          }, 3000);
+        });
+</script>
 
 <script>
     function openCity(evt, cityName) {

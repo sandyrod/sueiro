@@ -140,9 +140,11 @@ class Shopping extends Component
 
         ]);
     }
-        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
+        //$this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
+        
         $this->resetInput();
         $this->reset_cart();
+        return redirect()->back()->with('message', 'Orden Realizada Con Ezito...');
     }
     private function emitUpdates()
     {
