@@ -6,6 +6,13 @@
             <span class="tablinks2" onclick="openCity(event, 'Pago')">Pago</span>
             <span class="tablinks3" onclick="openCity(event, 'Confirmación')">Confirmación</span>
         </div>
+        @if(session()->has('message'))
+                <div class="alert" id="alert">
+                    <div class="alert alert-success" style="width: 23%; margin-left:77%">
+                        {{ session()->get('message') }}
+                    </div>
+                </div>
+            @endif
         <div class="shopping__sudcuerpo">
             <div id="Productos" class="tabcontent">
                 <table class="table">
@@ -109,7 +116,7 @@
                                 <span class="shp__cuerpo--envlefttitle">No aplica.</span>
                                 <br>
                                 @foreach($sud_total as $sud)    
-                                    <br><span class="" style="width:85%; margin-left:40%;" >USD {{($sud->total*0.21)+($sud->total)}}$</span>
+                                    <br><span class="" style="width:85%; margin-left:40%;">USD {{($sud->total*0.21)+($sud->total)}}$</span>
                                 @endforeach
                                 <br>
                                 <span class="" style="width:95%; margin-left:30%; ">ARS {{($sud->total*0.21)+($sud->total)*(112.53)}}$</span>
@@ -137,7 +144,7 @@
                                 <br>
                                 <div class="shp__etrcue">
                                     <span class="shp__etrtitleret">Retiro en sucursal</span>
-                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="1" id="retiro_sucursal">
+                                    <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="checkbox" value="1" id="retiro_sucursal">
                                 </div>
                             </div>
                         </div>
@@ -160,7 +167,7 @@
                             <div class="col">
                                 <div class="shp__etrcue1">
                                     <span class="shp__etrtitleret">Envío a domicilio</span>
-                                    <input style="margin:11% 5%;" class="form-check-input" type="checkbox" value="2" id="envio_domicilio" onchange="javascript:showContent()">
+                                    <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="checkbox" value="2" id="envio_domicilio" onchange="javascript:showContent()">
                                 </div>
                             </div>
                             <div class="col">
@@ -270,7 +277,7 @@
                   background: #FFFFFF 0% 0% no-repeat padding-box;
                   border: 1px solid #A2A2A2;
                   opacity: 1;">
-                    <input style="margin:10% 7%;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                    <input style="margin:10% 7%;" class="form-check-input" type="checkbox" wire:model.defer="metodo_pago" value="1" id="flexCheckDefault"></td>
                     <span style="margin:1.5% 2%; position: absolute;"> Contado</span>
                     
                 </div>
@@ -282,7 +289,7 @@
                 ">
                     Monto<input class="form-control" placeholder="Monto" wire:model.defer="monto">
                     Referencia<input class="form-control" placeholder="Referencia" wire:model.defer="ref">
-                    Fecha<input class="form-control" placeholder="Fecha" wire:model.defer="fecha">
+                    Fecha<input class="form-control" placeholder="Fecha" wire:model.defer="fecha_pago">
                 </div>
                 <div style="
                 margin:30px 35px;
@@ -292,7 +299,7 @@
                 background: #FFFFFF 0% 0% no-repeat padding-box;
                 border: 1px solid #C1282D;
                 opacity: 1;">
-                  <input style="margin:7% 7%;" class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                  <input style="margin:7% 7%;" class="form-check-input" type="checkbox" wire:model.defer="metodo_pago" value="2" id="flexCheckDefault"></td>
                   <span style="margin:1.5% 1%;position: absolute;"> Transferencia Bancaria</span>
 
                 </div>  
@@ -530,6 +537,15 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {        
+        setTimeout(function() {
+          $("#alerts").hide(6000);
+          }, 3000);
+        });
+</script>
 
 <script>
     function openCity(evt, cityName) {
