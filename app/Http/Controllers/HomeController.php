@@ -114,9 +114,9 @@ class HomeController extends Controller
     }
 
     public function pedido(){
-        $orderObject[
+   /*      $orderObject[
 
-        ];
+        ]; */
         $response = Http::withHeaders([
             'accesstoken' => '03844717-5220-40e7-adba-e1c830091425_13003'
         ])->post('https://tiendas.axoft.com/api/Aperture/order',

@@ -18,6 +18,13 @@ class Order extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->float('total');
             $table->string('status');
+            $table->string('direccion');
+            $table->string('telefono');
+            $table->string('tipo_envio');
+            $table->string('metodo_pago');
+            $table->string('monto');
+            $table->string('ref');
+            $table->string('fecha_pago');
             $table->timestamps();
         });
     }
