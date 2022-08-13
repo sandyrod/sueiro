@@ -15,8 +15,8 @@ class CreateSettingTable extends Migration
     {
         Schema::create('setting', function (Blueprint $table) {
             $table->id();
-            $table->string('dolar');
-            $table->string('euro');
+            $table->float('dolar');
+            $table->float('euro')->nullable();
             $table->timestamps();
         });
     }

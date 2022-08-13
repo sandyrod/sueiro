@@ -19,15 +19,15 @@ class Setting extends Component
 
     public function mount()
     {
-        $this->Title = "Precio";
+        $this->Title    = "Precio";
         $this->dolar    = null;
-        $this->euro      = null;
+        $this->euro     = null;
     }
 
     public function resetInput()
     {
-        $this->dolar         = null;
-        $this->euro  = null;
+        $this->dolar    = null;
+        $this->euro     = null;
         $this->emitUpdates();
         
     }
@@ -40,8 +40,8 @@ class Setting extends Component
     public function save(Request $request)
     {
 
-        if ($this->updateMode)
-            return $this->update();
+        //if ($this->updateMode)
+        //    return $this->update();
 
         return $this->store();
     }
@@ -49,13 +49,10 @@ class Setting extends Component
 
     public function store()
     {
-        $this->validate([
-            'dolar'   => 'required',
-            'euro'   => 'required'
-        ]);
+    
         Settings::create([
             'dolar'         => $this->dolar,
-            'euro'  => $this->euro,
+            'euro'          => $this->euro
         ]);
 
         return redirect()->back()->with('message', 'Registro Guardado con Exito...');
