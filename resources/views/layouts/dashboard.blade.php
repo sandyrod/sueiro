@@ -207,8 +207,8 @@
                         <a class="nav-item nav-link" style="color: #fff"" href="nosotros">NOSOTROS </a>
                         <a class="nav-item nav-link" style="color: #fff"" href="request">SOLICITAR PRESUPUESTO</a>
                         <a class="nav-item nav-link" style="color: #fff"" href="contact">CONTACTO</a>
-                        <a class="nav-item nav-link" style="color: #fff"" href=""><i style="margin-top: 30%" class="fas fa-search"></i></a>
-                        <a class="nav-item nav-link" style="color: #fff"" href=""></a>
+                        <a class="nav-item nav-link" style="color: #fff"" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
+                        <a class="nav-item nav-link" style="color: #fff"" href="product"></a>
 
                     </div>
                 </div>
@@ -245,14 +245,14 @@
                     <div class="row footer__cont_whait">
                         <div class="col-sm-1"></div>
                             <div class="col-sm-2">
-                                <span>NOSOTROS</span>
+                                <a class="link_footer" href="nosotros"><span>NOSOTROS</span> </a>
                                 <br>
-                                <span>PRODUCTOS</span>
+                                <a class="link_footer" href="product"><span>PRODUCTOS</span></a>
                             </div>
                             <div class="col-sm-2">
-                                <span>SOLICITAR PRESUPUESTO </span>
+                                <a class="link_footer" href="request"><span>SOLICITAR PRESUPUESTO </span></a>
                                 <br>
-                                <span>CONTACTO</span>
+                                <a class="link_footer" href="contact"><span>CONTACTO</span></a>
                             </div>
                             <div class="col-sm-4">                            
                                 <form action="{{ route('suscribe') }}" method='post'>

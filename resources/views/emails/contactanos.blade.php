@@ -26,7 +26,7 @@
         <p>{{$contact['mensaje']}} </p><br>
         
         
-        <strong>Correo Electronico: </strong> {{$contact['email']}} <br>
+        <strong>Correo Electronico: </strong> {{ $contact['correo']  }} <br>
         <strong>Empresa: </strong> {{$contact['empresa']}}
         
         

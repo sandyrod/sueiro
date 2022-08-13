@@ -4,10 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Requestmodel;
+use App\Models\Product;
 
 class Request extends Component
 {
-    public $data, $search, $name, $email, $phone, $product, $extradata, $company;
+    public $data, $search, $name, $email, $phone, $product, $extradata, $company, $productos;
 
     public $updateMode  = false;
     public $imputActive = false;
@@ -25,8 +26,9 @@ class Request extends Component
                         ->orderBy('id', 'DESC')
                         ->get()
                 : Requestmodel::orderBy('id', 'DESC')->get();
-     
-                return view('livewire.request');
+        $this->productos = Product::All();
+
+        return view('livewire.request');
     }
 
     public function resetInput()

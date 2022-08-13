@@ -88,10 +88,12 @@
                 </div>
                 <div class="row mt10">
                     <div class="col-md-6">
-                        <select class="request__selectproduct"  wire:model.defer="product">
-                            <option value="1" selected>1 primer producto</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <select class="request__selectproduct">
+                            @forelse($productos as $producto)
+                            <option value="{{ $producto->id }}">{{ $producto->name }}</option>
+                            @empty
+                            <option>No hay productos disponibles</option>
+                            @endforelse
                         </select>
 
                     </div>

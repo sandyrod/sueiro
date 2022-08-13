@@ -38,6 +38,8 @@ class NewsletterController extends Controller
         newsletter::create([
             'email' => $request->email
         ]);
+        
+        return redirect()->route('nosotros');
     }
 
     /**
