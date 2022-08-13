@@ -88,7 +88,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <span class="td__title">{{ $producto->code }}</span>
+                                    <span class="td__title">{{ $producto->skufield }}</span>
                                 </td>
                                 <td class="align-middle">
                                     <span class="align-middle">{{ $producto->name }}</span>
