@@ -147,8 +147,7 @@ class HomeController extends Controller
                 'TotalDiscount' => 0.0,
                 'Comment' => 'PEDIDO WEB COD: ' . $orderID . ' - ' . $order->notes,
                 'Customer' => [
-                    "CustomerID" => 1,
-                    "Code" => $order->customer->code,                      
+                    "CustomerID" => $order->user->id,  
                     'DocumentType' => '80',
                     'DocumentNumber' => $order->customer->document_number,
                     'IVACategoryCode' => 'RI',

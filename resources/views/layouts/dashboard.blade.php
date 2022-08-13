@@ -152,6 +152,39 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="row mb-3">
+                                        <label for="identification_type" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Identificación') }}</label>
+            
+                                        <div class="col-md-6">
+                                        <select id="identification_type" type="identification_type" class="form-control @error('identification_type') is-invalid @enderror" name="identification_type" value="{{ old('identification_type') }}" required autocomplete="identification_type">
+                                            <option value="86">CUIL</option>
+                                            <option value="80">CUIt</option>
+                                            <option value="87">CDI</option>
+                                            <option value="89">LE</option>
+                                            <option value="89">LC</option>
+                                            <option value="96">DNI</option>
+                                        </select>
+            
+                                            @error('identification_type')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="document_number" class="col-md-4 col-form-label text-md-end">{{ __('Numero de Documento') }}</label>
+            
+                                        <div class="col-md-6">
+                                            <input id="document_number" type="document_number" class="form-control @error('document_number') is-invalid @enderror" name="document_number" value="{{ old('document_number') }}" required autocomplete="document_number">
+            
+                                            @error('document_number')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
             
                                     <div class="row mb-3">
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
