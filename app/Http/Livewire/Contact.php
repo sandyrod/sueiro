@@ -26,7 +26,7 @@ class Contact extends Component
     {
 
 
-        // dd($request);
+        dd($request);
         $correo = new ContactMailable($request->all());
         //dd($correo);
         Mail::to('sandyrod@gmail.com')->send($correo);
