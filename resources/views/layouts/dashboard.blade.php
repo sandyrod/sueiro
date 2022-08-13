@@ -61,7 +61,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-cog'></i> Configuración</a>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">

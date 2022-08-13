@@ -8,14 +8,17 @@
     </div>
     <div class="container">
         <div class="row">
-            <p style="margin-top:3%; font-size:25px; ">ESTADO DE PEDIDOS</p>
+            <p style="margin-top:13%; font-size:25px; ">Precio Peso Argentino</p>
         </div>
         <div class="row row-cols-2">
-            <div class="col"><input class="contact__imputname-1 form-control" placeholder="" id="apellido" name="apellido" required></div>
-            
-            <div class="col"><input class="contact__imputname-1 form-control" placeholder="Empresa *" id="empresa" name="empresa" required></div>
-            <div class="col">Column</div>
-            <div class="col">Column</div>
-        </div>
+            <div class="col"><input class="contact__imputname-1 form-control" placeholder="Dolar *" id="dolar" name="dolar" wire:model.defer="dolar" required></div>          
+            <div class="col"><input class="contact__imputname-1 form-control" placeholder="Euro *" id="euro" name="empresa" wire:model.defer="euro" required></div>
+        </div><br><br>
+        
+            <div class="row justify-content-center">  
+                <button type="button" class="btn btn-success col-md-1" wire:click="save"><i class="fa fa-save"></i>Guardar</button>
+                <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"> <i class="fa fa-trash"></i>Cancelar</button>
+            </div>  
+        
     </div>
 </div>
