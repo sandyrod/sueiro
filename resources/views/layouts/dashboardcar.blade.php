@@ -158,14 +158,14 @@
                         <div class="row footer__cont_whait">
                             <div class="col-sm-1"></div>
                                 <div class="col-sm-2">
-                                    <span>NOSOTROS</span>
+                                    <a class="link_footer" href="nosotros"><span>NOSOTROS</span> </a> 
                                     <br>
-                                    <span>PRODUCTOS</span>
+                                    <a class="link_footer" href="product"><span>PRODUCTOS</span></a> 
                                 </div>
                                 <div class="col-sm-2">
-                                    <span>SOLICITAR PRESUPUESTO </span>
+                                    <a class="link_footer" href="request"><span>SOLICITAR PRESUPUESTO </span></a>
                                     <br>
-                                    <span>CONTACTO</span>
+                                    <a class="link_footer" href="contact"><span>CONTACTO</span></a>
                                 </div>
                                 <div class="col-sm-4">                            
                                     <form action="{{ route('suscribe') }}" method='post'>

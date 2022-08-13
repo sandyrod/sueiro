@@ -36,7 +36,7 @@
             <div class="col-sm-4">
                 <br>
                 <input class="contact__imputname-1 form-control" placeholder="Nombre" id="name" name="name" required><br>
-                <input class="contact__imputname-1 form-control" placeholder="Email" id="email" name="email" required><br>
+                <input class="contact__imputname-1 form-control" placeholder="Correo Elsectronico" id="correo" name="correo" required><br>
                 <textarea class="contact__imputname-1 form-control" placeholder="Mensaje" id="mensaje" name="mensaje"></textarea required><br>
 
             </div>
@@ -50,8 +50,10 @@
                         Acepto los términos y condiciones de privacidad
                     </label>
                 </div>
+                <button type="submit" class="contact__btn" ><i class="fa fa-save"> </i> ENVIAR </button>
             </div>
         </div>
+        
     </div>
 
 
@@ -79,7 +81,7 @@
             {{-- <div class="contact__cuerpo">
                 <input class="contact__imputname" placeholder="Nombre" id="name" name="name" required>
                 <input class="contact__imputape" placeholder="Apellido" id="apellido" name="apellido" required>
-                <input class="contact__imputmail" placeholder="Email" id="email" name="email" required>
+                <input class="contact__imputmail" placeholder="Correo Electronico" id="correo" name="correo" required>
                 <input class="contact__imputempresa" placeholder="Empresa *" id="empresa" name="empresa" required>
                 <textarea class="contact__texmsj" placeholder="Mensaje" id="mensaje" name="mensaje"></textarea required>
                 <div class="contact__terminos">

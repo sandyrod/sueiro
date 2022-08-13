@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class Contact extends Component
 {
-    public  $name, $apellido, $email, $empresa; 
+    public  $name, $apellido, $correo, $empresa; 
     
     public function render()
     {
@@ -28,7 +28,8 @@ class Contact extends Component
 
         dd($request);
         $correo = new ContactMailable($request->all());
-        Mail::to('eushop1997@gmail.com')->send($correo);
+        //dd($correo);
+        Mail::to('sandyrod@gmail.com')->send($correo);
         // return "mensaje enviado";
         return view('contact'); 
     }

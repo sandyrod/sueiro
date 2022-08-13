@@ -1050,8 +1050,8 @@ html {
 }
 
 .contact__btn {
-    top: 80%;
-    left: 10%;
+    //top: 80%;
+    //left: 10%;
     width: 182px;
     height: 35px;
     background: var(--unnamed-color-c1282d) 0% 0% no-repeat padding-box;
@@ -1059,7 +1059,7 @@ html {
     border-radius: 30px;
     opacity: 1;
     color: #FFF;
-    position: absolute;
+    //position: absolute;
 }
 
 .contact__terminos {
@@ -1878,4 +1878,12 @@ body span {
 
 .divOculto {
     display: none;
+}
+
+.link_footer{
+    text-decoration:none; 
+    color:#FFF;
+}
+.link_footer:hover{
+    color:#BF2A32 ;
 }

@@ -43,6 +43,7 @@ Route::get('/quality',         [App\Http\Controllers\HomeController::class, 'qua
 Route::get('/purchase-history',[App\Http\Controllers\HomeController::class, 'purchase_history'])->name('purchase_history');
 Route::get('/favorites',       [App\Http\Controllers\HomeController::class, 'favorites'])->name('favorites');
 Route::get('/shopping',        [App\Http\Controllers\HomeController::class, 'shopping'])->name('shopping');
+Route::get('/setting',        [App\Http\Controllers\HomeController::class, 'setting'])->name('setting');
 
 Route::get('/cotizador',        [App\Http\Controllers\HomeController::class, 'cotizador'])->name('cotizador');
 
