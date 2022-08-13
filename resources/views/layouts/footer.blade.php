@@ -13,7 +13,7 @@
             <span class="footer__cont1">SUSCRIBITE AL NEWSLETTER</span>
             <span class="footer__cont2">CONTACTO</span>
         </div>
-        <span class="footer__nosotros">NOSOTROS PRODUCTOS</span>
+        <span class="footer__nosotros" >NOSOTROS PRODUCTOS</span>
         <span class="footer__solicitar">SOLICITAR PRESUPUESTO CONTACTO</span>
         <input class="footer__input" placeholder="       Ingresa tu email" id="search" name="search" type="text" value="{{old('search')}}">
         <button class="footer__btn"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
