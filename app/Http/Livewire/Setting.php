@@ -14,6 +14,8 @@ class Setting extends Component
  
     public function render()
     {
+        $this->Title = "Setting";
+        $this->data = Settings::find(1);
         return view('livewire.setting');
     }
 

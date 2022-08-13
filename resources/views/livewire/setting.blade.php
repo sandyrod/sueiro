@@ -11,8 +11,8 @@
             <p style="margin-top:13%; font-size:25px; ">Precio Peso Argentino</p>
         </div>
         <div class="row row-cols-2">
-            <div class="col"><input class="contact__imputname-1 form-control" placeholder="Dolar *" id="dolar" name="dolar" wire:model.defer="dolar" required></div>          
-            <div class="col"><input class="contact__imputname-1 form-control" placeholder="Euro *" id="euro" name="empresa" wire:model.defer="euro" required></div>
+            <div class="col"><input class="contact__imputname-1 form-control" placeholder="{{$data->dolar}}" id="dolar" name="dolar" wire:model.defer="dolar" required></div>          
+            <div class="col"><input class="contact__imputname-1 form-control" placeholder="{{$data->euro}}" id="euro" name="empresa" wire:model.defer="euro" required></div>
         </div><br><br>
         
             <div class="row justify-content-center">  
