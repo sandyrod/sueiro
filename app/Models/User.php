@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'document_type',
+        'document_number',
+        'province_code',
+        'condition'
     ];
 
     /**

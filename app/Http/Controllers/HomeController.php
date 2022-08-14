@@ -127,7 +127,7 @@ class HomeController extends Controller
         $orderID = 'WEB-' . Str::padLeft($order->id, 5, '0');
         $itemObject = [];
         $total = 0;
-        $orderitems = OrderDetails::where('order_id', $id);
+        $orderitems = OrderDetails::where('order_id', $id)->get();
         foreach ($orderitems as $item) {
             $p = Product::where('id', $item->product_id)->first();
             $itemObject[] = [
@@ -145,18 +145,18 @@ class HomeController extends Controller
                 'Date' => /* '2022-08-09T09:31:00' */$order->created_at->format('Y-m-d\TH:i:s'),
                 'Total' => $total,
                 'TotalDiscount' => 0.0,
-                'Comment' => 'PEDIDO WEB COD: ' . $orderID . ' - ' . $order->notes,
+                'Comment' => 'PEDIDO WEB COD: ' . $orderID . ' - ' . $order->user->name,
                 'Customer' => [
                     "CustomerID" => $order->user->id,  
-                    'DocumentType' => '80',
-                    'DocumentNumber' => $order->customer->document_number,
-                    'IVACategoryCode' => 'RI',
+                    'DocumentType' => $order->user->document_tyoe ?? '86',
+                    'DocumentNumber' => $order->user->document_number,
+                    'IVACategoryCode' => $order->user->condition ?? 'RI',
                     'User' => 'web-seller',
-                    'Email' => 'test@test.com',
-                    'FirstName' => $order->customer->business_name,
-                    'LastName' => '',
-                    'ProvinceCode' => $order->customer->province_code,
-                    'MobilePhoneNumber' => '',
+                    'Email' => $order->user->email ?? 'ventas@sueiroehijos.com.ar',
+                    'FirstName' => $order->user->name,
+                    'LastName' => $order->user->last_name,
+                    'ProvinceCode' => $order->user->province_code,
+                    'MobilePhoneNumber' => null,
                     'WebPage' => null,
                     'BusinessAddress' => '',
                     'Comments' => 'Cliente Web'
@@ -169,6 +169,14 @@ class HomeController extends Controller
         ])->post('https://tiendas.axoft.com/api/Aperture/order',
         $orderObject);
         $data = $response->json();
+        if (is_array($data)){
+            if($data['isOk']){
+                return redirect('orders');
+            }
+        }
+        //print_r($data);
+        //echo "<br>";
+        //print_r($orderObject);
         //$order->synced_at = now();
 
         // $response = Http::withHeaders([

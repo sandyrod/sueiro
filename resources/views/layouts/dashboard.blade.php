@@ -153,19 +153,19 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="identification_type" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Identificación') }}</label>
+                                        <label for="document_type" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Identificación') }}</label>
             
                                         <div class="col-md-6">
-                                        <select id="identification_type" type="identification_type" class="form-control @error('identification_type') is-invalid @enderror" name="identification_type" value="{{ old('identification_type') }}" required autocomplete="identification_type">
+                                        <select id="document_type" type="document_type" class="form-control @error('document_type') is-invalid @enderror" name="document_type" value="{{ old('document_type') }}" required autocomplete="document_type">
                                             <option value="86">CUIL</option>
-                                            <option value="80">CUIt</option>
+                                            <option value="80">CUIT</option>
                                             <option value="87">CDI</option>
                                             <option value="89">LE</option>
                                             <option value="89">LC</option>
                                             <option value="96">DNI</option>
                                         </select>
             
-                                            @error('identification_type')
+                                            @error('document_type')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -185,7 +185,68 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="row mb-3">
+                                        <label for="condition" class="col-md-4 col-form-label text-md-end">{{ __('Condición Fiscal') }}</label>
             
+                                        <div class="col-md-6">
+                                        <select id="condition" type="condition" class="form-control @error('condition') is-invalid @enderror" name="condition" value="{{ old('condition') }}" required autocomplete="condition">
+                                            <option value="CF">CONSUMIDOR FINAL</option>
+                                            <option value="EX">EXENTO</option>
+                                            <option value="EXE">EXENTO OPERACIÓN EXPORTACIÓN</option>
+                                            <option value="INR">NO RESPONSABLE</option>
+                                            <option value="RI">RESPONSABLE INSCRIPTO</option>
+                                            <option value="RS">RESPONSABLE MONOTRIBUTISTA</option>
+                                            <option value="RSS">RESPONSABLE MONOTRIBUTISTA SOCIAL</option>
+                                            <option value="PCE">PEQUEÑO CONTRIBUYENTE EVENTUAL</option>
+                                            <option value="PCS">PEQUEÑO CONTRIBUYENTE EVENTUAL SOCIAL</option>
+                                            <option value="SNC">SUJETO NO CATEGORIZADO</option>
+                                        </select>
+            
+                                            @error('condition')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="province_code" class="col-md-4 col-form-label text-md-end">{{ __('Provincia') }}</label>
+            
+                                        <div class="col-md-6">
+                                        <select id="province_code" type="province_code" class="form-control @error('province_code') is-invalid @enderror" name="province_code" value="{{ old('province_code') }}" required autocomplete="province_code">
+                                            <option value="0">CIUDAD AUTONOMA BUENOS AIRES</option>
+                                            <option value="1">BUENOS AIRES</option>
+                                            <option value="2">CATAMARCA</option>
+                                            <option value="3">CORDOBA</option>
+                                            <option value="4">CORRIENTES</option>
+                                            <option value="5">ENTRE RIOS</option>
+                                            <option value="6">JUJUY</option>
+                                            <option value="7">MENDOZA</option>
+                                            <option value="8">LA RIOJA</option>
+                                            <option value="9">SALTA</option>
+                                            <option value="10">SAN JUAN</option>
+                                            <option value="11">SAN LUIS</option>
+                                            <option value="12">SANTA FE</option>
+                                            <option value="13">SANTIAGO DEL ESTERO</option>
+                                            <option value="14">TUCUMAN</option>
+                                            <option value="16">CHACO</option>
+                                            <option value="17">CHUBUT</option>
+                                            <option value="18">FORMOSA</option>
+                                            <option value="19">MISIONES</option>
+                                            <option value="20">NEUQUEN</option>
+                                            <option value="21">LA PAMPA</option>
+                                            <option value="22">RIO NEGRO</option>
+                                            <option value="23">SANTA CRUZ</option>
+                                            <option value="24">TIERRA DEL FUEGO</option>
+                                        </select>
+            
+                                            @error('province_code')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                     <div class="row mb-3">
                                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
             
