@@ -38,6 +38,16 @@
         </div>
     </div>
 </form>
+<script>
+    $(document).ready(function () {
+        $('input#code')
+        .keypress(function (event) {
+            if (event.which < 48 || event.which > 57 || this.value.length === 5) {
+                return false;
+            }
+        });
+    });    
+</script>
 
                 {{-- <div class="quality__body">
                     <div class="quality__cuerpo">

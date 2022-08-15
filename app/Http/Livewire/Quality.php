@@ -29,6 +29,6 @@ class Quality extends Component
         //dd($correo);
         Mail::to('sandyrod@gmail.com')->send($correo);
         // return "mensaje enviado";
-        return view('contact'); 
+        return view('quality'); 
     }
 }

@@ -15,6 +15,6 @@
     </head>
     <body><br>
          <h2> Sueiro E Hijos</h2>
-         <strong>Nombre: </strong> {{$quality['code']}}<br>  
+         <strong>Se solicita el certificado número:</strong>{{$quality['code']}}<br>  
     </body>
 </html>
