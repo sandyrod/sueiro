@@ -7,7 +7,7 @@ use Livewire\Component;
 class Cotizador extends Component
 {
 
-    public $data, $search;
+    public $data, $search, $diametrodisco, $malla_metalica, $material, $ancho_malla;
     
     public $updateMode  = false;
     public $imputActive = false;
@@ -19,7 +19,8 @@ class Cotizador extends Component
     public function resetInput()
     {
         
-        $this->Tipo                         = null;
+        $this->tipo                         = null;
+
         $this->cant_solicitada              = null;
         $this->malla_metalica               = null;
         $this->ancho_malla                  = null;
