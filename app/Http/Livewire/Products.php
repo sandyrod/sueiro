@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 use App\Models\Product;
 use App\Models\Shopping;
+use App\Models\Favorites;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -201,7 +202,22 @@ class Products extends Component
         //  shopping::add(Product::where('id', $product_id)->first());
         //  $this->emit('productAdded');
     }
-   
+
+
+    public function addFavorites(int $product_id)
+    {
+        $user_id = Auth::user()->id;
+        /* dd($product_id); */
+        Favorites::create([
+            'product_id'         => $product_id,
+            'user_id'            => $user_id,
+        ]);
+        //dd($product_id);       
+        return redirect()->back()->with('message', 'Producto agregado a favorito...!');
+
+
+    }
+
     private function emitUpdates()
     {
 
