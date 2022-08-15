@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use Illuminate\Http\Request;
 use App\Models\Settings;
 use Livewire\Component;
+use Illuminate\Support\MessageBag;
 
 class Setting extends Component
 {
@@ -61,13 +62,13 @@ class Setting extends Component
         $this->resetInput();
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $record                     = settings::findOrFail($id);
-        $this->setting_id          = $id;
+        $record                     = settings::findOrFail(1);
+        $this->setting_id          = 1;
         $this->dolar                 = $record->dolar;
         $this->euro          = $record->euro;
-        $this->emitUpdates();
+       // $this->emitUpdates();
 
         $this->updateMode = true;
                 
@@ -77,19 +78,18 @@ class Setting extends Component
     {
         $this->validate([
             'dolar'      => 'required',
-            'euro'        => 'required',
+            
         ]);
-        if ($this->product_id) {
-            $record = Product::find($this->product_id);
+           $record = settings::find(1);
             $record->update([
                 'dolar'      => $this->dolar,
                 'euro'        => $this->euro,
             ]);
             
-            return redirect()->back()->with('message', 'Registro actualizado...');
-            $this->resetInput();
+            return redirect('/setting')->back()->with('message', 'Registro actualizado...');
+            $this->emitUpdates();
             $this->updateMode = false;
-        }
+        
     }
 
     public function destroy($id)
@@ -102,6 +102,11 @@ class Setting extends Component
             return redirect()->back()->with('message', 'Registro eliminado...');
             $this->resetInput();
         }
+    }
+    private function emitUpdates()
+    {
+        return redirect()->to('/home'); 
+
     }
 
 }
