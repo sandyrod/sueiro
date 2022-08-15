@@ -36,7 +36,13 @@
                     <h3><p class="text-center title_cotizador">Discos.</p></h3>
                     <div class="col">
                         <input class="input_cotizador" placeholder="Cantidad solicitada *" wire:model.defer="cant_solicitada">
-                        <input class="input_cotizador" placeholder="Material *"  wire:model.defer="material">
+                        <select class="input_cotizador" name="material">
+                            @forelse($material as $mat)
+                                <option value="{{ $mat->id }}">{{ $mat->skufield}} - {{ $mat->name }}</option>
+                            @empty
+                                <option></option>
+                            @endforelse
+                        </select>
                         <input class="input_cotizador" placeholder="Redondeo por Tiras *"  wire:model.defer="redondeo_por_tiras">
                     </div>
                     <div class="col">
