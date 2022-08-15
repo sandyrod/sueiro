@@ -1,4 +1,13 @@
 <div>
+    @if ($errors->any())
+        <div style="width: 20%; margin-left:80%" class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="request_titlenav">
         <div class="row request align-items-center" style="height: 39px;">
             <div class="col-md-12">
@@ -8,14 +17,15 @@
     </div>
     <div class="container">
         <div class="row">
-            <p style="margin-top:3%; font-size:25px; ">ESTADO DE PEDIDOS</p>
+            <p style="margin-top:13%; font-size:25px; ">Precio Peso Argentino</p>
         </div>
         <div class="row row-cols-2">
-            <div class="col"><input class="contact__imputname-1 form-control" placeholder="" id="apellido" name="apellido" required></div>
-            
-            <div class="col"><input class="contact__imputname-1 form-control" placeholder="Empresa *" id="empresa" name="empresa" required></div>
-            <div class="col">Column</div>
-            <div class="col">Column</div>
-        </div>
+            <div class="col"><input class="contact__imputname-1 form-control" placeholder="{{$data->dolar}}" id="dolar" name="dolar" wire:model.defer="dolar" required></div>          
+            <div class="col"><input class="contact__imputname-1 form-control" placeholder="{{$data->euro}}" id="euro" name="empresa" wire:model.defer="euro" required></div>
+        </div><br><br>
+        <div class="row justify-content-center">  
+            <button type="button" class="btn btn-success col-md-1" wire:click="update"><i class="fa fa-save"></i>Guardar</button>
+            <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"> <i class="fa fa-trash"></i>Cancelar</button>
+        </div>        
     </div>
 </div>

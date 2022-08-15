@@ -1,3 +1,6 @@
+@php
+    $precio = \App\Models\Settings::find(1) ;
+@endphp
 <html>
     <head>
         <!-- Scripts -->
@@ -61,7 +64,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-cog'></i> Configuración</a>
+                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -71,7 +74,7 @@
                         </li>
                     </ul>
                     <button style="background: #333333" class="btn btn-secondary" id="dropdownMenuButton1"  aria-expanded="false">
-                        $ USD 1 | ARS 115,87
+                        $ USD 1 | ARS {{$precio->dolar}}
                     </button>
                  </div>
             @endif   
