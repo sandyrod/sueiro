@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\newsletter;
+/* use App\Models\newsletter; */
 use Illuminate\Http\Request;
+
+use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
 class NewsletterController extends Controller
 {
@@ -35,11 +37,9 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        newsletter::create([
-            'email' => $request->email
-        ]);
         
-        return redirect()->route('nosotros');
+        Newsletter::subscribe($request->email);
+        return redirect()->to('/home');
     }
 
     /**
