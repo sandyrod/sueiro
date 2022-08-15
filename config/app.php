@@ -164,6 +164,7 @@ return [
         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
 
+
         /*
          * Package Service Providers...
          */
@@ -177,6 +178,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
+        NZTim\Mailchimp\MailchimpServiceProvider::class,
     ],
 
     /*
@@ -232,7 +234,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Mailchimp' => NZTim\Mailchimp\MailchimpFacade::class,
 
     ],
 

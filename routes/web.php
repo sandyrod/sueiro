@@ -48,4 +48,4 @@ Route::get('/setting',        [App\Http\Controllers\HomeController::class, 'sett
 Route::get('/cotizador',        [App\Http\Controllers\HomeController::class, 'cotizador'])->name('cotizador');
 
 Route::post('contact',[App\Http\Livewire\Contact::class, 'store'])->name('contact.store');
-
+Route::post('quality',[App\Http\Livewire\Quality::class, 'store'])->name('quality.store');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8001e7a2cd872405d4253f02d8617458",
+    "content-hash": "880365962efcfada34864dc275ffa550",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2523,6 +2523,61 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
             },
             "time": "2021-11-30T19:35:32+00:00"
+        },
+        {
+            "name": "nztim/mailchimp",
+            "version": "v4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nztim/mailchimp.git",
+                "reference": "20f7f717d7e87cb98198959313d1ee3ac69f08ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nztim/mailchimp/zipball/20f7f717d7e87cb98198959313d1ee3ac69f08ff",
+                "reference": "20f7f717d7e87cb98198959313d1ee3ac69f08ff",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "php": "^7.4 || ^8"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NZTim\\Mailchimp\\MailchimpServiceProvider"
+                    ],
+                    "aliases": {
+                        "Mailchimp": "NZTim\\Mailchimp\\MailchimpFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NZTim\\Mailchimp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim",
+                    "email": "tim@nztim.com"
+                }
+            ],
+            "description": "Mailchimp API wrapper, includes Laravel 5 support.",
+            "support": {
+                "issues": "https://github.com/nztim/mailchimp/issues",
+                "source": "https://github.com/nztim/mailchimp/tree/v4.4"
+            },
+            "time": "2022-03-21T18:53:24+00:00"
         },
         {
             "name": "opis/closure",

@@ -355,7 +355,7 @@
                                 <form action="{{ route('suscribe') }}" method='post'>
                                     @csrf
                                     <input class="footer__input_email" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
-                                    <button class="footer__btn_email"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
+                                    <button type="submit" class="footer__btn_email"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
                                 </form>
                             </div>
                             <div class="col-sm-3">

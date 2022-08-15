@@ -160,6 +160,11 @@
             </div>
         </div>
         <div class="row justify-content-center">
+            <div class="form-group col-md-3">
+                <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
+            </div>
+        </div><br>
+        <div class="row justify-content-center">
             <div class="col-md-10">
                 <table class="table table-striped">
                     <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
