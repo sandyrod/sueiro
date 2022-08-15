@@ -8,7 +8,7 @@ use Illuminate\Support\MessageBag;
 
 class Setting extends Component
 {
-    public $dolar, $euro, $data; 
+    public $dolar, $euro, $costo_referencia, $data; 
     
     public $updateMode  = false;
     public $imputActive = false;
@@ -25,12 +25,14 @@ class Setting extends Component
         $this->Title    = "Precio";
         $this->dolar    = null;
         $this->euro     = null;
+        $this->costo_referencia     = null;
     }
 
     public function resetInput()
     {
         $this->dolar    = null;
         $this->euro     = null;
+        $this->costo_referencia     = null;
         $this->emitUpdates();
         
     }
@@ -55,7 +57,8 @@ class Setting extends Component
     
         Settings::create([
             'dolar'         => $this->dolar,
-            'euro'          => $this->euro
+            'euro'          => $this->euro,
+            'costo_referencia'          => $this->costo_referencia
         ]);
 
         return redirect()->back()->with('message', 'Registro Guardado con Exito...');
@@ -68,6 +71,7 @@ class Setting extends Component
         $this->setting_id          = 1;
         $this->dolar                 = $record->dolar;
         $this->euro          = $record->euro;
+        $this->costo_referencia          = $record->costo_referencia;
        // $this->emitUpdates();
 
         $this->updateMode = true;
@@ -84,6 +88,7 @@ class Setting extends Component
             $record->update([
                 'dolar'      => $this->dolar,
                 'euro'        => $this->euro,
+                'costo_referencia'        => $this->costo_referencia,
             ]);
             
             return redirect('/setting')->back()->with('message', 'Registro actualizado...');

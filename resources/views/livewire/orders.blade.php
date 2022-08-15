@@ -1,4 +1,11 @@
 <div>
+  @if(session()->has('message'))
+    <div class="alert" id="alert">
+      <div class="alert alert-success" style="width: 23%; margin-left:77%">
+          {{ session()->get('message') }}
+      </div>
+    </div>
+  @endif
   <div class="request_titlenav">
     <div class="row request align-items-center" style="height: 39px;">
         <div class="col-md-12">
@@ -28,7 +35,10 @@
               <td class="orders__stadpedido">{{ $order->status }}</td>
               <td>${{ $order->total }}</td>
               <td>
-                <button wire:click.prevent="details({{ $order->id }})" class="orders__btn" type="button" class="btn btn-primary">VER DETALLE <i class="far fa-eye"></i></button></td>
+                <button wire:click="recomprar({{ $order->id }})" class="btn_purchase_history_1" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">RECOMPRAR</button>
+                <button wire:click.prevent="details({{ $order->id }})" class="btn_purchase_history " type="button" class="btn btn-primary">VER DETALLE <i class="far fa-eye"></i></button>
+              </td>
+
             </tr>
           @endforeach
           </tbody>
@@ -103,8 +113,14 @@
 </div>
 @push('js')
 
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {        
+        setTimeout(function() {
+          $("#alerts").hide(6000);
+          }, 3000);
+        });
 </script>
 
 @endpush

@@ -102,14 +102,17 @@
                                 <td>
                                     @if (auth()->user()->rol_user=='')
                                         <div><br>
-                                            <a wire:click="addToCart({{ $producto->id }})" class="fas fa-shopping-cart"></a>
+                                            <a wire:click="addToCart({{ $producto->id }})"> <i class="fas fa-shopping-cart" style="color:#4b2bfb"></i></a>
+                                            <a wire:click="addFavorites({{ $producto->id }})"> <i class="fas fa-heart" style="color:#006400"></i> </a>
+
                                         </div>
                                     @endif
                                     @if (auth()->user()->rol_user=='admin')
                                         <div><br>
                                             <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
                                             <a wire:click="destroy({{ $producto->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
-                                            <a wire:click="addToCart({{ $producto->id }})" class="fas fa-shopping-cart"></a>
+                                            <a wire:click="addToCart({{ $producto->id }})"> <i class="fas fa-shopping-cart" style="color:#4b2bfb"></i></a>
+                                            <a wire:click="addFavorites({{ $producto->id }})"><i class="fas fa-heart" style="color:#C11D1D" ></i></a>
                                         </div>
                                     @endif
                                 </td>
