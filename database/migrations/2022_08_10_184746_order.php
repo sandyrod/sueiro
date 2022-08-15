@@ -16,15 +16,15 @@ class Order extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->float('total');
-            $table->string('status');
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('tipo_envio');
-            $table->string('metodo_pago');
-            $table->string('monto');
-            $table->string('ref');
-            $table->string('fecha_pago');
+            $table->float('total')->nullable();
+            $table->string('status')->nullable();
+            $table->text('direccion')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('tipo_envio')->nullable();
+            $table->string('metodo_pago')->nullable();
+            $table->string('monto')->nullable();
+            $table->string('ref')->nullable();
+            $table->string('fecha_pago')->nullable();
             $table->timestamps();
         });
     }

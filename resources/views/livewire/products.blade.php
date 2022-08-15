@@ -175,10 +175,10 @@
                         <tr>
                             <td></td>
                             <td>
-                                <span class="td__title">{{ $producto->name }}</span>
+                                <span class="td__title">{{ $producto->skufield }}</span>
                             </td>
                             <td class="align-middle">
-                                <span class="align-middle">{{ $producto->description }}</span>
+                                <span class="align-middle">{{ $producto->name }}</span>
                             </td>
                         </tr>
                         @endforeach

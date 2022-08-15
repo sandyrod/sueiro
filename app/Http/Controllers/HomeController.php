@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderDetails;
+use OrderDetail;
 
 class HomeController extends Controller
 {
@@ -117,50 +121,103 @@ class HomeController extends Controller
         }
     }
 
-    public function pedido(){
-
-        // $orderObject[
-
-        // ];
+    public function pedido($id = 2){
+        $order = Order::find($id);
+        $order->status= 'Iniciado';
+        $orderID = 'WEB-' . Str::padLeft($order->id, 5, '0');
+        $itemObject = [];
+        $total = 0;
+        $orderitems = OrderDetails::where('order_id', $id)->get();
+        foreach ($orderitems as $item) {
+            $p = Product::where('id', $item->product_id)->first();
+            $itemObject[] = [
+                'ProductCode' => $p->id,
+                'SKUCode'     => $p->skufield,
+                'Description' => $p->name,
+                'Quantity'    => $item->quantity,
+                'UnitPrice'   => $item->price,
+            ];
+            $total += $item->price * $item->quantity;
+        }
+        $orderObject = [
+            'OrderID' => $orderID,
+                'OrderNumber' => $orderID,
+                'Date' => /* '2022-08-09T09:31:00' */$order->created_at->format('Y-m-d\TH:i:s'),
+                'Total' => $total,
+                'TotalDiscount' => 0.0,
+                'Comment' => 'PEDIDO WEB COD: ' . $orderID . ' - ' . $order->user->name,
+                'Customer' => [
+                    "CustomerID" => $order->user->id,  
+                    'DocumentType' => $order->user->document_tyoe ?? '86',
+                    'DocumentNumber' => $order->user->document_number,
+                    'IVACategoryCode' => $order->user->condition ?? 'RI',
+                    'User' => $order->user->name,
+                    'Email' => $order->user->email ?? 'ventas@sueiroehijos.com.ar',
+                    'FirstName' => $order->user->name,
+                    'LastName' => $order->user->last_name,
+                    'ProvinceCode' => $order->user->province_code,
+                    'MobilePhoneNumber' => null,
+                    'WebPage' => null,
+                    'BusinessAddress' => '',
+                    'Comments' => 'Cliente Web'
+                ],
+                'OrderItems' => $itemObject,
+                'Payments' => [],
+        ];
         $response = Http::withHeaders([
             'accesstoken' => '03844717-5220-40e7-adba-e1c830091425_13003'
         ])->post('https://tiendas.axoft.com/api/Aperture/order',
-            ["{
-                'OrderID': 'web02',
-                'OrderNumber': 'web02',
-                'Date': '2022-08-09T09:31:00',
-                'Total': 253.0,
-                'TotalDiscount': 0.0,
-                'Comment': 'Compra de pruebas',
-                'Customer': {
-                  'CustomerID': 0011,
-                  'DocumentType': '80',
-                  'DocumentNumber': '',
-                  'IVACategoryCode': 'RI',
-                  'User': 'web',
-                  'Email': 'test@test.com',
-                  'FirstName': '',
-                  'LastName': '',
-                  'ProvinceCode': '6',
-                  'MobilePhoneNumber': '',
-                  'WebPage': null,
-                  'BusinessAddress': '',
-                  'Comments': 'Cliente Web'
-                },
-                'OrderItems': [
-                  {
-                    'ProductCode': 75,
-                    'SKUCode': null,
-                    'Description': 'MALLA AI 002 ALAMBRE 1.65MM',
-                    'Quantity': 1,
-                    'UnitPrice': 253.0000000,
-                  }
-                ],
-                'Payments': [
-                ],
-              }"]);
+        $orderObject);
         $data = $response->json();
-        print_r($data);
+        if (is_array($data)){
+            if($data['isOk']){
+                return redirect('orders');
+            }
+        }
+        //print_r($data);
+        //echo "<br>";
+        //print_r($orderObject);
+        //$order->synced_at = now();
+
+        // $response = Http::withHeaders([
+        //     'accesstoken' => '03844717-5220-40e7-adba-e1c830091425_13003'
+        // ])->post('https://tiendas.axoft.com/api/Aperture/order',
+        //     ["{
+        //         'OrderID': 'web02',
+        //         'OrderNumber': 'web02',
+        //         'Date': '2022-08-09T09:31:00',
+        //         'Total': 253.0,
+        //         'TotalDiscount': 0.0,
+        //         'Comment': 'Compra de pruebas',
+        //         'Customer': {
+        //           'CustomerID': 0011,
+        //           'DocumentType': '80',
+        //           'DocumentNumber': '',
+        //           'IVACategoryCode': 'RI',
+        //           'User': 'web',
+        //           'Email': 'test@test.com',
+        //           'FirstName': '',
+        //           'LastName': '',
+        //           'ProvinceCode': '6',
+        //           'MobilePhoneNumber': '',
+        //           'WebPage': null,
+        //           'BusinessAddress': '',
+        //           'Comments': 'Cliente Web'
+        //         },
+        //         'OrderItems': [
+        //           {
+        //             'ProductCode': 75,
+        //             'SKUCode': null,
+        //             'Description': 'MALLA AI 002 ALAMBRE 1.65MM',
+        //             'Quantity': 1,
+        //             'UnitPrice': 253.0000000,
+        //           }
+        //         ],
+        //         'Payments': [
+        //         ],
+        //       }"]);
+        // $data = $response->json();
+        // print_r($data);
         
         
     }

@@ -90,7 +90,7 @@
                     <div class="col-md-6">
                         <select class="request__selectproduct">
                             @forelse($productos as $producto)
-                            <option value="{{ $producto->id }}">{{ $producto->name }}</option>
+                            <option value="{{ $producto->id }}">{{ $producto->skufield }}-{{ $producto->name }}</option>
                             @empty
                             <option>No hay productos disponibles</option>
                             @endforelse
