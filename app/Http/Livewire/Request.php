@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Requestmodel;
 use App\Models\Product;
+use App\Models\Category;
 
 class Request extends Component
 {
@@ -78,7 +79,7 @@ class Request extends Component
             'company'   => 'required',
         ]);
         if ($this->budgetrequest_id) {
-            $record = Categorys::find($this->category_id);
+            $record = Category::find($this->category_id);
             $record->update([
                 'name'      => $this->name,
                 'description'        => $this->description,

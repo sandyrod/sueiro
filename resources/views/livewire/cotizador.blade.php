@@ -35,29 +35,51 @@
                 <div class="row">
                     <h3><p class="text-center title_cotizador">Discos.</p></h3>
                     <div class="col">
-                        <input class="input_cotizador" placeholder="Cantidad solicitada *" wire:model.defer="cant_solicitada">
+                        <input class="input_cotizador" placeholder="Cantidad solicitada *" wire:model.defer="cant_solicitada" id="cant_solicitada">
+                        <input class="input_cotizador" placeholder="Ancho de Malla *" id="anchomalla" wire:model.defer="ancho_malla" type="number">
+                    </div>
+                    <div class="col">
+                        <input class="input_cotizador" placeholder="Diametro del disco en mm" id="diametrodisco" wire:model.defer="diametrodisco" type="number" step="0.1" min="12" max="1500">
+                        <input class="input_cotizador" placeholder="Malla Metalica *"  wire:model.defer="malla_metalica">
+                        <input class="input_cotizador" placeholder="Cantidad por pack *"  wire:model.defer="cant_pack" id="pack" value="1">
+                        
+                    </div>
+                    <div class="col">
                         <select class="input_cotizador" name="material">
                             @forelse($material as $mat)
                                 <option value="{{ $mat->id }}">{{ $mat->skufield}} - {{ $mat->name }}</option>
                             @empty
                                 <option></option>
                             @endforelse
-                        </select>
-                        <input class="input_cotizador" placeholder="Redondeo por Tiras *"  wire:model.defer="redondeo_por_tiras">
-                    </div>
-                    <div class="col">
-                        <input class="input_cotizador" placeholder="Malla Metalica *"  wire:model.defer="malla_metalica">
-                        <input class="input_cotizador" placeholder="Cantidad por pack *"  wire:model.defer="cant_pack">
-                        <input class="input_cotizador" placeholder="Redondeo de tiras *"  wire:model.defer="redondeo_de_tiras">
-                    </div>
-                    <div class="col">                      
+                        </select>                      
                         @if (auth()->user()->rol_user=='admin')
-                            <input class="input_cotizador" placeholder="Ancho de Malla *"  wire:model.defer="ancho_malla">
                             <input class="input_cotizador" placeholder="Valor por metro cuadrado *"  wire:model.defer="valor_m2">
                         @endif
                         <br><br>
-                        <button class="btn btn-outline-success col-md-4" ><i class="fa fa-save"></i>Agregar</button>
-                        <button class="btn btn-outline-danger col-md-4"  ><i class="fa fa-trash"></i>Cancelar</button>
+                        <!--<button class="btn btn-outline-success col-md-4" ><i class="fa fa-save"></i>Agregar</button>-->
+                        <!--<button class="btn btn-outline-danger col-md-4"  ><i class="fa fa-trash"></i>Cancelar</button>-->
+                    </div>
+                    <div class="col">
+                        <input class="input_cotizador" placeholder="Cantidad de metros"  id="cant_metros" style="display:none">
+                        <input class="input_cotizador" placeholder="Cantidad de metros"  id="cant_metros_cuad"  style="display:none">
+                        <input class="input_cotizador" placeholder="venta"  id="venta">
+                    </div>
+                </div>
+                <div class="row" style="display:none">
+                    <div class="col">
+                        <input class="input_cotizador" placeholder="discosportira" id="discoportira">
+                    </div>
+                    <div class="col">
+                        <input class="input_cotizador" placeholder="redondeoportira" id="redondeoportira">
+                    </div>
+                    <div class="col">
+                        <input class="input_cotizador" placeholder="cantidad de tiras" id="cant_tiras">
+                    </div>
+                    <div class="col">
+                        <input class="input_cotizador" placeholder="redondeo de tira" id="redondeodetira">
+                    </div>
+                    <div class="col">
+                        <input class="input_cotizador" placeholder="exacta" id="exacta">
                     </div>
                 </div>
             </div>
@@ -80,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="display:none">
             <div class="col-md-10">
                 <table class="table table-striped">
                     <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
@@ -133,21 +155,56 @@
 
 <script>
     $(document).ready(function () {
-  $("#botonocultamuestra").click(function () {
-    $("#divocultamuestra").each(function () {
-      displaying = $(this).css("display");
-      if (displaying == "block") {
-        $(this).fadeOut("slow", function () {
-          $(this).css("display", "none");
+        $("#botonocultamuestra").click(function () {
+            $("#divocultamuestra").each(function () {
+            displaying = $(this).css("display");
+            if (displaying == "block") {
+                $(this).fadeOut("slow", function () {
+                $(this).css("display", "none");
+                });
+            } else {
+                $(this).fadeIn("slow", function () {
+                $(this).css("display", "block");
+                });
+            }
+            });
         });
-      } else {
-        $(this).fadeIn("slow", function () {
-          $(this).css("display", "block");
-        });
-      }
+        $("#diametrodisco").change(function () {
+            //console.log($("#discoportira").val());
+            //console.log($("#anchomalla").val());
+            //console.log($("#diametrodisco").val()+parseFloat(5));
+            //Discos por tira
+            var diametrodisco = parseFloat($("#diametrodisco").val());
+            var anchomalla = parseFloat($("#anchomalla").val());
+            var discotira = anchomalla/(diametrodisco+parseFloat(5));
+            $("#discoportira").val(discotira);
+            //Redondeo por tira
+            var redondeoportira = Math.floor(discotira);
+            $("#redondeoportira").val(redondeoportira);
+            //cantidad de tiras
+            var solicitada = parseFloat($("#cant_solicitada").val());
+            var pack = parseFloat($("#pack").val());
+            console.log(pack);
+            console.log('solicitada:' + solicitada);
+            console.log('redondeoportira: '+ redondeoportira);
+            var cant_tiras = (solicitada * pack)/ redondeoportira;
+            console.log('cant_tiras: ' + cant_tiras);
+            $("#cant_tiras").val(cant_tiras);
+            var redondeodetira = Math.ceil(cant_tiras);
+            $("#redondeodetira").val(redondeodetira);
+            var exacta = redondeodetira*redondeoportira;
+            $("#exacta").val(exacta);
+            var cant_metros = (redondeodetira*(diametrodisco+parseFloat(10)))/1000;
+            $("#cant_metros").val(cant_metros);
+            var cant_metros_cuad = cant_metros * (anchomalla/1000);
+            $("#cant_metros_cuad").val(cant_metros_cuad);
+            var ref = parseFloat('0.033976124885216');
+            var venta = pack*ref;
+            $("#venta").val(venta);
+
+        })
+
     });
-  });
-});
 
     </script>
 
