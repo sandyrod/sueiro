@@ -151,7 +151,7 @@ class HomeController extends Controller
                     'DocumentType' => $order->user->document_tyoe ?? '86',
                     'DocumentNumber' => $order->user->document_number,
                     'IVACategoryCode' => $order->user->condition ?? 'RI',
-                    'User' => 'web-seller',
+                    'User' => $order->user->name,
                     'Email' => $order->user->email ?? 'ventas@sueiroehijos.com.ar',
                     'FirstName' => $order->user->name,
                     'LastName' => $order->user->last_name,
