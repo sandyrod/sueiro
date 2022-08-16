@@ -341,7 +341,7 @@
         {{-- footer --}}
         <div class="row">
             <div class="col-sm-2">
-                <img style=" height: 50%; margin-left:15%;" src="/img/logofooter.png">    
+                <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png')}}">    
                     <br><br><div class="row">                
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">

@@ -32,7 +32,7 @@
                     <br><span class="quality__titlesepa" > Si usted tiene un problema para encontrar el número Grabado, haga click aquí.</span><br><br><br>
                 </div>
                 <div class="col-sm-5 col-md-5 col-lg-5">
-                    <br><br><img src="/img/calidad.png" class="img-fluid"><br><br><br><br>
+                    <br><br><img src="{{ asset('/img/calidad.png')}}" class="img-fluid"><br><br><br><br>
                 </div>
             </div>
         </div>
