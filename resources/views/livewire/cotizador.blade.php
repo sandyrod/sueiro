@@ -41,8 +41,6 @@
                     <div class="col">
                         <input class="input_cotizador" placeholder="Diametro del disco en mm" id="diametrodisco" wire:model.defer="diametrodisco" type="number" step="0.1" min="12" max="1500">
                         <input class="input_cotizador" placeholder="Malla Metalica *"  wire:model.defer="malla_metalica">
-                        <input class="input_cotizador" placeholder="Cantidad por pack *"  wire:model.defer="cant_pack" id="pack" value="1">
-                        
                     </div>
                     <div class="col">
                         <select class="input_cotizador" name="material">
@@ -51,7 +49,8 @@
                             @empty
                                 <option></option>
                             @endforelse
-                        </select>                      
+                        </select>
+                        <input class="input_cotizador" placeholder="Cantidad por pack *"  wire:model.defer="cant_pack" id="pack" value="1">
                         @if (auth()->user()->rol_user=='admin')
                             <input class="input_cotizador" placeholder="Valor por metro cuadrado *"  wire:model.defer="valor_m2">
                         @endif

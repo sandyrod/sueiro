@@ -60,12 +60,14 @@
                         <li>
                             <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
                         </li>
+                        @if (auth()->user()->rol_user=='admin')
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
                             <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
                         </li>
+                        @endif
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -313,11 +315,12 @@
                     ">
                     <a class="nav-item nav-link" style="color: black" href=""></a>
                         <a class="nav-item nav-link" style="color: #fff" href="product">PRODUCTOS</a>
-                        <a class="nav-item nav-link" style="color: #fff"" href="nosotros">NOSOTROS </a>
-                        <a class="nav-item nav-link" style="color: #fff"" href="request">SOLICITAR PRESUPUESTO</a>
-                        <a class="nav-item nav-link" style="color: #fff"" href="contact">CONTACTO</a>
-                        <a class="nav-item nav-link" style="color: #fff"" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
-                        <a class="nav-item nav-link" style="color: #fff"" href="product"></a>
+                        <a class="nav-item nav-link" style="color: #fff" href="nosotros">NOSOTROS </a>
+                        <a class="nav-item nav-link" style="color: #fff" href="request">SOLICITAR PRESUPUESTO</a>
+                        <a class="nav-item nav-link" style="color: #fff" href="contact">CONTACTO</a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="orders">HISTÓRICO DE COMPRAS</a>
+                        <a class="nav-item nav-link" style="color: #fff" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
+                        <a class="nav-item nav-link" style="color: #fff" href="product"></a>
 
                     </div>
                 </div>

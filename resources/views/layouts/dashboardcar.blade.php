@@ -114,14 +114,14 @@
                 ">
                     <a class="nav-item nav-link" style="color: #FFF" href=""></a>
                     <a class="nav-item nav-link" style="color: #FFF" href="product">PRODUCTOS</a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="nosotros">NOSOTROS </a>
                     @guest
-                        <a class="nav-item nav-link" style="color: #FFF" href="nosotros">NOSOTROS </a>
                         <a class="nav-item nav-link" style="color: #FFF" href="request">SOLICITAR PRESUPUESTO</a>
                         <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
                     @endguest
                     @if (Auth::check())
+                        <a class="nav-item nav-link" style="color: #fff" href="request">SOLICITAR PRESUPUESTO</a>
                         <a class="nav-item nav-link" style="color: #FFF" href="orders">HISTÓRICO DE COMPRAS</a>
-                        <a class="nav-item nav-link" style="color: #FFF" href="remittances">REMITOS</a>
                         <a class="nav-item nav-link" style="color: #fff"" href="cotizador">COTIZADOR</a>
                         {{-- <a class="nav-item nav-link" style="color: #FFF" href="purchase-history">HISTÓRICO DE COMPRAS</a> --}}
                         <a class="nav-item nav-link" style="color: #FFF" href="quality">CALIDAD</a>

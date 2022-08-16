@@ -14,10 +14,10 @@
                 <table class="table table-striped">
                     <thead class="table__header">
                         <tr>
-                            <th></th>
-                            <th>Producto</th>
-                            <th>Descripcion</th>
-                            <th></th>
+                            <th>Cliente</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Empresa</th>
                         </tr>
                     </thead>
                     <tbody>
