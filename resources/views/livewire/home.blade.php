@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm">
             <div class="carrusel">
-                <img src="/img/carrusel.png" class="carrusel_img">
+                <img src="{{ asset('/img/carrusel.png') }}" class="carrusel_img">
                     <div class="carrusel_title">
                         <span>SUEIRO E HIJOS</span>
                     </div>
