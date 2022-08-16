@@ -103,7 +103,7 @@
         </div>
 
         <nav style="z-index:1; background: #333" class="sticky-sm-top navbar navbar-expand-lg">
-            <a class="navbar-brand" href="home"><img src="{{ asset('/img/logo.png'}} "></a>
+            <a class="navbar-brand" href="home"><img src="{{ asset('/img/logo.png')}} "></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -115,6 +115,7 @@
                     <a class="nav-item nav-link" style="color: #FFF" href=""></a>
                     <a class="nav-item nav-link" style="color: #FFF" href="product">PRODUCTOS</a>
                     <a class="nav-item nav-link" style="color: #FFF" href="nosotros">NOSOTROS </a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
                     @guest
                         <a class="nav-item nav-link" style="color: #FFF" href="request">SOLICITAR PRESUPUESTO</a>
                         <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
@@ -127,6 +128,7 @@
                         <a class="nav-item nav-link" style="color: #FFF" href="quality">CALIDAD</a>
                         <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
                     @endif
+                    <a class="nav-item nav-link" style="color: #fff"" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
                     <a class="nav-item nav-link" style="color: #FFF" href=""></a>
                 </div>
             </div>
@@ -139,7 +141,7 @@
         <footer class="w-100 py-4 flex-shrink-0">
             <div class="row">
                 <div class="col-sm-2">
-                    <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png' }}">    
+                    <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png')}}">    
                         <br><br><div class="row">                
                         <div class="col-sm-4"></div>
                         <div class="col-sm-2">
