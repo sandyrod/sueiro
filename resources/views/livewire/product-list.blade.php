@@ -22,7 +22,7 @@
                 @foreach($data as $producto)
                 <tr>
                     <td>
-                        <img class="shp" src="/img/mallas.png"><br>
+                        <img class="shp" src="{{ asset('/img/mallas.png') }}"><br>
                         <span style="margin: 10% 5%">{{ $producto->name }}</span>
                     </td>
                     <td>{{ $producto->description }}</td>

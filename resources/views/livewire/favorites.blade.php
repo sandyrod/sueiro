@@ -62,7 +62,7 @@
                                     <tr>
                                         {{-- <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td> --}}
                                         <td>
-                                            <img class="shp" src="/img/mallas.png"><br>
+                                            <img class="shp" src="{{ asset('/img/mallas.png') }}"><br>
                                             <span style="margin: 10% 5%; color:#C11D1D">{{ $producto->name }}</span>
                                         </td>
                                         <td><input type="number" class="form-control" placeholder="0" min="1"  name='order_quantity' oninput="validity.valid||(value='');" wire:model.defer="order_quantity" id='order_quantity'></td> 
