@@ -304,7 +304,7 @@
         </div>
         <div class="container-fluid" style="background: #333">
             <nav style="z-index:1" style="background: #333"  class="sticky-sm-top navbar navbar-expand-lg ">
-                <a class="navbar-brand" href="home"><img src="{{ asset('logo.png')}}"></a>
+                <a class="navbar-brand" href="home"><img src="{{ asset('img/logo.png')}}"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
