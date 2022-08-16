@@ -1,7 +1,7 @@
 <div class="footer">
     <div class="footer_container">
         <div class="footer__logo">
-            <img class="flt_img" src="/img/logofooter.png">
+            <img class="flt_img" src="{{ asset('/img/logofooter.png') }}">
             <i style="left: 40%; top:125%; position:absolute; " class="fab fa-facebook-f"></i>
             <i style="left: 55%; top:125%; position:absolute; "class="fab fa-instagram"></i>
         </div>            
