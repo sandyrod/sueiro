@@ -1,4 +1,6 @@
-
+@php
+    $actv = \App\Models\Settings::find(1) ;
+@endphp
 <div>
     <div class="request_titlenav">
         <div class="row request align-items-center" style="height: 39px;">
@@ -111,7 +113,9 @@
                                         <div><br>
                                             <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
                                             <a wire:click="destroy({{ $producto->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
-                                            <a wire:click="addToCart({{ $producto->id }})"> <i class="fas fa-shopping-cart" style="color:#4b2bfb"></i></a>
+                                            @if ($actv->activacion == '')
+                                                <a wire:click="addToCart({{ $producto->id }})"> <i class="fas fa-shopping-cart" style="color:#4b2bfb"></i></a>
+                                            @endif    
                                             <a wire:click="addFavorites({{ $producto->id }})"><i class="fas fa-heart" style="color:#C11D1D" ></i></a>
                                         </div>
                                     @endif

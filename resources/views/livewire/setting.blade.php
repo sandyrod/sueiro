@@ -19,10 +19,16 @@
         <div class="row">
             <p style="margin-top:13%; font-size:25px; ">Precio Peso Argentino</p>
         </div>
-        <div class="row row-cols-3">
+        <div class="row row-cols-4">
             <div class="col"><input class="contact__imputname-1 form-control" placeholder="{{$data->dolar}}" id="dolar" name="dolar" wire:model.defer="dolar" required></div>          
             <div class="col"><input class="contact__imputname-1 form-control" placeholder="{{$data->euro}}" id="euro" name="empresa" wire:model.defer="euro" required></div>
             <div class="col"><input class="contact__imputname-1 form-control" placeholder="{{$data->costo_referencia}}" id="costo_referencia" name="costo_referencia" wire:model.defer="costo_referencia" required></div>
+            <div class="form-check">
+                <input class="form-check-input" wire:model.defer="activacion" type="checkbox" value="1" id="defaultCheck1" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                    Desactivar compras
+                </label>
+            </div>
         </div><br><br>
         <div class="row justify-content-center">  
             <button type="button" class="btn btn-success col-md-1" wire:click="update"><i class="fa fa-save"></i>Guardar</button>

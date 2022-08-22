@@ -30,6 +30,9 @@ Route::get('/tango', [App\Http\Controllers\HomeController::class, 'api'])->name(
 Route::get('/tangoprice', [App\Http\Controllers\HomeController::class, 'price'])->name('tangoprice');
 Route::get('/tangopedido', [App\Http\Controllers\HomeController::class, 'pedido'])->name('tangopedido');
 
+
+Route::get('/price_dolar', [App\Http\Controllers\HomeController::class, 'price_dolar'])->name('price_dolar');
+
 Auth::routes();
 
 Route::get('/category',        [App\Http\Controllers\HomeController::class, 'category'])->name('category');

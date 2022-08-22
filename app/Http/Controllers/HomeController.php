@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetails;
+use GuzzleHttp\Client;
 use OrderDetail;
 
 class HomeController extends Controller
@@ -293,4 +294,13 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function price_dolar(){
+        
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', "https://aio-api-01.xlab.dev/exchange");
+        $data = json_decode($response->getBody());
+        dd($data->currencies->ARS->sources->BNA->format->billete->USD->sell);
+        
+    }
+    
 }

@@ -8,26 +8,26 @@
     </div>
     <div>
         <br>
-        <div class="row justify-content-center">
+        {{-- <div class="row justify-content-center">
             <div class="form-group col-md-3">
                 <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
             </div>
             {{-- @if (auth()->user()->rol_user=='admin') --}}
-                <button class="btn btn-outline-primary col-md-1" id="botonocultamuestra" value="Mostrar div" ><i class="fa fa-plus"></i>Agregar</button>
+             {{--    <button class="btn btn-outline-primary col-md-1" id="botonocultamuestra" value="Mostrar div" ><i class="fa fa-plus"></i>Agregar</button> --}}
             {{-- @endif --}}
-        </div>
+       {{--  </div> --}}
         <br><br>
-        <div id="divocultamuestra" style="display:none;">
+        {{-- <div id="divocultamuestra" style="display:none;"> --}}
             <div class="container-fluid">
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-4">
-                            <select name="select" id="inputSelect" class="form-control" required="required">
+                    <div class="row align-items-center" >
+                        <div class="col-md-4" style="margin-left:30%;">
+                            <select name="select" id="inputSelect" class="form-select" required="required">
                                 <option value="1">Seleccionar</option>
                                 <option value="2">Discos</option>
                                 <option value="3">Tejido Artistico</option>
                             </select>
-                        </div>          
+                        </div>       
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
         <div class="row justify-content-center" style="display:none">
             <div class="col-md-10">
                 <table class="table table-striped">
