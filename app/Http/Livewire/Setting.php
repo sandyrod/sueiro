@@ -8,31 +8,33 @@ use Illuminate\Support\MessageBag;
 
 class Setting extends Component
 {
-    public $dolar, $euro, $costo_referencia, $data; 
+    public $dolar, $euro, $costo_referencia, $activacion, $data; 
     
     public $updateMode  = false;
     public $imputActive = false;
  
     public function render()
     {
-        $this->Title = "Setting";
-        $this->data = Settings::find(1);
+        $this->Title    = "Setting";
+        $this->data     = Settings::find(1);
         return view('livewire.setting');
     }
 
     public function mount()
     {
-        $this->Title    = "Precio";
-        $this->dolar    = null;
-        $this->euro     = null;
-        $this->costo_referencia     = null;
+        $this->Title                = "Precio";
+        $this->dolar                = null;
+        $this->euro                 = null;
+        
+        $this->activacion            = null;
     }
 
     public function resetInput()
     {
-        $this->dolar    = null;
-        $this->euro     = null;
+        $this->dolar                = null;
+        $this->euro                 = null;
         $this->costo_referencia     = null;
+        
         $this->emitUpdates();
         
     }
@@ -56,9 +58,10 @@ class Setting extends Component
     {
     
         Settings::create([
-            'dolar'         => $this->dolar,
-            'euro'          => $this->euro,
-            'costo_referencia'          => $this->costo_referencia
+            'dolar'                     => $this->dolar,
+            'euro'                      => $this->euro,
+            'costo_referencia'          => $this->costo_referencia,
+            'activacion'                 => $this->activacion
         ]);
 
         return redirect()->back()->with('message', 'Registro Guardado con Exito...');
@@ -67,11 +70,12 @@ class Setting extends Component
 
     public function edit()
     {
-        $record                     = settings::findOrFail(1);
-        $this->setting_id          = 1;
-        $this->dolar                 = $record->dolar;
-        $this->euro          = $record->euro;
+        $record                          = settings::findOrFail(1);
+        $this->setting_id                = 1;
+        $this->dolar                     = $record->dolar;
+        $this->euro                      = $record->euro;
         $this->costo_referencia          = $record->costo_referencia;
+        $this->activacion                 = $record->activacion;
        // $this->emitUpdates();
 
         $this->updateMode = true;
@@ -86,9 +90,10 @@ class Setting extends Component
         ]);
            $record = settings::find(1);
             $record->update([
-                'dolar'      => $this->dolar,
-                'euro'        => $this->euro,
+                'dolar'                   => $this->dolar,
+                'euro'                    => $this->euro,
                 'costo_referencia'        => $this->costo_referencia,
+                'activacion'               => $this->activacion,
             ]);
             
             return redirect('/setting')->back()->with('message', 'Registro actualizado...');

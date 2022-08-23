@@ -326,7 +326,9 @@
                         <a class="nav-item nav-link" style="color: #fff"" href="cotizador">COTIZADOR</a>
                         {{-- <a class="nav-item nav-link" style="color: #FFF" href="purchase-history">HISTÓRICO DE COMPRAS</a> --}}
                         <a class="nav-item nav-link" style="color: #FFF" href="quality">CALIDAD</a>
-                        <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                        @if ($precio->activacion == '')
+                            <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                        @endif
                     @endif
                     <a class="nav-item nav-link" style="color: #fff"" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
                     <a class="nav-item nav-link" style="color: #FFF" href=""></a>
