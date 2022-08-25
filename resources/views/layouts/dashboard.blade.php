@@ -9,6 +9,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <div class="container-fluid" style="background: #333;">
@@ -60,14 +61,12 @@
                         <li>
                             <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
                         </li>
-                        @if (auth()->user()->rol_user=='admin')
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
                             <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
                         </li>
-                        @endif
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -304,7 +303,7 @@
         </div>
         <div class="container-fluid" style="background: #333">
             <nav style="z-index:1" style="background: #333"  class="sticky-sm-top navbar navbar-expand-lg ">
-                <a class="navbar-brand" href="home"><img src="{{ asset('img/logo.png')}}"></a>
+                <a class="navbar-brand" href="home"><img src="{{ asset('/img/logo.png') }}"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -314,13 +313,25 @@
                     border-radius: 24px;
                     ">
                     <a class="nav-item nav-link" style="color: black" href=""></a>
-                        <a class="nav-item nav-link" style="color: #fff" href="product">PRODUCTOS</a>
-                        <a class="nav-item nav-link" style="color: #fff" href="nosotros">NOSOTROS </a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="product">PRODUCTOS</a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="nosotros">NOSOTROS </a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
+                    @guest
+                        <a class="nav-item nav-link" style="color: #FFF" href="request">SOLICITAR PRESUPUESTO</a>
+                        {{-- <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a> --}}
+                    @endguest
+                    @if (Auth::check())
                         <a class="nav-item nav-link" style="color: #fff" href="request">SOLICITAR PRESUPUESTO</a>
-                        <a class="nav-item nav-link" style="color: #fff" href="contact">CONTACTO</a>
                         <a class="nav-item nav-link" style="color: #FFF" href="orders">HISTÓRICO DE COMPRAS</a>
-                        <a class="nav-item nav-link" style="color: #fff" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
-                        <a class="nav-item nav-link" style="color: #fff" href="product"></a>
+                        <a class="nav-item nav-link" style="color: #fff"" href="cotizador">COTIZADOR</a>
+                        {{-- <a class="nav-item nav-link" style="color: #FFF" href="purchase-history">HISTÓRICO DE COMPRAS</a> --}}
+                        <a class="nav-item nav-link" style="color: #FFF" href="quality">CALIDAD</a>
+                        @if ($precio->activacion == '')
+                            <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                        @endif
+                    @endif
+                    <a class="nav-item nav-link" style="color: #fff"" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
+                    <a class="nav-item nav-link" style="color: #FFF" href=""></a>
 
                     </div>
                 </div>
@@ -333,7 +344,9 @@
         {{-- footer --}}
         <div class="row">
             <div class="col-sm-2">
+
                 <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png') }}">    
+
                     <br><br><div class="row">                
                     <div class="col-sm-4"></div>
                     <div class="col-sm-2">

@@ -8,6 +8,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <div class="banner">
@@ -115,6 +116,7 @@
                     <a class="nav-item nav-link" style="color: #FFF" href=""></a>
                     <a class="nav-item nav-link" style="color: #FFF" href="product">PRODUCTOS</a>
                     <a class="nav-item nav-link" style="color: #FFF" href="nosotros">NOSOTROS </a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
                     @guest
                         <a class="nav-item nav-link" style="color: #FFF" href="request">SOLICITAR PRESUPUESTO</a>
                         <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
@@ -125,8 +127,11 @@
                         <a class="nav-item nav-link" style="color: #fff"" href="cotizador">COTIZADOR</a>
                         {{-- <a class="nav-item nav-link" style="color: #FFF" href="purchase-history">HISTÓRICO DE COMPRAS</a> --}}
                         <a class="nav-item nav-link" style="color: #FFF" href="quality">CALIDAD</a>
-                        <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                        @if ($precio->activacion == '')
+                            <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                        @endif                       
                     @endif
+                    <a class="nav-item nav-link" style="color: #fff"" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
                     <a class="nav-item nav-link" style="color: #FFF" href=""></a>
                 </div>
             </div>
@@ -139,7 +144,7 @@
         <footer class="w-100 py-4 flex-shrink-0">
             <div class="row">
                 <div class="col-sm-2">
-                    <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png') }}">    
+                    <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png')}}">    
                         <br><br><div class="row">                
                         <div class="col-sm-4"></div>
                         <div class="col-sm-2">

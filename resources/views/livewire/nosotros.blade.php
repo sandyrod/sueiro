@@ -14,7 +14,7 @@
             <span class="nosotros__title">Contamos con líneas estandarizadas de productos para cubrir las necesidades inmediatas del cliente como también disponemos de la infraestructura y el personal capacitado para el desarrollo de trabajos a medida.</span>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">
-            <br><br><img src="/img/flt.png" class="img-fluid"><br><br>
+            <br><br><img src="{{ asset('/img/flt.png')}}" class="img-fluid"><br><br>
         </div>
         {{-- <div class="col-md-2">
             <img class="flt_img" src="/img/flt.png">

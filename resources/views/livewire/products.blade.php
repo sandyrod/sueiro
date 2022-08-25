@@ -1,4 +1,6 @@
-
+@php
+    $actv = \App\Models\Settings::find(1) ;
+@endphp
 <div>
     <div class="request_titlenav">
         <div class="row request align-items-center" style="height: 39px;">
@@ -111,7 +113,9 @@
                                         <div><br>
                                             <a wire:click="edit({{ $producto->id }})"><i class="fa fa-pen" style="color:#006400"></i></a>
                                             <a wire:click="destroy({{ $producto->id }})"><i class="fa fa-trash" style="color:#C11D1D"></i></a>
-                                            <a wire:click="addToCart({{ $producto->id }})"> <i class="fas fa-shopping-cart" style="color:#4b2bfb"></i></a>
+                                            @if ($actv->activacion == '')
+                                                <a wire:click="addToCart({{ $producto->id }})"> <i class="fas fa-shopping-cart" style="color:#4b2bfb"></i></a>
+                                            @endif    
                                             <a wire:click="addFavorites({{ $producto->id }})"><i class="fas fa-heart" style="color:#C11D1D" ></i></a>
                                         </div>
                                     @endif
@@ -130,7 +134,7 @@
             <div class="products__card">
                 <div class="filtros"> 
                     <div class="card" style="width: 18rem;">
-                        <img src="/img/filtros.png">
+                        <img src="{{ asset('/img/filtros.png') }}">
                         <div class="card-body">
                             <p class="card_title">FILTROS</p>
                         </div>
@@ -138,7 +142,7 @@
                 </div>
                 <div class="filtros"> 
                     <div class="card" style="width: 18rem;">
-                        <img src="/img/mallas.png">
+                        <img src="{{ asset('/img/mallas.png') }}">
                         <div class="card-body">
                             <p class="card_title">MALLAS</p>
                         </div>
@@ -146,7 +150,7 @@
                 </div>
                 <div class="filtros"> 
                     <div class="card" style="width: 18rem;">
-                        <img src="/img/zarandas.png" class="card-img-top" alt="...">
+                        <img src="{{ asset('/img/zarandas.png') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card_title">ZARANDAS</p>
                         </div>
@@ -154,7 +158,7 @@
                 </div>
                 <div class="filtros"> 
                     <div class="card" style="width: 18rem;">
-                        <img src="/img/tamices.png" class="card-img-top" alt="...">
+                        <img src="{{ asset('/img/tamices.png') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card_title">TAMICES</p>
                         </div>

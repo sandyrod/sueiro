@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm">
             <div class="carrusel">
-                <img src="/img/carrusel.png" class="carrusel_img">
+                <img src="{{ asset('/img/carrusel.png') }}" class="carrusel_img">
                     <div class="carrusel_title">
                         <span>SUEIRO E HIJOS</span>
                     </div>
@@ -24,35 +24,35 @@
                 <br>
                 <p class="title-card">FILTROS</p>
                 <div class="card" style="width: 28rem;">
-                    <img src="/img/filtros.png">
+                    <img src="{{ asset('/img/filtros.png')}}">
                 </div>
             </div>
             <div class="col">
                 <br>
                 <p class="title-card">MALLAS</p>
                 <div class="card" style="width: 28rem;">
-                    <img src="/img/mallas.png"">                    
+                    <img src="{{ asset('/img/mallas.png')}}">                    
                 </div>
             </div>
             <div class="col">
                 <br>
                 <p class="title-card">ZARANDAS</p>    
                 <div class="card" style="width: 28rem;">
-                    <img src="/img/zarandas.png" class="card-img-top" alt="...">
+                    <img src="{{ asset('/img/zarandas.png')}}" class="card-img-top" alt="...">
                 </div>
             </div>
             <div class="col">
                 <br>
                 <p class="title-card">TAMICES</p>
                 <div class="card" style="width: 28rem;">
-                    <img src="/img/tamices.png" class="card-img-top" alt="...">
+                    <img src="{{ asset('/img/tamices.png')}}" class="card-img-top" alt="...">
                 </div>
             </div>
         </div>
     </div>
     <div style="position:relative;top: 50px; display:flex; margin-bottom:100px;">
         <div class="flt">
-            <img class="flt_img" src="/img/flt.png">
+            <img class="flt_img" src="{{ asset('/img/flt.png')}}">
         </div>
         <div class="cuerpo">
             <span class="cuerpo_title">SUEIRO E HIJOS</span>
