@@ -17,18 +17,13 @@ class Setting extends Component
     {
         $this->Title    = "Setting";
         $this->data     = Settings::find(1);
+        $this->dolar = $this->data->dolar;
+        $this->euro = $this->data->euro;
+        $this->costo_referencia = $this->data->costo_referencia;
         return view('livewire.setting');
     }
 
-    public function mount()
-    {
-        $this->Title                = "Precio";
-        $this->dolar                = null;
-        $this->euro                 = null;
-        
-        $this->activacion            = null;
-    }
-
+    
     public function resetInput()
     {
         $this->dolar                = null;
@@ -53,21 +48,6 @@ class Setting extends Component
         return $this->store();
     }
 
-
-    public function store()
-    {
-    
-        Settings::create([
-            'dolar'                     => $this->dolar,
-            'euro'                      => $this->euro,
-            'costo_referencia'          => $this->costo_referencia,
-            'activacion'                 => $this->activacion
-        ]);
-
-        return redirect()->back()->with('message', 'Registro Guardado con Exito...');
-        $this->resetInput();
-    }
-
     public function edit()
     {
         $record                          = settings::findOrFail(1);
@@ -84,10 +64,6 @@ class Setting extends Component
 
     public function update()
     {
-        $this->validate([
-            'dolar'      => 'required',
-            
-        ]);
            $record = settings::find(1);
             $record->update([
                 'dolar'                   => $this->dolar,

@@ -20,7 +20,7 @@
             <p style="margin-top:13%; font-size:25px; ">Precio Peso Argentino</p>
         </div>
         <div class="row row-cols-4">
-            <div class="col"><label>Dolar</label> <input class="contact__imputname-1 form-control" placeholder="{{$data->dolar}}" id="dolar" name="dolar" wire:model.defer="dolar" required></div>          
+            <div class="col"><label>Dolar</label> <input class="contact__imputname-1 form-control" placeholder="{{$data->dolar}}" id="dolar" name="dolar" wire:model.defer="dolar"" required></div>
             <div class="col"><label>Euro</label><input class="contact__imputname-1 form-control" placeholder="{{$data->euro}}" id="euro" name="empresa" wire:model.defer="euro" required></div>
             <div class="col"><label>Costo Referencia</label><input class="contact__imputname-1 form-control" placeholder="{{$data->costo_referencia}}" id="costo_referencia" name="costo_referencia" wire:model.defer="costo_referencia" required></div>
             <div class="col">
