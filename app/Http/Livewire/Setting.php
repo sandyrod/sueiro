@@ -17,9 +17,13 @@ class Setting extends Component
     {
         $this->Title    = "Setting";
         $this->data     = Settings::find(1);
+        if($this->data->activacion != 1){
+            $this->data->activacion = 0;
+        }
         $this->dolar = $this->data->dolar;
         $this->euro = $this->data->euro;
         $this->costo_referencia = $this->data->costo_referencia;
+        $this->activacion = $this->data->activacion;
         return view('livewire.setting');
     }
 
@@ -55,7 +59,7 @@ class Setting extends Component
         $this->dolar                     = $record->dolar;
         $this->euro                      = $record->euro;
         $this->costo_referencia          = $record->costo_referencia;
-        $this->activacion                 = $record->activacion;
+        $this->activacion                = $record->activacion;
        // $this->emitUpdates();
 
         $this->updateMode = true;
@@ -65,11 +69,14 @@ class Setting extends Component
     public function update()
     {
            $record = settings::find(1);
+           if($this->activacion != 1){
+                $this->activacion = null;
+           }
             $record->update([
                 'dolar'                   => $this->dolar,
                 'euro'                    => $this->euro,
                 'costo_referencia'        => $this->costo_referencia,
-                'activacion'               => $this->activacion,
+                'activacion'              => $this->activacion,
             ]);
             
             return redirect('/setting')->back()->with('message', 'Registro actualizado...');

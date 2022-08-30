@@ -26,9 +26,10 @@
             <div class="col">
                 <br>
                 <label class="form-check-label" for="defaultCheck1">
-                    Desactivar compras
+                    Activar compras
                 </label>
-                <input class="form-check-input" wire:model.defer="activacion" type="checkbox" value="1" id="defaultCheck1" checked>
+                <input class="form-check-input" wire:model.defer="activacion" name="activacion" type="radio" value="1">No
+                <input class="form-check-input" wire:model.defer="activacion" name="activacion" type="radio" value="0">Si
                 
             </div>
         </div><br><br>
