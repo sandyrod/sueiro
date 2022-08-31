@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Settings extends Model
 {
     protected $table = 'setting';
-    protected $fillable = ['dolar', 'euro','costo_referencia','activacion'];
+    protected $fillable = ['dolar', 'euro','costo_referencia', 'activacion'];
     use HasFactory;
 }
