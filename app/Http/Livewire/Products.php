@@ -31,10 +31,53 @@ class Products extends Component
     {
         $this->Title = "Productos";
         $this->data = ($this->search)
-                ? product::where('id', 'like', '%'.$this->search.'%')
-                        ->orWhere('name', 'like', '%'.$this->search.'%')
-                        ->orWhere('description', 'like', '%'.$this->search.'%')
-                        ->orWhere('price', 'like', '%'.$this->search.'%')
+                ? product::where('id', 'like', $this->search.'%')
+                        ->orWhere('name', 'like', $this->search.'%')
+                        ->orWhere('description', 'like', $this->search.'%')
+                        ->orWhere('price', 'like', $this->search.'%')
+                        ->orWhere('skufield', 'like', $this->search.'%')
+                        ->orderBy('id', 'DESC')
+                        ->get()
+                : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
+            return view('livewire.products');
+    }
+    
+    public function flt_filtro()
+    {
+        $this->search = "06";
+        $this->Title = "Productos";
+        $this->data = ($this->search)
+                ? product::where('skufield', 'like', $this->search.'%')
+                        ->orderBy('id', 'DESC')
+                        ->get()
+                : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
+            return view('livewire.products');
+    }
+    public function flt_mallas(){
+        $this->search = "01";
+        $this->Title = "Productos";
+        $this->data = ($this->search)
+                ? product::where('skufield', 'like', $this->search.'%')
+                        ->orderBy('id', 'DESC')
+                        ->get()
+                : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
+            return view('livewire.products');
+    }
+    public function flt_zarandas(){
+        $this->search = "08";
+        $this->Title = "Productos";
+        $this->data = ($this->search)
+                ? product::where('skufield', 'like', $this->search.'%')
+                        ->orderBy('id', 'DESC')
+                        ->get()
+                : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
+            return view('livewire.products');
+    }
+    public function flt_tamices(){
+        $this->search = "07";
+        $this->Title = "Productos";
+        $this->data = ($this->search)
+                ? product::where('skufield', 'like', $this->search.'%')
                         ->orderBy('id', 'DESC')
                         ->get()
                 : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
@@ -125,14 +168,12 @@ class Products extends Component
     public function edit($id)
     {
         $record                     = Product::findOrFail($id);
-        $this->product_id          = $id;
+        $this->product_id           = $id;
         $this->name                 = $record->name;
         $this->description          = $record->description;
-        $this->price          = $record->price;
+        $this->price                = $record->price;
         $this->emitUpdates();
-
-        $this->updateMode = true;
-                
+        $this->updateMode = true;               
     }
 
     public function update()

@@ -1880,10 +1880,16 @@ body span {
     display: none;
 }
 
-.link_footer{
-    text-decoration:none; 
-    color:#FFF;
+.link_footer {
+    text-decoration: none;
+    color: #FFF;
 }
-.link_footer:hover{
-    color:#BF2A32 ;
+
+.link_footer:hover {
+    color: #BF2A32;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
