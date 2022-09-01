@@ -58,7 +58,7 @@
             <tbody>
               @forelse($orderDetails as $detail)
               <tr>
-                <th scope="row">{{ $detail->product->name }}</th>
+                <th scope="row">{{ $detail->product->skufield.' '.'-'.' '.$detail->product->name }}</th>
                 <td>{{ $detail->quantity }}</td>
                 <td>${{ $detail->price }}</td>
                 <td>${{ $detail->quantity * $detail->price }}</td>
