@@ -64,9 +64,11 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li>
-                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
-                        </li>
+                        @if (auth()->user()->rol_user=='admin')
+                            <li>
+                                <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
+                            </li>
+                        @endif
                         <li>
                             <hr class="dropdown-divider">
                         </li>
