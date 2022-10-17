@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 
 
@@ -92,14 +93,12 @@ class Shopping extends Component
     public function store()
     {
         $id = Auth::user()->id;
- 
-        
+
         $money = Product::select(DB::raw('SUM(shopping.order_quantity * products.price) As total'))
             ->join('shopping', 'products.id', '=', 'shopping.product_id')
             ->where('shopping.user_id', '=', $id)
             ->get();
 
-        
         $total_money=$money{0}{'total'}*0.21+$money{0}{'total'};
         /* dd($total_money); */
         
@@ -108,10 +107,10 @@ class Shopping extends Component
             ->where('shopping.user_id', '=', $id)
             ->get();        
 
-        $this->validate([
-             'direccion'      => 'required'
+        // $this->validate([
+        //      'direccion'      => 'required'
             
-        ]);
+        // ]);
         $orden=Order::create([
             'direccion'          => $this->direccion,
             'telefono'         => $this->telefono,
@@ -130,21 +129,22 @@ class Shopping extends Component
 	 //       dd($ord_prod);
             $total_price_order= $ord_prod->price*$ord_prod->order_quantity;
         
-        OrderDetails::create([
+            OrderDetails::create([
 
-            'order_id'=>$orden->id,
-            'product_id'=>$ord_prod->product_id,
-            'price'=>$ord_prod->price,
-            'quantity'=>$ord_prod->order_quantity,
-            'total'=>$total_price_order,
+                'order_id'=>$orden->id,
+                'product_id'=>$ord_prod->product_id,
+                'price'=>$ord_prod->price,
+                'quantity'=>$ord_prod->order_quantity,
+                'total'=>$total_price_order,
 
-        ]);
-    }
+            ]);
+        }
         //$this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
-        
+        $this->orden = $orden->id;
+        $this->pedido();
         $this->resetInput();
         $this->reset_cart();
-        return redirect()->back()->with('message', 'Orden Realizada Con Ezito...');
+        return redirect()->back()->with('message', 'Orden Realizada Con Exito...');
     }
     private function emitUpdates()
     {
@@ -152,6 +152,63 @@ class Shopping extends Component
 
     }
     
-
+    public function pedido(){
+        $id = $this->orden;
+        $order = Order::find($id);
+        $order->status= 'Iniciado';
+        $orderID = 'WEB-' . Str::padLeft($order->id, 5, '0');
+        $itemObject = [];
+        $total = 0;
+        $orderitems = OrderDetails::where('order_id', $id)->get();
+        foreach ($orderitems as $item) {
+            $p = Product::where('id', $item->product_id)->first();
+            $itemObject[] = [
+                'ProductCode' => $p->id,
+                'SKUCode'     => $p->skufield,
+                'Description' => $p->name,
+                'Quantity'    => $item->quantity,
+                'UnitPrice'   => $item->price,
+            ];
+            $total += $item->price * $item->quantity;
+        }
+        $orderObject = [
+            'OrderID' => $orderID,
+                'OrderNumber' => $orderID,
+                'Date' => /* '2022-08-09T09:31:00' */$order->created_at->format('Y-m-d\TH:i:s'),
+                'Total' => $total,
+                'TotalDiscount' => 0.0,
+                'Comment' => 'PEDIDO WEB COD: ' . $orderID . ' - ' . $order->user->name,
+                'Customer' => [
+                    "CustomerID" => $order->user->id,  
+                    'DocumentType' => $order->user->document_tyoe ?? '86',
+                    'DocumentNumber' => $order->user->document_number,
+                    'IVACategoryCode' => $order->user->condition ?? 'RI',
+                    'User' => $order->user->name,
+                    'Email' => $order->user->email ?? 'ventas@sueiroehijos.com.ar',
+                    'FirstName' => $order->user->name,
+                    'LastName' => $order->user->last_name,
+                    'ProvinceCode' => $order->user->province_code,
+                    'MobilePhoneNumber' => null,
+                    'WebPage' => null,
+                    'BusinessAddress' => '',
+                    'Comments' => 'Cliente Web'
+                ],
+                'OrderItems' => $itemObject,
+                'Payments' => [],
+        ];
+        $response = Http::withHeaders([
+            'accesstoken' => '03844717-5220-40e7-adba-e1c830091425_13003'
+        ])->post('https://tiendas.axoft.com/api/Aperture/order',
+        $orderObject);
+        $data = $response->json();
+        if (is_array($data)){
+            if($data['isOk']){
+                return redirect('orders');
+            }
+        }
+        
+        
+    }
+    
 }
 

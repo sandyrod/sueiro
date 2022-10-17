@@ -122,7 +122,7 @@ class HomeController extends Controller
         }
     }
 
-    public function pedido($id = 2){
+    public function pedido($id = 6){
         $order = Order::find($id);
         $order->status= 'Iniciado';
         $orderID = 'WEB-' . Str::padLeft($order->id, 5, '0');
@@ -175,7 +175,7 @@ class HomeController extends Controller
                 return redirect('orders');
             }
         }
-        //print_r($data);
+        print_r($data);
         //echo "<br>";
         //print_r($orderObject);
         //$order->synced_at = now();

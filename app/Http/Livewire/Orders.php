@@ -25,23 +25,19 @@ class Orders extends Component
         $id = Auth::user()->id;
         $this->data =  Order::where('user_id', $id)->orderBy('id', 'DESC')->get();
         
-        
         return view('livewire.orders');
     }
 
     public function details($id){
         $this->order_id = $id;
-        //dd($this->order_id);
         $this->orderDetails=OrderDetails::where('order_id', $this->order_id)->get();
         $this->render();
-        //$this->orderDetails=OrderDetails::all();
-        //dd($this->orderDetails);
     }
 
     public function recomprar($id){
         $id_user = Auth::user()->id;
         $order_product =  OrderDetails::select('order_details.product_id','order_details.price','order_details.quantity')
-            ->where('order_details.id', '=', $id)
+            ->where('order_details.order_id', '=', $id)
             ->get(); 
         /* dd($order_product); */
 
@@ -58,7 +54,8 @@ class Orders extends Component
                 'price'              => $ord_prod->price,
                 
             ]);
-            return redirect()->back()->with('message', 'Producto agregado...!');
+            return redirect()->back()->with('message', 'Orden copiada al carrito!');
         }
     }
+    
 }
