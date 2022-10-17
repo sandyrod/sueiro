@@ -5,6 +5,8 @@ use App\Models\Product;
 use App\Models\Shopping;
 use App\Models\Favorites;
 use App\Models\User;
+use App\Models\Category;
+
 use Illuminate\Support\Facades\Auth;
 
 //use App\Helpers\shopping;
@@ -18,6 +20,7 @@ use Illuminate\Http\Request;
 class Products extends Component
 {
     public $data, $search, $user, $product_id, $order_quantity, $name, $description, $price, $logo, $request, $cart; 
+    public $categories;
 
     public $updateMode  = false;
     public $imputActive = false;
@@ -30,6 +33,7 @@ class Products extends Component
     public function render()
     {
         $this->Title = "Productos";
+        $this->categories = Category::All();
         $this->data = ($this->search)
                 ? product::where('id', 'like', $this->search.'%')
                         ->orWhere('name', 'like', $this->search.'%')
@@ -42,7 +46,7 @@ class Products extends Component
             return view('livewire.products');
     }
     
-    public function flt_filtro()
+    public function flt_filtros()
     {
         $this->search = "06";
         $this->Title = "Productos";
@@ -83,6 +87,7 @@ class Products extends Component
                 : product::where('price', '>','0')->orderBy('id', 'DESC')->get();
             return view('livewire.products');
     }
+
     public function mount()
     {
         $this->Title = "Productos";

@@ -132,6 +132,19 @@
     <div class="container">
         <div class="row">
             <div class="products__card">
+                @forelse($categories as $category)
+                <?php $name = '/img/'.$category->name.'.png'; ?>
+                <div class="filtros"> 
+                    <a wire:click="flt_{{ strtolower($category->name)}}">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{ asset($name) }}">
+                            <div class="card-body">
+                                <p class="card_title">{{$category->name}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @empty
                 <div class="filtros"> 
                     <a wire:click="flt_filtro">
                         <div class="card" style="width: 18rem;">
@@ -172,6 +185,8 @@
                         </div>
                     </a>
                 </div>
+                @endforelse
+                
             </div>
         </div>
         <div class="row justify-content-center">
@@ -186,7 +201,7 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Producto</th>
-                            <th scope="col">Descripcion </th>
+                            <th scope="col">Descripcion</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -198,7 +213,11 @@
                                 <span class="td__title">{{ $producto->skufield }}</span>
                             </td>
                             <td class="align-middle">
+                                <img class="shp" src="{{ asset('/img/mallas.png') }}"><br>
                                 <span class="align-middle">{{ $producto->name }}</span>
+                            </td>
+                            <td class="align-middle">
+                                <span class="align-middle"><img src="{{ $producto->logo }}"></span>
                             </td>
                         </tr>
                         @endforeach

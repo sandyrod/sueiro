@@ -47,10 +47,10 @@
                         <button onclick="openCity(event, 'Entrega')" type="button" class="btn btn-outline-primary" style="margin-left:50%;"> Siguiente</button>
                         <div style="width:140px; margin-left:88%;" class="row align-items-end">
                             <div class="col">
-                                @foreach($sud_total as $sud)
+                                @foreach($sud_total as $sub)
                                     <tr style="height:5%; top:28%; left:80%; position:absolute;">
                                         <TD>Subtotal</TD>
-                                        <TD style="color:#c1282d;">{{$sud->total}}</TD>
+                                        <TD style="color:#c1282d;">{{$sub->total}}</TD>
                                     </tr>
                                 @endforeach          
                             </div>

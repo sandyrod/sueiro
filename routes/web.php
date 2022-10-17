@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Livewire\Users;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +52,5 @@ Route::get('/cotizador',        [App\Http\Controllers\HomeController::class, 'co
 
 Route::post('contact',[App\Http\Livewire\Contact::class, 'store'])->name('contact.store');
 Route::post('quality',[App\Http\Livewire\Quality::class, 'store'])->name('quality.store');
+Route::get('/users', [App\Http\Controllers\HomeController::class, 'users'])->name('users');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');

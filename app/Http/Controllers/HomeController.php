@@ -303,4 +303,12 @@ class HomeController extends Controller
         
     }
     
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+    public function users(){
+        return view('users');
+    }
 }

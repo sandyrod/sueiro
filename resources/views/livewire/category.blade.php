@@ -1,10 +1,11 @@
 <div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top: 50px;">
         <div class="form-group col-md-3">
             <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
         </div>
         <button class="btn btn-outline-primary col-md-1" wire:click="$toggle('imputActive')"><i class="fa fa-plus"></i>Agregar</button>
-    </div><br><br>    
+    </div>
+    <br><br>    
     @if($imputActive or $updateMode)
         <div class="row justify-content-center">
             <div class="col-md-3">
@@ -32,7 +33,7 @@
             <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"><i class="fa fa-trash"></i>Cancelar</button>
         </div>
     @endif
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top 20px; margin-bottom: 30px;">
         <div class="col-md-10">
             <table class="table table-striped">
                 <thead class="table__header">
