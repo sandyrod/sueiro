@@ -137,31 +137,96 @@
                             <span class="shp__enicon"><i class="fas fa-shipping-fast"></i></span>
                             <span class="shp__entitle">Forma de Entrega</span>
                         </div>
-                        <div class="container">
+                        <div class="title_entrega">
                             <div class="row align-items-start">
-                                <div class="col">
+                                <div class="col-4">
                                     <span class="shp__etrtitle">Seleccione la forma de entrega</span>
-                                    <br>
-                                    <div class="shp__etrcue">
-                                        <span class="shp__etrtitleret">Retiro en sucursal</span>
-                                        <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="1" name="flexRadioenvio" id="retiro_sucursal" checked>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="row align-items-start">
-                                <div style="max-width:25%; margin-left:6%; " class="col">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="shp__etrcue">
+                                    <span class="shp__etrtitleret">Retiro en sucursal</span>
+                                    <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="1" name="flexRadioenvio" id="retiro_sucursal" checked onchange="javascript:toggleText(1)">
+                                </div>
+                                <div>
                                     <span><b>Sucursal Ciudadela</b></span>                                
                                     <span>Bergamini 1127 - Ciudadela</span>
                                     <span>54-11 4488-4649 / 3825</span>
                                     <span>Lu a Vie de 8 a 17 hrs</span>
                                 </div>
-                                <div style="margin-top: -5%" class="col">
+                                <div class="shp__etrcue1">
+                                        <span class="shp__etrtitleret">Envío a domicilio</span>
+                                        <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="2" id="envio_domicilio" name="flexRadioenvio" onchange="javascript:toggleText(2)">
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div>
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.143550548068!2d-58.53818750000001!3d-34.6258125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7c77ca45177ec70b!2s48Q39FF6%2BMP!5e0!3m2!1ses-419!2sve!4v1643913947570!5m2!1ses-419!2sve" width="520" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                                <div>
+                                    <div id="Myid" style="display:none">
+                                        Dirección Final
+                                        <input class="form-control" placeholder="Dirección" wire:model.defer="direccion">
+                                        Telefono
+                                        <input class="form-control" placeholder="Telefono" wire:model.defer="telefono">
+                                        Transporte
+                                        <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
+                                        Direción del Transporte
+                                        <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- <div>
+                            <div class="row align-items-start">
+                                <div class="col-4">
+                                    <div class="shp__etrcue">
+                                        <span class="shp__etrtitleret">Retiro en sucursal</span>
+                                        <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="1" name="flexRadioenvio" id="retiro_sucursal" checked>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.143550548068!2d-58.53818750000001!3d-34.6258125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7c77ca45177ec70b!2s48Q39FF6%2BMP!5e0!3m2!1ses-419!2sve!4v1643913947570!5m2!1ses-419!2sve" width="520" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row align-items-start">
+                                <div style="margin-left: 10px;" class="col-4">
+                                    <span><b>Sucursal Ciudadela</b></span>                                
+                                    <span>Bergamini 1127 - Ciudadela</span>
+                                    <span>54-11 4488-4649 / 3825</span>
+                                    <span>Lu a Vie de 8 a 17 hrs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row align-items-start">
+                                <div class="col-4">
+                                    <div class="shp__etrcue1">
+                                        <span class="shp__etrtitleret">Envío a domicilio</span>
+                                        <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="2" id="envio_domicilio" name="flexRadioenvio" onchange="javascript:toggleText() " checked>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div id="Myid" style="display:none">
+                                    Dirección Final
+                                    <input class="form-control" placeholder="Dirección" wire:model.defer="direccion">
+                                    Telefono
+                                    <input class="form-control" placeholder="Telefono" wire:model.defer="telefono">
+                                    Transporte
+                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
+                                    Direción del Transporte
+                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
+                                    </div>
+                                </div>    
+                            </div>
+                        </div> -->
+                        <!-- 
                         <div class="container">
                             <div class="row align-items-start">
                                 <div class="col">
@@ -172,12 +237,18 @@
                                 </div>
                                 <div class="col">
                                     <div id="Myid" style="display:none">
-                                    Direccion  <input class="form-control" placeholder="Dirección" wire:model.defer="direccion">
-                                    Telefono   <input class="form-control" placeholder="Telefono" wire:model.defer="telefono">
+                                    Dirección Final
+                                    <input class="form-control" placeholder="Dirección" wire:model.defer="direccion">
+                                    Telefono
+                                    <input class="form-control" placeholder="Telefono" wire:model.defer="telefono">
+                                    Transporte
+                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
+                                    Direción del Transporte
+                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
                                     </div>
                                 </div>    
                             </div>
-                        </div>
+                        </div> -->
                         <br>
                         <button onclick="openCity(event, 'Pago')" type="button" class="btn btn-outline-primary" style="margin-left:50%;"> Siguiente</button>
                     </div>
@@ -263,7 +334,7 @@
                         <div style="top: 306px;left: 65px;width: 473px;height: 325px;background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 6px #00000012;opacity: 1;border:solid;">
                             <div class="shp__pg">
                                 <span class="shp__enicon"><i class="fas fa-wallet"></i></span>
-                                <span class="shp__entitle">Forma de Entrega</span>
+                                <span class="shp__entitle">Forma de Pago</span>
                             </div>
                             
                             <div style="margin: 30px 35px;width: 171px;height: 55px;background: #FFFFFF 0% 0% no-repeat padding-box;border: 1px solid #A2A2A2;opacity: 1;">
@@ -514,9 +585,10 @@
     }
 </script>
 <script>
-    function toggleText(){
+    function toggleText(v){
+      console.log(v);
       var x = document.getElementById("Myid");
-      if (x.style.display === "block") {
+      if (v==1) {
         x.style.display = "none";
       } else {
         x.style.display = "block";

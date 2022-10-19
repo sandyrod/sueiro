@@ -38,4 +38,7 @@
             <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"> <i class="fa fa-trash"></i>Cancelar</button>
         </div>        
     </div>
+    <div class="row justify-content-center" style="margin-top: 50px; margin-bottom: 100px;">
+        <a href="{{ route('dashboard') }}" class="botonera" style="margin: 20px;">Dashboard</a>
+    </div>
 </div>

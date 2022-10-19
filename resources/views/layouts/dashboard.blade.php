@@ -47,40 +47,40 @@
                     <div class="col-sm-4">
                         <div class="row">
                             @if (Auth::check())
-                <div style="z-index: 999;" >
-                    <button style="background: #333333" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i style="color: #fff" class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
-                    </button>
-                    <ul style="width: 15%" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        @if (auth()->user()->rol_user=='admin')
-                            <li>
-                                <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
-                            </li>
-                        @endif
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="btn_logout" href="{{ url('/logout') }}"> Cerrar cession</a>
-                        </li>
-                    </ul>
-                    <button style="background: #333333" class="btn btn-secondary" id="dropdownMenuButton1"  aria-expanded="false">
-                        $ USD 1 | ARS {{$precio->dolar}}
-                    </button>
-                 </div>
-            @endif   
+                            <div style="z-index: 999;" >
+                                <button style="background: #333333" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i style="color: #fff" class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
+                                </button>
+                                <ul style="width: 15%" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="#"><i class='fas fa-user'></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    @if (auth()->user()->rol_user=='admin')
+                                        <li>
+                                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
+                                        </li>
+                                    @endif
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <a class="btn_logout" href="{{ url('/logout') }}"> Cerrar cession</a>
+                                    </li>
+                                </ul>
+                                <button style="background: #333333" class="btn btn-secondary" id="dropdownMenuButton1"  aria-expanded="false">
+                                    $ USD 1 | ARS {{$precio->dolar}}
+                                </button>
+                            </div>
+                            @endif
                             <div class="col-sm-6 " style="color: #ffffff">
                                 @guest
                                     <i class="far fa-user" style="color:#ffffff;margin-top:8%;">
@@ -128,175 +128,175 @@
                                     <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                            <div class="modal-body" >
-                                <form method="POST" action="{{ route('register') }}">
-                                    @csrf
-                                    <div class="row mb-3">
-                                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-            
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                <div class="modal-body" >
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
+                                        <div class="row mb-3">
+                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
+                
+                                            <div class="col-md-6">
+                                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="last_name" class="col-md-4 col-form-label text-md-end">{{ __('Apellido') }}</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
-            
-                                            @error('last_name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row mb-3">
+                                            <label for="last_name" class="col-md-4 col-form-label text-md-end">{{ __('Apellido') }}</label>
+                
+                                            <div class="col-md-6">
+                                                <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+                
+                                                @error('last_name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Correo Electronico') }}</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-            
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row mb-3">
+                                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Correo Electronico') }}</label>
+                
+                                            <div class="col-md-6">
+                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="document_type" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Identificación') }}</label>
-            
-                                        <div class="col-md-6">
-                                        <select id="document_type" type="document_type" class="form-control @error('document_type') is-invalid @enderror" name="document_type" value="{{ old('document_type') }}" required autocomplete="document_type">
-                                            <option value="86">CUIL</option>
-                                            <option value="80">CUIT</option>
-                                            <option value="87">CDI</option>
-                                            <option value="89">LE</option>
-                                            <option value="89">LC</option>
-                                            <option value="96">DNI</option>
-                                        </select>
-            
-                                            @error('document_type')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row mb-3">
+                                            <label for="document_type" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Identificación') }}</label>
+                
+                                            <div class="col-md-6">
+                                            <select id="document_type" type="document_type" class="form-control @error('document_type') is-invalid @enderror" name="document_type" value="{{ old('document_type') }}" required autocomplete="document_type">
+                                                <option value="86">CUIL</option>
+                                                <option value="80">CUIT</option>
+                                                <option value="87">CDI</option>
+                                                <option value="89">LE</option>
+                                                <option value="89">LC</option>
+                                                <option value="96">DNI</option>
+                                            </select>
+                
+                                                @error('document_type')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="document_number" class="col-md-4 col-form-label text-md-end">{{ __('Numero de Documento') }}</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="document_number" type="document_number" class="form-control @error('document_number') is-invalid @enderror" name="document_number" value="{{ old('document_number') }}" required autocomplete="document_number">
-            
-                                            @error('document_number')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row mb-3">
+                                            <label for="document_number" class="col-md-4 col-form-label text-md-end">{{ __('Numero de Documento') }}</label>
+                
+                                            <div class="col-md-6">
+                                                <input id="document_number" type="document_number" class="form-control @error('document_number') is-invalid @enderror" name="document_number" value="{{ old('document_number') }}" required autocomplete="document_number">
+                
+                                                @error('document_number')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="condition" class="col-md-4 col-form-label text-md-end">{{ __('Condición Fiscal') }}</label>
-            
-                                        <div class="col-md-6">
-                                        <select id="condition" type="condition" class="form-control @error('condition') is-invalid @enderror" name="condition" value="{{ old('condition') }}" required autocomplete="condition">
-                                            <option value="CF">CONSUMIDOR FINAL</option>
-                                            <option value="EX">EXENTO</option>
-                                            <option value="EXE">EXENTO OPERACIÓN EXPORTACIÓN</option>
-                                            <option value="INR">NO RESPONSABLE</option>
-                                            <option value="RI">RESPONSABLE INSCRIPTO</option>
-                                            <option value="RS">RESPONSABLE MONOTRIBUTISTA</option>
-                                            <option value="RSS">RESPONSABLE MONOTRIBUTISTA SOCIAL</option>
-                                            <option value="PCE">PEQUEÑO CONTRIBUYENTE EVENTUAL</option>
-                                            <option value="PCS">PEQUEÑO CONTRIBUYENTE EVENTUAL SOCIAL</option>
-                                            <option value="SNC">SUJETO NO CATEGORIZADO</option>
-                                        </select>
-            
-                                            @error('condition')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row mb-3">
+                                            <label for="condition" class="col-md-4 col-form-label text-md-end">{{ __('Condición Fiscal') }}</label>
+                
+                                            <div class="col-md-6">
+                                            <select id="condition" type="condition" class="form-control @error('condition') is-invalid @enderror" name="condition" value="{{ old('condition') }}" required autocomplete="condition">
+                                                <option value="CF">CONSUMIDOR FINAL</option>
+                                                <option value="EX">EXENTO</option>
+                                                <option value="EXE">EXENTO OPERACIÓN EXPORTACIÓN</option>
+                                                <option value="INR">NO RESPONSABLE</option>
+                                                <option value="RI">RESPONSABLE INSCRIPTO</option>
+                                                <option value="RS">RESPONSABLE MONOTRIBUTISTA</option>
+                                                <option value="RSS">RESPONSABLE MONOTRIBUTISTA SOCIAL</option>
+                                                <option value="PCE">PEQUEÑO CONTRIBUYENTE EVENTUAL</option>
+                                                <option value="PCS">PEQUEÑO CONTRIBUYENTE EVENTUAL SOCIAL</option>
+                                                <option value="SNC">SUJETO NO CATEGORIZADO</option>
+                                            </select>
+                
+                                                @error('condition')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="province_code" class="col-md-4 col-form-label text-md-end">{{ __('Provincia') }}</label>
-            
-                                        <div class="col-md-6">
-                                        <select id="province_code" type="province_code" class="form-control @error('province_code') is-invalid @enderror" name="province_code" value="{{ old('province_code') }}" required autocomplete="province_code">
-                                            <option value="0">CIUDAD AUTONOMA BUENOS AIRES</option>
-                                            <option value="1">BUENOS AIRES</option>
-                                            <option value="2">CATAMARCA</option>
-                                            <option value="3">CORDOBA</option>
-                                            <option value="4">CORRIENTES</option>
-                                            <option value="5">ENTRE RIOS</option>
-                                            <option value="6">JUJUY</option>
-                                            <option value="7">MENDOZA</option>
-                                            <option value="8">LA RIOJA</option>
-                                            <option value="9">SALTA</option>
-                                            <option value="10">SAN JUAN</option>
-                                            <option value="11">SAN LUIS</option>
-                                            <option value="12">SANTA FE</option>
-                                            <option value="13">SANTIAGO DEL ESTERO</option>
-                                            <option value="14">TUCUMAN</option>
-                                            <option value="16">CHACO</option>
-                                            <option value="17">CHUBUT</option>
-                                            <option value="18">FORMOSA</option>
-                                            <option value="19">MISIONES</option>
-                                            <option value="20">NEUQUEN</option>
-                                            <option value="21">LA PAMPA</option>
-                                            <option value="22">RIO NEGRO</option>
-                                            <option value="23">SANTA CRUZ</option>
-                                            <option value="24">TIERRA DEL FUEGO</option>
-                                        </select>
-            
-                                            @error('province_code')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row mb-3">
+                                            <label for="province_code" class="col-md-4 col-form-label text-md-end">{{ __('Provincia') }}</label>
+                
+                                            <div class="col-md-6">
+                                            <select id="province_code" type="province_code" class="form-control @error('province_code') is-invalid @enderror" name="province_code" value="{{ old('province_code') }}" required autocomplete="province_code">
+                                                <option value="0">CIUDAD AUTONOMA BUENOS AIRES</option>
+                                                <option value="1">BUENOS AIRES</option>
+                                                <option value="2">CATAMARCA</option>
+                                                <option value="3">CORDOBA</option>
+                                                <option value="4">CORRIENTES</option>
+                                                <option value="5">ENTRE RIOS</option>
+                                                <option value="6">JUJUY</option>
+                                                <option value="7">MENDOZA</option>
+                                                <option value="8">LA RIOJA</option>
+                                                <option value="9">SALTA</option>
+                                                <option value="10">SAN JUAN</option>
+                                                <option value="11">SAN LUIS</option>
+                                                <option value="12">SANTA FE</option>
+                                                <option value="13">SANTIAGO DEL ESTERO</option>
+                                                <option value="14">TUCUMAN</option>
+                                                <option value="16">CHACO</option>
+                                                <option value="17">CHUBUT</option>
+                                                <option value="18">FORMOSA</option>
+                                                <option value="19">MISIONES</option>
+                                                <option value="20">NEUQUEN</option>
+                                                <option value="21">LA PAMPA</option>
+                                                <option value="22">RIO NEGRO</option>
+                                                <option value="23">SANTA CRUZ</option>
+                                                <option value="24">TIERRA DEL FUEGO</option>
+                                            </select>
+                
+                                                @error('province_code')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-            
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row mb-3">
+                                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
+                
+                                            <div class="col-md-6">
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-            
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña') }}</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                
+                                        <div class="row mb-3">
+                                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña') }}</label>
+                
+                                            <div class="col-md-6">
+                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                            </div>
                                         </div>
-                                    </div>
-            
-                                    <div class="row mb-0">
-                                        <div class="col-md-8 offset-md-6">
-                                            <button type="submit" class="btn btn-danger">
-                                                {{ __('Registrar') }}
-                                            </button>
+                
+                                        <div class="row mb-0">
+                                            <div class="col-md-8 offset-md-6">
+                                                <button type="submit" class="btn btn-danger">
+                                                    {{ __('Registrar') }}
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
   
@@ -343,10 +343,8 @@
             @yield('content')
         </div>
         @livewireScripts
-        {{-- footer --}}
         <div class="row">
             <div class="col-sm-2">
-
                 <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png') }}">    
 
                     <br><br><div class="row">                
@@ -389,12 +387,13 @@
                                 </form>
                             </div>
                             <div class="col-sm-3">
-                                <i class="fas fa-map-marker-alt"> <span> Bergamini 1127 - Ciudadela</span></i>
-                                <br><br>
-                                <i class="far fa-envelope"> <span> Ventas@sueiroehijos.com.ar</span></i>
-                                <br><br>
-                                <i class="fas fa-phone-alt"> <span> 54-11 4488-4649 / 3825</span></i>
-                                <br><br>
+                                <i class="fas fa-map-marker-alt" style="margin-bottom:10px;"> <span> Bergamini 1127 - Ciudadela</span></i>
+                                <br>
+                                <i class="far fa-envelope" style="margin-bottom:10px;"> <span> Ventas@sueiroehijos.com.ar</span></i>
+                                <br>
+                                <i class="fas fa-phone-alt" style="margin-bottom:10px;"> <span> 54-11 4488-4649 / 3825</span></i>
+                                <br>
+                                <i class="far fa-address-card" style="margin-bottom:10px;"> <span> 30-71085514-1</span></i>
                             </div>
                         </div>
                     </div>

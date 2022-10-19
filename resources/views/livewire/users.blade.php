@@ -40,4 +40,7 @@
             </table>
         </div>
     </div>
+    <div class="row justify-content-center" style="margin-top: 50px; margin-bottom: 100px;">
+        <a href="{{ route('dashboard') }}" class="botonera" style="margin: 20px;">Dashboard</a>
+    </div>
 </div>
