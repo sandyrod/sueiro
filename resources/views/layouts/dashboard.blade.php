@@ -59,14 +59,14 @@
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li>
-                                        <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="favorites"><i class='fas fa-star'></i> Mis Favoritos</a>
+                                        <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="{{route('favorites')}}"><i class='fas fa-star'></i> Mis Favoritos</a>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     @if (auth()->user()->rol_user=='admin')
                                         <li>
-                                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="setting"><i class='fas fa-cog'></i> Configuración</a>
+                                            <a style="color: #c1282d; font-size:110%" class="dropdown-item" href="{{ route('dashboard')}}"><i class='fas fa-cog'></i> Configuración</a>
                                         </li>
                                     @endif
                                     <li>
@@ -305,34 +305,33 @@
         </div>
         <div class="container-fluid" style="background: #333">
             <nav style="z-index:1" style="background: #333"  class="sticky-sm-top navbar navbar-expand-lg ">
-                <a class="navbar-brand" href="home"><img src="{{ asset('/img/logo.png') }}"></a>
+                <a class="navbar-brand" href="{{route('home')}}">
+                    <img src="{{ asset('/img/logo.png') }}" class="menu_logo">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto mb-2 mb-lg-0" style="background: var(--unnamed-color-c1282d) 0% 0% no-repeat padding-box;
-                    background: #C1282D 0% 0% no-repeat padding-box;
-                    border-radius: 24px;
-                    ">
+                    <div class="navbar-nav ms-auto mb-2 mb-lg-0 sueiro_menu">
                     <a class="nav-item nav-link" style="color: black" href=""></a>
-                    <a class="nav-item nav-link" style="color: #FFF" href="product">PRODUCTOS</a>
-                    <a class="nav-item nav-link" style="color: #FFF" href="nosotros">NOSOTROS </a>
-                    <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="{{ route('product') }}">PRODUCTOS</a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="{{ route('nosotros') }}">NOSOTROS </a>
+                    <a class="nav-item nav-link" style="color: #FFF" href="{{ route('contact') }}">CONTACTO</a>
                     @guest
-                        <a class="nav-item nav-link" style="color: #FFF" href="request">SOLICITAR PRESUPUESTO</a>
-                        {{-- <a class="nav-item nav-link" style="color: #FFF" href="contact">CONTACTO</a> --}}
+                        <a class="nav-item nav-link" style="color: #FFF" href="{{ route('request') }}">SOLICITAR PRESUPUESTO</a>
+                        {{-- <a class="nav-item nav-link" style="color: #FFF" href="{{ route('contact') }}">CONTACTO</a> --}}
                     @endguest
                     @if (Auth::check())
-                        <a class="nav-item nav-link" style="color: #fff" href="request">SOLICITAR PRESUPUESTO</a>
-                        <a class="nav-item nav-link" style="color: #FFF" href="orders">HISTÓRICO DE COMPRAS</a>
-                        <a class="nav-item nav-link" style="color: #fff"" href="cotizador">COTIZADOR</a>
-                        {{-- <a class="nav-item nav-link" style="color: #FFF" href="purchase-history">HISTÓRICO DE COMPRAS</a> --}}
-                        <a class="nav-item nav-link" style="color: #FFF" href="quality">CALIDAD</a>
+                        <a class="nav-item nav-link" style="color: #fff" href="{{ route('request') }}">SOLICITAR PRESUPUESTO</a>
+                        <a class="nav-item nav-link" style="color: #FFF" href="{{ route('orders') }}">HISTÓRICO DE COMPRAS</a>
+                        <a class="nav-item nav-link" style="color: #fff" href="{{ route('cotizador') }}">COTIZADOR</a>
+                        {{-- <a class="nav-item nav-link" style="color: #FFF" href="{{ route('purchase-history') }}">HISTÓRICO DE COMPRAS</a> --}}
+                        <a class="nav-item nav-link" style="color: #FFF" href="{{ route('quality') }}">CALIDAD</a>
                         @if ($precio->activacion == '')
-                            <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="shopping"><i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-item nav-link" style="color: #FFF; margin-top:0.5%;" href="{{ route('shopping') }}"><i class="fas fa-shopping-cart"></i></a>
                         @endif
                     @endif
-                    <a class="nav-item nav-link" style="color: #fff"" href="product"><i style="margin-top: 30%" class="fas fa-search"></i></a>
+                    <a class="nav-item nav-link" style="color: #fff"" href="{{ route('product') }}"><i style="margin-top: 30%" class="fas fa-search"></i></a>
                     <a class="nav-item nav-link" style="color: #FFF" href=""></a>
 
                     </div>
@@ -343,62 +342,116 @@
             @yield('content')
         </div>
         @livewireScripts
-        <div class="row">
-            <div class="col-sm-2">
-                <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png') }}">    
-
-                    <br><br><div class="row">                
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-2">
-                        <i  class="fab fa-facebook-f"></i>
+        <div class="footer">
+            <div class="footer_row">
+                <div class="footer_first_col">
+                    <div>
+                        <img src="{{ asset('/img/logofooter.png') }}" class="footer_logo">
                     </div>
-                    <div class="col-sm-2">
+                    <div class="footer_networks">
+                        <i class="fab fa-facebook-f"></i>
                         <i class="fab fa-instagram"></i>
                     </div>
                 </div>
-            </div>    
-            <div class="col">
-                <div class="footer_container2">
-                    <br>
-                    <div class="row footer__cont_red">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-4"><span>SECCIONES</span></div>
-                        <div class="col-sm-4"><span>SUSCRIBITE AL NEWSLETTER</span></div>
-                        <div class="col-sm-2"><span>CONTACTO</span></div>
+                <div class="footer_second_col">
+                    <div>
+                        <div class="footer_titles">SECCIONES</div>
+                        <div class="footer_secciones">
+                            <div class="footer_secciones_col1">
+                                <a class="link_footer" href="{{ route('nosotros') }}"><span>NOSOTROS</span> </a>
+                                <br>
+                                <a class="link_footer" href="{{ route('product') }}"><span>PRODUCTOS</span></a>
+                            </div>
+                            <div class="footer_secciones_col2">
+                                <a class="link_footer" href="{{ route('request') }}"><span>SOLICITAR PRESUPUESTO </span></a>
+                                <br>
+                                <a class="link_footer" href="{{ route('contact') }}"><span>CONTACTO</span></a>
+                            </div>
+                        </div>
                     </div>
-                    <br>
-                    <div class="row footer__cont_whait">
-                        <div class="col-sm-1"></div>
-                            <div class="col-sm-2">
-                                <a class="link_footer" href="nosotros"><span>NOSOTROS</span> </a>
-                                <br>
-                                <a class="link_footer" href="product"><span>PRODUCTOS</span></a>
-                            </div>
-                            <div class="col-sm-2">
-                                <a class="link_footer" href="request"><span>SOLICITAR PRESUPUESTO </span></a>
-                                <br>
-                                <a class="link_footer" href="contact"><span>CONTACTO</span></a>
-                            </div>
-                            <div class="col-sm-4">                            
-                                <form action="{{ route('suscribe') }}" method='post'>
-                                    @csrf
-                                    <input class="footer__input_email" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
-                                    <button type="submit" class="footer__btn_email"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
-                                </form>
-                            </div>
-                            <div class="col-sm-3">
-                                <i class="fas fa-map-marker-alt" style="margin-bottom:10px;"> <span> Bergamini 1127 - Ciudadela</span></i>
-                                <br>
-                                <i class="far fa-envelope" style="margin-bottom:10px;"> <span> Ventas@sueiroehijos.com.ar</span></i>
-                                <br>
-                                <i class="fas fa-phone-alt" style="margin-bottom:10px;"> <span> 54-11 4488-4649 / 3825</span></i>
-                                <br>
-                                <i class="far fa-address-card" style="margin-bottom:10px;"> <span> 30-71085514-1</span></i>
-                            </div>
+                    <div>
+                        <div class="footer_titles">SUSCRIBITE AL NEWSLETTER</div>
+                        <div>
+                            <form action="{{ route('suscribe') }}" method='post' class="footer_form">
+                                @csrf
+                                <input class="footer__input_email" placeholder="Ingresa tu email" id="search" name="email" type="text" value="">
+                                <button type="submit" class="footer__btn_email">
+                                    <i style="color:#fff;" class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="footer_titles">CONTACTO</div>
+                        <div class="footer_contacto">
+                            <i class="fas fa-map-marker-alt" style="margin-bottom:10px;"> <span> Bergamini 1127 - Ciudadela</span></i>
+                            <br>
+                            <i class="far fa-envelope" style="margin-bottom:10px;"> <span> Ventas@sueiroehijos.com.ar</span></i>
+                            <br>
+                            <i class="fas fa-phone-alt" style="margin-bottom:10px;"> <span> 54-11 4488-4649 / 3825</span></i>
+                            <br>
+                            <i class="far fa-address-card" style="margin-bottom:10px;"> <span> 30-71085514-1</span></i>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- <div class="row">
+                <div class="col-sm-2">
+                    <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png') }}">    
+
+                        <br><br><div class="row">                
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-2">
+                            <i  class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="col-sm-2">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                    </div>
+                </div>    
+                <div class="col">
+                    <div class="footer_container2">
+                        <br>
+                        <div class="row footer__cont_red">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-4"><span>SECCIONES</span></div>
+                            <div class="col-sm-4"><span>SUSCRIBITE AL NEWSLETTER</span></div>
+                            <div class="col-sm-2"><span>CONTACTO</span></div>
+                        </div>
+                        <br>
+                        <div class="row footer__cont_whait">
+                            <div class="col-sm-1"></div>
+                                <div class="col-sm-2">
+                                    <a class="link_footer" href="{{ route('nosotros') }}"><span>NOSOTROS</span> </a>
+                                    <br>
+                                    <a class="link_footer" href="{{ route('product') }}"><span>PRODUCTOS</span></a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a class="link_footer" href="{{ route('request') }}"><span>SOLICITAR PRESUPUESTO </span></a>
+                                    <br>
+                                    <a class="link_footer" href="{{ route('contact') }}"><span>CONTACTO</span></a>
+                                </div>
+                                <div class="col-sm-4">                            
+                                    <form action="{{ route('suscribe') }}" method='post'>
+                                        @csrf
+                                        <input class="footer__input_email" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
+                                        <button type="submit" class="footer__btn_email"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
+                                    </form>
+                                </div>
+                                <div class="col-sm-3">
+                                    <i class="fas fa-map-marker-alt" style="margin-bottom:10px;"> <span> Bergamini 1127 - Ciudadela</span></i>
+                                    <br>
+                                    <i class="far fa-envelope" style="margin-bottom:10px;"> <span> Ventas@sueiroehijos.com.ar</span></i>
+                                    <br>
+                                    <i class="fas fa-phone-alt" style="margin-bottom:10px;"> <span> 54-11 4488-4649 / 3825</span></i>
+                                    <br>
+                                    <i class="far fa-address-card" style="margin-bottom:10px;"> <span> 30-71085514-1</span></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </body>
 </html>

@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetails;
+use App\Models\Settings;
 use App\Models\Shopping as Shoppings;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -13,19 +14,26 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
+use Livewire\WithFileUploads;
+
 
 
 class Shopping extends Component
 {
-    public $orden, $order_product, $total_price_order, $total_money, $money, $data ,$search, $count_item, $sud_total,$direccion,$telefono,$retiro_sucursal,$envio_domicilio, $tipo_envio, $metodo_pago,$contado,$monto,$transferencia_bnc,$ref,$fecha_pago, $total; 
+
+    use WithFileUploads;
+
+    public $orden, $order_product, $total_price_order, $total_money, $money, $data;
+    public $search, $count_item, $sub_total, $direccion, $telefono, $retiro_sucursal;
+    public $envio_domicilio, $tipo_envio, $metodo_pago, $contado, $monto, $transferencia_bnc;
+    public $dolar, $ref, $fecha_pago, $total, $dirtransporte, $transporte;
+    public $photo;
     
     public $updateMode  = false;
     public $imputActive = false;
  
     
     public function render()
-
-    
     {
         $id = Auth::user()->id;       
         $this->Title = "Shopping";
@@ -38,10 +46,12 @@ class Shopping extends Component
             ->where('shopping.user_id','=', $id)
             ->get();
             
-        $this->sud_total = Product::select(DB::raw('SUM(shopping.order_quantity * products.price) As total'))
+        $this->sub_total = Product::select(DB::raw('SUM(shopping.order_quantity * products.price) As total'))
             ->join('shopping', 'products.id', '=', 'shopping.product_id')
             ->where('shopping.user_id', '=', $id)
             ->get();
+        $setting = Settings::find(1);
+        $this->dolar = $setting->dolar;
 
             return view('livewire.shopping');
     }
@@ -92,6 +102,11 @@ class Shopping extends Component
 
     public function store()
     {
+
+        // $this->validate([
+        //     'photo' => 'image|max:2048', // 2MB Max
+        // ]);
+
         $id = Auth::user()->id;
 
         $money = Product::select(DB::raw('SUM(shopping.order_quantity * products.price) As total'))
@@ -106,27 +121,27 @@ class Shopping extends Component
         $order_product =  Shoppings::select('shopping.product_id','shopping.price','shopping.order_quantity')
             ->where('shopping.user_id', '=', $id)
             ->get();        
-
-        // $this->validate([
-        //      'direccion'      => 'required'
-            
-        // ]);
+        $image = $this->photo->store('photos');
         $orden=Order::create([
-            'direccion'          => $this->direccion,
-            'telefono'         => $this->telefono,
-            'tipo_envio'         => $this->tipo_envio,
-            'metodo_pago'       => $this->metodo_pago,
-            'monto' => $this->monto,
-            'ref' => $this->ref,
-            'fecha_pago' => $this->fecha_pago,
-            'user_id'=> $id,
-            'total'=>$total_money,
-            'status'=>'Iniciado'
+            'direccion'             => $this->direccion,
+            'telefono'              => $this->telefono,
+            'tipo_envio'            => $this->tipo_envio,
+            'metodo_pago'           => $this->metodo_pago,
+            'monto'                 => $this->monto,
+            'ref'                   => $this->ref,
+            'fecha_pago'            => $this->fecha_pago,
+            'user_id'               => $id,
+            'total'                 => $total_money,
+            'transporte'            => $this->transporte,
+            'direccion_transporte'  => $this->dirtransporte,
+            'status'                => 'Iniciado',
+            'oc_image'              => $image ?? ''
         ]);
+        
 
         foreach($order_product as $key => $ord_prod)
         {
-	 //       dd($ord_prod);
+
             $total_price_order= $ord_prod->price*$ord_prod->order_quantity;
         
             OrderDetails::create([
@@ -141,7 +156,8 @@ class Shopping extends Component
         }
         //$this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
         $this->orden = $orden->id;
-        $this->pedido();
+        /* Activar esto en produccion */
+        //$this->pedido();
         $this->resetInput();
         $this->reset_cart();
         return redirect()->back()->with('message', 'Orden Realizada Con Exito...');

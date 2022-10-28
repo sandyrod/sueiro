@@ -33,7 +33,7 @@
               <th scope="row">#{{ Str::padLeft($order->id, 5, '0') }}</th>
               <td>{{ date('d/m/Y', strtotime($order->created_at)) }}</td>
               <td class="orders__stadpedido">{{ $order->status }}</td>
-              <td>${{ $order->total }}</td>
+              <td>USD {{ $order->total }}</td>
               <td>
                 <button wire:click="recomprar({{ $order->id }})" class="btn_purchase_history_1" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">RECOMPRAR</button>
                 <button wire:click.prevent="details({{ $order->id }})" class="btn_purchase_history " type="button" class="btn btn-primary">VER DETALLE <i class="far fa-eye"></i></button>
@@ -60,8 +60,8 @@
               <tr>
                 <th scope="row">{{ $detail->product->skufield.' '.'-'.' '.$detail->product->name }}</th>
                 <td>{{ $detail->quantity }}</td>
-                <td>${{ $detail->price }}</td>
-                <td>${{ $detail->quantity * $detail->price }}</td>
+                <td>USD {{ $detail->price }}</td>
+                <td>USD {{ $detail->quantity * $detail->price }}</td>
               </tr>
               @empty
               <tr><td colspan="4">Sin datos</td></tr>

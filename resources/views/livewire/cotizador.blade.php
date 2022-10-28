@@ -17,12 +17,12 @@
             {{-- @endif --}}
        {{--  </div> --}}
         <br><br>
-        {{-- <div id="divocultamuestra" style="display:none;"> --}}
-            <div class="container-fluid">
+
+            <div class="container-fluid" style="margin-bottom: 20px;">
                 <div class="container">
                     <div class="row align-items-center" >
-                        <div class="col-md-4" style="margin-left:30%;">
-                            <select name="select" id="inputSelect" class="form-select" required="required">
+                        <div class="col-12">
+                            <select name="select" id="inputSelect" class="form-select" required="required" style="max-width: 200px; margin:auto;">
                                 <option value="1">Seleccionar</option>
                                 <option value="2">Discos</option>
                                 <option value="3">Tejido Artistico</option>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container divOculto" id="div2" style="background: #F2F2F2; height:400px">
+            <div class="container divOculto" id="div2" style="background: #F2F2F2; height:400px; margin-bottom: 20px;">
                 <div class="row">
                     <h3><p class="text-center title_cotizador">Discos.</p></h3>
                     <div class="col">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container divOculto" id="div3" style="background: #F2F2F2; height:400px">
+            <div class="container divOculto" id="div3" style="background: #F2F2F2; height:400px; margin-bottom: 20px;">
                 <div class="row">
                     <h3><p class="text-center title_cotizador" >Tejido Artistico.</p></h3>            
                     <div class="col">
@@ -100,57 +100,56 @@
                     </div>
                 </div>
             </div>
-        {{-- </div> --}}
-        <div class="row justify-content-center" style="display:none">
-            <div class="col-md-10">
-                <table class="table table-striped">
-                    <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Descripcion </th>
-                            <th scope="col">Precio </th>
-                            <th scope="col">Cantidad </th>
-                            <th scope="col">opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align:center;">
-                    {{-- @foreach($data as $producto) --}}
-                        <tr>
-                            <td></td>
-                            <td>
-                                {{-- <span class="td__title">{{ $producto->name }}</span> --}}
-                            </td>
-                            <td class="align-middle">
-                                {{-- <span class="align-middle">{{ $producto->description }}</span> --}}
-                            </td>
-                            <td class="align-middle">
-                                {{-- <span class="align-middle">{{ $producto->price }}</span> --}}
-                            </td>
-                            <td class="align-middle">
-                                {{-- <input type="number" class="form-control" placeholder="0" min="1"  name='order_quantity' oninput="validity.valid||(value='');" wire:model.defer="order_quantity" id='order_quantity'> --}}
-                            </td>
-                            <td>
-                                {{-- @if (auth()->user()->rol_user=='')
-                                    <div><br>
-                                        <a wire:click="addToCart({{ $producto->id }})" class="fas fa-shopping-cart"></a>
-                                    </div>
-                                @endif --}}
-                                @if (auth()->user()->rol_user=='admin')
-                                    <div><br>
-                                        <a {{-- wire:click="edit({{ $producto->id }})" --}}><i class="fa fa-pen" style="color:#006400"></i></a>
-                                        <a {{-- wire:click="destroy({{ $producto->id }})" --}}><i class="fa fa-trash" style="color:#C11D1D"></i></a>
-                                    </div>
-                                @endif
-                            </td>
-                        </tr>
-                        {{-- @endforeach --}}
-                    </tbody>
-                </table>
+            <div class="row justify-content-center" style="display:none">
+                <div class="col-md-10">
+                    <table class="table table-striped">
+                        <thead style="background:#C1282D;color:#FFFFFF;text-align:center;">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Descripcion </th>
+                                <th scope="col">Precio </th>
+                                <th scope="col">Cantidad </th>
+                                <th scope="col">opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align:center;">
+                        {{-- @foreach($data as $producto) --}}
+                            <tr>
+                                <td></td>
+                                <td>
+                                    {{-- <span class="td__title">{{ $producto->name }}</span> --}}
+                                </td>
+                                <td class="align-middle">
+                                    {{-- <span class="align-middle">{{ $producto->description }}</span> --}}
+                                </td>
+                                <td class="align-middle">
+                                    {{-- <span class="align-middle">{{ $producto->price }}</span> --}}
+                                </td>
+                                <td class="align-middle">
+                                    {{-- <input type="number" class="form-control" placeholder="0" min="1"  name='order_quantity' oninput="validity.valid||(value='');" wire:model.defer="order_quantity" id='order_quantity'> --}}
+                                </td>
+                                <td>
+                                    {{-- @if (auth()->user()->rol_user=='')
+                                        <div><br>
+                                            <a wire:click="addToCart({{ $producto->id }})" class="fas fa-shopping-cart"></a>
+                                        </div>
+                                    @endif --}}
+                                    @if (auth()->user()->rol_user=='admin')
+                                        <div><br>
+                                            <a {{-- wire:click="edit({{ $producto->id }})" --}}><i class="fa fa-pen" style="color:#006400"></i></a>
+                                            <a {{-- wire:click="destroy({{ $producto->id }})" --}}><i class="fa fa-trash" style="color:#C11D1D"></i></a>
+                                        </div>
+                                    @endif
+                                </td>
+                            </tr>
+                            {{-- @endforeach --}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
     </div>
-    
+</div>
 
 <script>
     $(document).ready(function () {
@@ -204,40 +203,36 @@
         })
 
     });
-
-    </script>
+</script>
 
 <script>
     $(function() {
 
-$("#inputSelect").on('change', function() {
+        $("#inputSelect").on('change', function() {
 
-  var selectValue = $(this).val();
-  switch (selectValue) {
+            var selectValue = $(this).val();
+            switch (selectValue) {
+                case "1":
+                $("#div1").show();
+                $("#div2").hide();
+                $("#div3").hide();
+                break;
 
-    case "1":
-      $("#div1").show();
-      $("#div2").hide();
-      $("#div3").hide();
-      break;
+                case "2":
+                $("#div1").hide();
+                $("#div2").show();
+                $("#div3").hide();
+                break;
 
-    case "2":
-      $("#div1").hide();
-      $("#div2").show();
-      $("#div3").hide();
-      break;
+                case "3":
+                $("#div1").hide();
+                $("#div2").hide();
+                $("#div3").show();
+                break;
 
-    case "3":
-      $("#div1").hide();
-      $("#div2").hide();
-      $("#div3").show();
-      break;
+            }
 
-  }
+        }).change();
 
-}).change();
-
-});
-
-
+    });
 </script>

@@ -65,6 +65,7 @@
             <button class="flt__btn">MÁS INFORMACIÓN</button>
         </div>
     </div>
+    
 </div>
 
     

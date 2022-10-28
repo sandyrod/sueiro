@@ -32,6 +32,7 @@
                 <br><br>
                 <i class="fas fa-phone-alt"> <span> 54-11 4488-4649 / 3825</span></i>
                 <br><br>
+                <i class="far fa-address-card" style="margin-bottom:10px;"> <span> 30-71085514-1</span></i>
             </div>
             <div class="col-sm-4">
                 <br>
