@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    @if (Auth::check() && auth()->user()->email_vrified_at)        
+    @if (Auth::check() && auth()->user()->email_verified_at)        
         <div>
             <br>
             <div class="row justify-content-center">
