@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
+use Livewire\WithFileUploads;
 
 
 
 class Products extends Component
 {
+    use WithFileUploads;
+
     public $data, $search, $user, $product_id, $order_quantity, $name, $description, $price, $logo, $request, $cart; 
     public $categories;
 
@@ -120,19 +122,6 @@ class Products extends Component
             return $this->update();
 
         return $this->store();
-        if($request->hasFile("logo")){
-
-            
-            $imagen = $request->file("logo");
-            $nombreimagen = Str::slug($request->logo).".".$imagen->guessExtension();
-            $ruta = public_path("img/product/");
-
-            //$imagen->move($ruta,$nombreimagen);
-            copy($imagen->getRealPath(),$ruta.$nombreimagen);
-
-            $evt->logo = $nombreimagen;            
-            
-        }
 
     }
 
@@ -145,27 +134,18 @@ class Products extends Component
             'price'   => 'required'
 
         ]);
+        $image = $this->logo->store('logo');
+        if ($image == ''){
+            $image='mallas.png';
+        }
         Product::create([
-            'name'         => $this->name,
-            'description'  => $this->description,
-            'price'  => $this->price,
-            'logo'  => $this->logo,               
+            'name'          => $this->name,
+            'description'   => $this->description,
+            'price'         => $this->price,
+            'logo'          => $image,               
 
         ]);
 
-        /* if($this->request->hasFile("logo")){
-            
-            $imagen = $this->request->file("logo");
-            $nombreimagen = Str::slug($this->request->logo).".".$imagen->guessExtension();
-            $ruta = public_path("img/product/");
-
-            //$imagen->move($ruta,$nombreimagen);
-            copy($imagen->getRealPath(),$ruta.$nombreimagen);
-            
-            $this->logo = $nombreimagen;            
-        } */
-
-//        $this->emit('notify:toast', ['type'  => 'success', 'name' => 'Registro creado...']);
         return redirect()->back()->with('message', 'Registro Guardado con Exito...');
         $this->resetInput();
     }
@@ -190,10 +170,15 @@ class Products extends Component
         ]);
         if ($this->product_id) {
             $record = Product::find($this->product_id);
+            $image = $this->logo->store('logo');
+            if ($image == ''){
+                $image='mallas.png';
+            }
             $record->update([
-                'name'      => $this->name,
-                'description'        => $this->description,
-                'price'        => $this->price,
+                'name'              => $this->name,
+                'description'       => $this->description,
+                'price'             => $this->price,
+                'logo'              => $image
             ]);
             
             return redirect()->back()->with('message', 'Registro actualizado...');

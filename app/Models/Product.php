@@ -16,4 +16,8 @@ class Product extends Model
     {
         return $this->hasMany(OrderDetails::class);
     }
+
+    public function getUrlPathAtributte(){
+        return \Storage::url($this->logo);
+    }
 }

@@ -27,7 +27,7 @@ class Shopping extends Component
     public $search, $count_item, $sub_total, $direccion, $telefono, $retiro_sucursal;
     public $envio_domicilio, $tipo_envio, $metodo_pago, $contado, $monto, $transferencia_bnc;
     public $dolar, $ref, $fecha_pago, $total, $dirtransporte, $transporte;
-    public $photo;
+    public $photo, $comprobante;
     
     public $updateMode  = false;
     public $imputActive = false;
@@ -52,9 +52,14 @@ class Shopping extends Component
             ->get();
         $setting = Settings::find(1);
         $this->dolar = $setting->dolar;
+        foreach($this->sub_total as $sub){
+            $this->monto = ($sub->total *0.21)+$sub->total;
+        }
+        
 
-            return view('livewire.shopping');
+        return view('livewire.shopping');
     }
+
     public function resetInput()
     {
         $this->emitUpdates();
@@ -103,10 +108,6 @@ class Shopping extends Component
     public function store()
     {
 
-        // $this->validate([
-        //     'photo' => 'image|max:2048', // 2MB Max
-        // ]);
-
         $id = Auth::user()->id;
 
         $money = Product::select(DB::raw('SUM(shopping.order_quantity * products.price) As total'))
@@ -121,7 +122,9 @@ class Shopping extends Component
         $order_product =  Shoppings::select('shopping.product_id','shopping.price','shopping.order_quantity')
             ->where('shopping.user_id', '=', $id)
             ->get();        
-        $image = $this->photo->store('photos');
+        $oc_image = $this->photo->store('logo');
+        //$comprobante = $this->photo->store('comprobante');
+
         $orden=Order::create([
             'direccion'             => $this->direccion,
             'telefono'              => $this->telefono,
@@ -135,7 +138,8 @@ class Shopping extends Component
             'transporte'            => $this->transporte,
             'direccion_transporte'  => $this->dirtransporte,
             'status'                => 'Iniciado',
-            'oc_image'              => $image ?? ''
+            'oc_image'              => $oc_image ?? '',
+            'comprobante'           => $comprobante ?? ''
         ]);
         
 

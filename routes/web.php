@@ -22,7 +22,7 @@ Route::view('/request', 'request')->name('request');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/orders', 'orders')->name('orders');
 Route::view('/product', 'product')->name('product');
-Route::view('/product-list', 'product-list')->name('product_list');
+//Route::view('/product-list', 'product-list')->name('product_list');
 
 
 Route::post('/suscribe', [App\Http\Controllers\NewsletterController::class, 'store'])->name('suscribe');

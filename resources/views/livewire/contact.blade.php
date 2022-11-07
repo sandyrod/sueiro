@@ -56,47 +56,6 @@
         </div>
         
     </div>
-
-
-
-
-
-
-
-
-
-            {{-- <div class="contact__redes">
-                <div class="footer__logo--location">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <span style="color: #000" class="footer__contacto--title" >Bergamini 1127 - Ciudadela</span>
-                <div class="footer__logo--envelope">
-                    <i class="far fa-envelope"></i>
-                </div>
-                <span style="color: #000" class="footer__contacto--title1" >ventas@sueiroehijos.com.ar</span>
-                <div class="footer__logo--phone">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <span style="color: #000" class="footer__contacto--title2" >54-11 4488-4649 / 3825</span>
-            </div> --}}
-            {{-- <div class="contact__cuerpo">
-                <input class="contact__imputname" placeholder="Nombre" id="name" name="name" required>
-                <input class="contact__imputape" placeholder="Apellido" id="apellido" name="apellido" required>
-                <input class="contact__imputmail" placeholder="Correo Electronico" id="correo" name="correo" required>
-                <input class="contact__imputempresa" placeholder="Empresa *" id="empresa" name="empresa" required>
-                <textarea class="contact__texmsj" placeholder="Mensaje" id="mensaje" name="mensaje"></textarea required>
-                <div class="contact__terminos">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
-                    <span> Acepto los términos y condiciones de privacidad</span>
-                </div> --}}
-                {{-- <div class="contact__capcha">
-                    <div class="g-recaptcha" data-sitekey="your_site_key"></div>
-                    <br/>
-                </div> --}}
-                
-                {{-- <button type="button" class="contact__btn" wire:click="store"><i class="fa fa-save"></i>ENVIAR</button> --}}
-                {{-- <button type="submit" class="contact__btn" ><i class="fa fa-save"> </i> ENVIAR </button>
-            </div>
-        </div> --}}
+</form>
     
     

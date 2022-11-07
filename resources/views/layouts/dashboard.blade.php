@@ -395,63 +395,11 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="col-sm-2">
-                    <img style=" height: 50%; margin-left:15%;" src="{{ asset('/img/logofooter.png') }}">    
-
-                        <br><br><div class="row">                
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-2">
-                            <i  class="fab fa-facebook-f"></i>
-                        </div>
-                        <div class="col-sm-2">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                    </div>
-                </div>    
-                <div class="col">
-                    <div class="footer_container2">
-                        <br>
-                        <div class="row footer__cont_red">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-4"><span>SECCIONES</span></div>
-                            <div class="col-sm-4"><span>SUSCRIBITE AL NEWSLETTER</span></div>
-                            <div class="col-sm-2"><span>CONTACTO</span></div>
-                        </div>
-                        <br>
-                        <div class="row footer__cont_whait">
-                            <div class="col-sm-1"></div>
-                                <div class="col-sm-2">
-                                    <a class="link_footer" href="{{ route('nosotros') }}"><span>NOSOTROS</span> </a>
-                                    <br>
-                                    <a class="link_footer" href="{{ route('product') }}"><span>PRODUCTOS</span></a>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a class="link_footer" href="{{ route('request') }}"><span>SOLICITAR PRESUPUESTO </span></a>
-                                    <br>
-                                    <a class="link_footer" href="{{ route('contact') }}"><span>CONTACTO</span></a>
-                                </div>
-                                <div class="col-sm-4">                            
-                                    <form action="{{ route('suscribe') }}" method='post'>
-                                        @csrf
-                                        <input class="footer__input_email" placeholder="       Ingresa tu email" id="search" name="email" type="text" value="">
-                                        <button type="submit" class="footer__btn_email"><i style="position: absolute;top: 35%;left: 35%; color:#fff;" class="fas fa-paper-plane"></i></button>
-                                    </form>
-                                </div>
-                                <div class="col-sm-3">
-                                    <i class="fas fa-map-marker-alt" style="margin-bottom:10px;"> <span> Bergamini 1127 - Ciudadela</span></i>
-                                    <br>
-                                    <i class="far fa-envelope" style="margin-bottom:10px;"> <span> Ventas@sueiroehijos.com.ar</span></i>
-                                    <br>
-                                    <i class="fas fa-phone-alt" style="margin-bottom:10px;"> <span> 54-11 4488-4649 / 3825</span></i>
-                                    <br>
-                                    <i class="far fa-address-card" style="margin-bottom:10px;"> <span> 30-71085514-1</span></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+        </div>
+        <div class="wsp_div">
+            <a href="https://api.whatsapp.com/send?phone=584127925566" target="_blank">
+                <img src="{{ asset('img/whatsapp.png') }}">
+            </a>
         </div>
     </body>
 </html>

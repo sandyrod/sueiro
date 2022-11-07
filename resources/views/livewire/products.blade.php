@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    @if (Auth::check())        
+    @if (Auth::check() && auth()->user()->email_vrified_at)        
         <div>
             <br>
             <div class="row justify-content-center">
@@ -52,18 +52,19 @@
                     </div>
                     <div class="form-group col-md-4" id="img" style="display:none;">
                         <label for="" class="form-label">Logo</label>
-                        <input id="logo" name="logo" type="file" value="{{old('img_product')}}" class="form-control" tabindex="1">        
+                        <input id="logo" name="logo" type="file" value="{{old('img_product')}}" class="form-control" tabindex="1" wire:model.defer="logo">        
                     </div>
-                    <div class="form-group col-md-4" id="url" style="display:none;">
+                    <!-- <div class="form-group col-md-4" id="url" style="display:none;">
                         <label for="" class="form-label">Logo Url</label>
-                        <input id="logo" name="logo" type="text" value="{{old('url')}}" class="form-control" tabindex="1">
-                    </div>
+                        <input id="logo" name="logo" type="text" value="{{old('url')}}" class="form-control" tabindex="1" wire:model="logo">
+                    </div> -->
                 </div>
                 <br>
                 <div class="row justify-content-center">  
                     <button type="button" class="btn btn-success col-md-1" wire:click="save"><i class="fa fa-save"></i>Guardar</button>
                     <button type="button" class="btn btn-danger col-md-1" wire:click="resetInput"> <i class="fa fa-trash"></i>Cancelar</button>
                 </div>
+                <br>
             @endif
             @if(session()->has('message'))
                 <div class="alert" id="alert">
@@ -79,10 +80,10 @@
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col">Producto</th>
-                                <th scope="col">Descripcion </th>
+                                <th scope="col">Descripción </th>
                                 <th scope="col">Precio </th>
-                                <th scope="col">Cantidad </th>
-                                <th scope="col">opciones</th>
+                                <th scope="col" class="col_cantidad">Cantidad </th>
+                                <th scope="col" class="col_opciones">Opciones</th>
                             </tr>
                         </thead>
                         <tbody style="text-align:center;">
@@ -93,10 +94,11 @@
                                     <span class="td__title">{{ $producto->skufield }}</span>
                                 </td>
                                 <td class="align-middle">
+                                    <img class="shp" src="{{ asset('storage/'.$producto->logo) }}"><br>
                                     <span class="align-middle">{{ $producto->name }}</span>
                                 </td>
                                 <td class="align-middle">
-                                    <span class="align-middle">{{ $producto->price }}</span>
+                                    <span class="align-middle"> USD {{ $producto->price }}</span>
                                 </td>
                                 <td class="align-middle">
                                     <input type="number" class="form-control" placeholder="0" min="1"  name='order_quantity' oninput="validity.valid||(value='');" wire:model.defer="order_quantity" id='order_quantity'>
@@ -127,8 +129,7 @@
                 </div>
             </div>
         </div>
-    @endif
-    @guest
+    @else
     <div class="container">
         <div class="row">
             <div class="products__card">
@@ -145,46 +146,46 @@
                     </a>
                 </div>
                 @empty
-                <div class="filtros"> 
-                    <a wire:click="flt_filtro">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('/img/filtros.png') }}">
-                            <div class="card-body">
-                                <p class="card_title">FILTROS</p>
+                    <div class="filtros"> 
+                        <a wire:click="flt_filtro">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset('/img/filtros.png') }}">
+                                <div class="card-body">
+                                    <p class="card_title">FILTROS</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="filtros"> 
-                    <a wire:click="flt_mallas">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('/img/mallas.png') }}">
-                            <div class="card-body">
-                                <p class="card_title">MALLAS</p>
+                        </a>
+                    </div>
+                    <div class="filtros"> 
+                        <a wire:click="flt_mallas">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset('/img/mallas.png') }}">
+                                <div class="card-body">
+                                    <p class="card_title">MALLAS</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="filtros">
-                    <a wire:click="flt_zarandas">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('/img/zarandas.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card_title">ZARANDAS</p>
+                        </a>
+                    </div>
+                    <div class="filtros">
+                        <a wire:click="flt_zarandas">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset('/img/zarandas.png') }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card_title">ZARANDAS</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="filtros">
-                    <a wire:click="flt_tamices">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('/img/tamices.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card_title">TAMICES</p>
+                        </a>
+                    </div>
+                    <div class="filtros">
+                        <a wire:click="flt_tamices">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset('/img/tamices.png') }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card_title">TAMICES</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 @endforelse
                 
             </div>
@@ -201,8 +202,8 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Producto</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col"></th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col" style="width: 200px;"></th>
                         </tr>
                     </thead>
                     <tbody style="text-align:center;">
@@ -213,11 +214,11 @@
                                 <span class="td__title">{{ $producto->skufield }}</span>
                             </td>
                             <td class="align-middle">
-                                <img class="shp" src="{{ asset('/img/mallas.png') }}"><br>
                                 <span class="align-middle">{{ $producto->name }}</span>
                             </td>
                             <td class="align-middle">
-                                <span class="align-middle"><img src="{{ $producto->logo }}"></span>
+                                <span class="align-middle">
+                                    <img style="width:150px;" src="{{ asset('storage/'.$producto->logo) }}"></span>
                             </td>
                         </tr>
                         @endforeach

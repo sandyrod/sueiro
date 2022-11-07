@@ -61,7 +61,8 @@
                         <span class="shp__obsetitle">Orden de compra / Usuario</span>
                         <br><br>
                         <input class="shp__obseimput" type="text" value="" id="flexCheckDefault">
-                        <input type="file" wire:model="photo">
+                        <input type="file" wire.model="photo">
+                        
                         <br>
                         <br>
                         <span class="shp__obsetext">Comentarios</span>
@@ -100,18 +101,18 @@
                             </div>
                             <div class="shp__cuerpoiv" >
                                 <div class="shp__cuerpo--envrigth">
-                                    <span class="shp__cuerpo--envrigthttitle" style="">IVA(21%)</span>
+                                    <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
                                     <br>
-                                    <span class="shp__cuerpo--envrigthttitle" style="">Otros impuestos</span>
+                                    <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
                                     <br><br>
                                     <span class="shp__cuerpo--envrigthttitle">Total</span>
                                     <br>
                                     <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
                                 </div>
-                                <div style="" class="shp__cuerpo--envleft">
+                                <div class="shp__cuerpo--envleft">
                                     <span class="shp__cuerpo--envlefttitle">{{$sub->total*0.21}}$</span>
                                     <br>
-                                    <span class="shp__cuerpo--envlefttitle">No aplica.</span>
+                                    <span class="shp__cuerpo--envlefttitle">A definir.</span>
                                     <br>
                                     @foreach($sub_total as $sub)    
                                         <br><span class="" style="width:85%; margin-left:40%;">USD {{($sub->total*0.21)+($sub->total)}}$</span>
@@ -157,13 +158,16 @@
                                 </div>
                             </div>
                             <div class="col-8">
-                                <div>
+                                <div id="divMapa">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.143550548068!2d-58.53818750000001!3d-34.6258125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7c77ca45177ec70b!2s48Q39FF6%2BMP!5e0!3m2!1ses-419!2sve!4v1643913947570!5m2!1ses-419!2sve" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                 </div>
                                 <div>
                                     <div id="Myid" style="display:none">
+                                        <div class="shp__fontitle">
+                                            <span class="shp__title">Los costos de envío corren por cuenta del cliente</span>
+                                        </div>
                                         Dirección Final
-                                        <input class="form-control" placeholder="Dirección final de la mercancia" wire:model.defer="direccion">
+                                        <input class="form-control" placeholder="Dirección final de la mercancía" wire:model.defer="direccion">
                                         Telefono
                                         <input class="form-control" placeholder="Teléfono" wire:model.defer="telefono">
                                         Transporte
@@ -174,94 +178,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div>
-                            <div class="row align-items-start">
-                                <div class="col-4">
-                                    <div class="shp__etrcue">
-                                        <span class="shp__etrtitleret">Retiro en sucursal</span>
-                                        <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="1" name="flexRadioenvio" id="retiro_sucursal" checked>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.143550548068!2d-58.53818750000001!3d-34.6258125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7c77ca45177ec70b!2s48Q39FF6%2BMP!5e0!3m2!1ses-419!2sve!4v1643913947570!5m2!1ses-419!2sve" width="520" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="row align-items-start">
-                                <div style="margin-left: 10px;" class="col-4">
-                                    <span><b>Sucursal Ciudadela</b></span>                                
-                                    <span>Bergamini 1127 - Ciudadela</span>
-                                    <span>54-11 4488-4649 / 3825</span>
-                                    <span>Lu a Vie de 8 a 17 hrs</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="row align-items-start">
-                                <div class="col-4">
-                                    <div class="shp__etrcue1">
-                                        <span class="shp__etrtitleret">Envío a domicilio</span>
-                                        <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="2" id="envio_domicilio" name="flexRadioenvio" onchange="javascript:toggleText() " checked>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div id="Myid" style="display:none">
-                                    Dirección Final
-                                    <input class="form-control" placeholder="Dirección" wire:model.defer="direccion">
-                                    Telefono
-                                    <input class="form-control" placeholder="Telefono" wire:model.defer="telefono">
-                                    Transporte
-                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
-                                    Direción del Transporte
-                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
-                                    </div>
-                                </div>    
-                            </div>
-                        </div> -->
-                        <!-- 
-                        <div class="container">
-                            <div class="row align-items-start">
-                                <div class="col">
-                                    <div class="shp__etrcue1">
-                                        <span class="shp__etrtitleret">Envío a domicilio</span>
-                                        <input style="margin:11% 5%;" class="form-check-input" wire:model.defer="tipo_envio" type="radio" value="2" id="envio_domicilio" name="flexRadioenvio" onchange="javascript:toggleText() " checked>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div id="Myid" style="display:none">
-                                    Dirección Final
-                                    <input class="form-control" placeholder="Dirección" wire:model.defer="direccion">
-                                    Telefono
-                                    <input class="form-control" placeholder="Telefono" wire:model.defer="telefono">
-                                    Transporte
-                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
-                                    Direción del Transporte
-                                    <input class="form-control" placeholder="Transporte" wire:model.defer="transporte">
-                                    </div>
-                                </div>    
-                            </div>
-                        </div> -->
                         <br>
                         <button onclick="openCity(event, 'Pago')" type="button" class="btn btn-outline-primary" style="margin-left:50%;"> Siguiente</button>
                     </div>
-                    <!-- <div class="shp__etrcon3" style="margin-top:7%">
-                        <div class="shp__etrdiv">
-                            <div class="shp__di">
-                                <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
-                                <span class="shp__dititle">Observaciones</span>
-                            </div>
-                        </div>
-                        <div class="shp__etrobs">
-                            <span class="shp__obsetitle">Orden de compra / Usuario</span>
-                            <input class="shp__etrobsinput" type="text" placeholder="N de orden o Usuario registrado">
-                            <br><br>
-                            <span class="shp__obsetext">Comentarios</span>
-                            <textarea class="shp__etrobstext" placeholder="Observaciones/Sugerencias"></textarea>
-                        </div>
-                    </div> -->
+
                     <div class="shp__rsmcom">
                     <div class="sticky-sm-top">
                             <div class="shp__fontitle">
@@ -293,18 +213,18 @@
                             </div>
                             <div class="shp__cuerpoiv" >
                                 <div class="shp__cuerpo--envrigth">
-                                    <span class="shp__cuerpo--envrigthttitle" style="">IVA(21%)</span>
+                                    <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
                                     <br>
-                                    <span class="shp__cuerpo--envrigthttitle" style="">Otros impuestos</span>
+                                    <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
                                     <br><br>
                                     <span class="shp__cuerpo--envrigthttitle">Total</span>
                                     <br>
                                     <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
                                 </div>
-                                <div style="" class="shp__cuerpo--envleft">
+                                <div class="shp__cuerpo--envleft">
                                     <span class="shp__cuerpo--envlefttitle">{{$sub->total*0.21}}$</span>
                                     <br>
-                                    <span class="shp__cuerpo--envlefttitle">No aplica.</span>
+                                    <span class="shp__cuerpo--envlefttitle">A definir.</span>
                                     <br>
                                     @foreach($sub_total as $sub)    
                                         <br><span class="" style="width:85%; margin-left:40%;">USD {{($sub->total*0.21)+($sub->total)}}$</span>
@@ -326,28 +246,36 @@
                                 <span class="shp__enicon"><i class="fas fa-wallet"></i></span>
                                 <span class="shp__entitle">Forma de Pago</span>
                             </div>
-                            
-                            <div class="btn_contado">
-                                <span style="margin:1.5% 5%; position: absolute;">Contado</span>
-                                <input style="margin:10% 7%;" class="form-check-input" type="radio" wire:model.defer="metodo_pago" onclick="toggle(this)" value="1" name="flexRadioDefault" id="flexRadioDefault1">
-                            </div>
-                            <div class="optn_pago">
-                                <div id="uno" style="display:none">
-                                    Monto<input class="form-control" placeholder="Monto" wire:model.defer="monto">
+                            <div class="shopping_pago__content">
+                                <div>
+                                    <div class="btn_contado">
+                                        <span style="margin:1.5% 5%; position: absolute;">Contado</span>
+                                        <input style="margin:8% 5%;" class="form-check-input" type="radio" wire:model.defer="metodo_pago" onclick="toggle(this)" value="1" name="flexRadioDefault" id="flexRadioDefault1">
+                                    </div>
+                                    <div class="btn_contado">
+                                        <span style="margin:1.5% 4.5%;position: absolute;">Transferencia Bancaria</span>
+                                        <input style="margin:8% 5%;" class="form-check-input" type="radio" name="flexRadioDefault" wire:model.defer="metodo_pago" onclick="toggle(this)" value="2" id="flexRadioDefault2" checked>
+                                    </div>
+                                    <div class="btn_contado">
+                                        <span style="margin:1.5% 4.5%;position: absolute;">Cheque Electrónico</span>
+                                        <input style="margin:8% 5%;" class="form-check-input" type="radio" name="flexRadioDefault" wire:model.defer="metodo_pago" onclick="toggle(this)" value="3" id="flexRadioDefault3" checked>
+                                    </div>
                                 </div>
-                                <div id="dos" style="display:none">
-                                    Monto<input class="form-control" placeholder="Monto" wire:model.defer="monto">
-                                    Referencia<input class="form-control" placeholder="Referencia" wire:model.defer="ref">
-                                    Fecha<input class="form-control" placeholder="Fecha" wire:model.defer="fecha_pago">
+                                <div class="shopping_pago__content_col2">
+                                    <div id="uno" style="display:none">
+                                        Monto<input class="form-control" placeholder="Monto" wire:model.defer="monto">
+                                    </div>
+                                    <div id="dos" style="display:none">
+                                        Monto<input class="form-control" placeholder="Monto" wire:model.defer="monto">
+                                        Referencia<input class="form-control" placeholder="Referencia" wire:model.defer="ref">
+                                        Fecha<input class="form-control" placeholder="Fecha" wire:model.defer="fecha_pago">
+                                        Comprobante<input type="file" wire.model="comprobante">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="btn_contado">
-                                <span style="margin:1.5% 4.5%;position: absolute;"> Transferencia Bancaria</span>
-                                <input style="margin:8% 5%;" class="form-check-input" type="radio" name="flexRadioDefault" wire:model.defer="metodo_pago" onclick="toggle(this)" value="2" id="flexRadioDefault2" checked>
-                            </div>  
-                            <div style="margin:-10px 35px;width: 229px;height: 55px;">
-                                <span> SUEIRO E HIJOS </span>
-                                <span>CBU: 0957541204574554</span>
+                            <div style="margin-left:30px; margin-right:30px;">
+                                <span> SUEIRO E HIJOS </span><br>
+                                <span>CBU: 0957541204574554</span><br>
                                 <span>ALIAS: SUEIRO.E.HIJOS</span>
                             </div>
                         </div>
@@ -365,23 +293,8 @@
                     </div>
                     <br>
                     <button onclick="openCity(event, 'Confirmación')" type="button" class="btn btn-outline-primary" style="margin-left:50%;"> Siguiente</button>
-                    <!-- <div class="shp__etrcon3">
-                        <div class="shp__etrdiv">
-                            <div class="shp__di">
-                                <span class="shp__dicon"><i class="fas fa-comment-alt"></i></span>
-                                <span class="shp__dititle">Observaciones</span>
-                            </div>
-                        </div>
-                        <div class="shp__etrobs">
-                            <span class="shp__obsetitle">Orden de compra / Usuario</span>
-                            <input class="shp__etrobsinput" type="text" placeholder="N de orden o Usuario registrado">
-                            <br><br>
-                            <span class="shp__obsetext">Comentarios</span>
-                            <textarea class="shp__etrobstext" placeholder="Observaciones/Sugerencias"></textarea>
-                        </div>
-                    </div> -->
                     <div class="shp__rsmcom">
-                    <div class="sticky-sm-top">
+                        <div class="sticky-sm-top">
                             <div class="shp__fontitle">
                                 <span class="shp__title">Resumen Compra</span>
                             </div>
@@ -411,18 +324,18 @@
                             </div>
                             <div class="shp__cuerpoiv" >
                                 <div class="shp__cuerpo--envrigth">
-                                    <span class="shp__cuerpo--envrigthttitle" style="">IVA(21%)</span>
+                                    <span class="shp__cuerpo--envrigthttitle">IVA(21%)</span>
                                     <br>
-                                    <span class="shp__cuerpo--envrigthttitle" style="">Otros impuestos</span>
+                                    <span class="shp__cuerpo--envrigthttitle">Otros impuestos</span>
                                     <br><br>
                                     <span class="shp__cuerpo--envrigthttitle">Total</span>
                                     <br>
                                     <span class="shp__cuerpo--envrigthttitle">Total en ARS</span>
                                 </div>
-                                <div style="" class="shp__cuerpo--envleft">
+                                <div class="shp__cuerpo--envleft">
                                     <span class="shp__cuerpo--envlefttitle">{{$sub->total*0.21}}$</span>
                                     <br>
-                                    <span class="shp__cuerpo--envlefttitle">No aplica.</span>
+                                    <span class="shp__cuerpo--envlefttitle">A definir.</span>
                                     <br>
                                     @foreach($sub_total as $sub)    
                                         <br><span class="" style="width:85%; margin-left:40%;">USD {{($sub->total*0.21)+($sub->total)}}$</span>
@@ -467,19 +380,15 @@
                                         <br>
                                         <tr>
                                         <td class="shopping_first_col">Envio</td>
-                                        <td>A Definir.</td>
+                                        <td>A definir.</td>
                                         </tr>
-                                        {{-- <tr>
-                                            <td>Bonificaciones</td>
-                                            <td>No aplica.</td>
-                                        </tr> --}}
                                         <tr>
                                             <td >IVA ( 21% )</td>
                                             <td>{{$sud->total*0.21}}$</td>
                                         </tr>
                                         <tr>
                                         <td>Otros impuestos</td>
-                                        <td>No aplica.</td>
+                                        <td>A definir.</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -551,15 +460,15 @@
 </script>
 <script type="text/javascript">
     function toggle(elemento) {
-      if(elemento.value=="0") {
+        if(elemento.value=="0") {
           document.getElementById("uno").style.display = "none";
           document.getElementById("dos").style.display = "none";
-       }else{
+        }else{
            if(elemento.value=="1"){
                document.getElementById("uno").style.display = "block";
                document.getElementById("dos").style.display = "none";
            }else{
-               if(elemento.value=="2"){
+               if(elemento.value=="2" || elemento.value=="3"){
                     document.getElementById("uno").style.display = "none";
                     document.getElementById("dos").style.display = "block";
                 }  
@@ -571,11 +480,13 @@
     function toggleText(v){
       console.log(v);
       var x = document.getElementById("Myid");
+      var mapa = document.getElementById("divMapa");
       if (v==1) {
         x.style.display = "none";
+        mapa.style.display = "block";
       } else {
         x.style.display = "block";
-        
+        mapa.style.display = "none";
       }
     }
 </script>                      

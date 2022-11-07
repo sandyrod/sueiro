@@ -671,7 +671,7 @@ $desktop-lg: 1440px;
     font: normal normal normal 20px/25px Open Sans;
     letter-spacing: 0px;
     color: #000000;
-    text-transform: lowercase;
+    text-transform:initial;
 }
 
 // .nosotros__title1{
@@ -1984,8 +1984,10 @@ body span {
     top: 306px;
     left: 65px;
     width: 440px;
-    height: 325px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 3px 6px #00000012;opacity: 1;border:solid;
+    height: 370px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000012;
+    opacity: 1;border:solid;
 }
 
 .shopping__pago-title{
@@ -1994,7 +1996,7 @@ body span {
 }
 
 .btn_contado{
-    margin: 30px 30px;
+    margin: 10px 30px;
     width: 183px;
     height: 55px;
     background: #FFFFFF;
@@ -2095,4 +2097,40 @@ body span {
     color: #FFF;
     opacity: 0.75;
     line-height: 30px;
+}
+.card-header{
+    background:#c1282d !important;
+    color: #fff;
+}
+.card-body{
+    background: #333333 !important;
+    color: #fff;
+}
+
+.col_cantidad{
+    width: 114px;
+}
+.col_opciones{
+    width: 150px;
+}
+.col_descripcion{
+    max-width: 150px;
+}
+.wsp_div{
+    position:sticky;
+    bottom: 50px;
+    left: 100%;
+    z-index: 9999;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+
+.shopping_pago__content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+    .shopping_pago__content_col2{
+        margin-right: 10px;
+    }  
 }

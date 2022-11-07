@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="form-group col-md-3">
-    <input type="text" placeholder="Buscar" class="form-control" wire:model="search"">
+    <input type="text" placeholder="Buscar" class="form-control" wire:model="search">
 </div>
 <div class="container">
     <div class="row justify-content-center">
@@ -14,7 +14,7 @@
             <thead style="background:#33333370;color:#FFFFFF;text-align:center;">
                 <tr>
                     <th scope="col">Producto </th>
-                    <th scope="col">Descripcion</th>
+                    <th scope="col">Descripción.</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
